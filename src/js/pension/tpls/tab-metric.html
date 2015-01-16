@@ -1,0 +1,60 @@
+<div class="widget tab-metric-widget">
+    <div class="widget-body large no-padding">
+        <tabset justified="true">
+            <tab>
+                <tab-heading>
+                    <span class="title">Page Views</span>
+                    <span class="value">{{ data.synonymMetrics.total_pageviews | number }}</span>
+                    <span class="description">Over 12 Months</span>
+                </tab-heading>
+                <div class="row" data-ng-controller="TermSearchPageViewCtrl">
+                    <div class="col-xs-12">
+                        <div class="widget-body chart-widget">
+                            <svg term-search-pageview chart-data="data" class="" style="height: 290px;">&nbsp;</svg>
+                        </div>
+                    </div>
+                </div>
+            </tab>
+            <tab>
+                <tab-heading>
+                    <span class="title">Norm. Page Views</span>
+                    <span class="value">{{ data.keywordInterpreterMetrics.total_pageviews | number }}</span>
+                    <span class="description">Over 12 Months</span>
+                </tab-heading>
+
+            </tab>
+            <tab>
+                <tab-heading>
+                    <span class="title">Revenue</span>
+                    <span class="value">&pound;13,908,989</span>
+                    <span class="description">September 2014</span>
+                </tab-heading>
+
+            </tab>
+            <tab>
+                <tab-heading>
+                    <span class="title">MIR</span>
+                    <span class="value">280</span>
+                    <span class="description">Listings</span>
+                </tab-heading>
+
+            </tab>
+            <tab>
+                <tab-heading>
+                    <span class="title">In Content</span>
+                    <span class="value">45</span>
+                    <span class="description">Classifications</span>
+                </tab-heading>
+
+            </tab>
+             <tab>
+                <tab-heading>
+                    <span class="title">Interacations</span>
+                    <span class="value">280</span>
+                    <span class="description">Classifications</span>
+                </tab-heading>
+
+            </tab>
+        </tabset>
+    </div>
+</div>

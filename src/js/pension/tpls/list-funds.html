@@ -1,0 +1,90 @@
+<div class="container" id="list-funds">
+    <div class="row margin-top">
+        <div class="col-xs-12 breadcrumb-links">
+            <a href="#/">Home</a> / List Funds
+            <h3 class="pull-right">Investment Funds : 49 funds</h3>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-3 filter-box">
+            <form role="form">
+                <div class="form-group">
+                    <input type="text" ng-model="selected" typeahead="fund for fund in funds | filter:$viewValue | limitTo:8" class="form-control" id="FundName" placeholder="Fund Name" tooltip="Some helper information to appear here"  tooltip-trigger="focus" tooltip-placement="right">
+                </div>
+                <div class="form-group">
+                    <select class="form-control">
+                        <option>All Geographies</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select class="form-control">
+                        <option>All Sectors</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+                <div class="">
+                    <label for="Currency">Currency</label>
+                </div>
+                <hr />
+                <div class="form-group btn-group">
+                    <label class="btn btn-primary col-xs-4" ng-model="checkModel.left" btn-checkbox>&pound; GMP</label>
+                    <label class="btn btn-primary col-xs-4" ng-model="checkModel.middle" btn-checkbox>&dollar; USB</label>
+                    <label class="btn btn-primary col-xs-4" ng-model="checkModel.right" btn-checkbox>&euro; EURO</label>
+                </div>
+                <div class="">
+                    <label for="Fund Type 1">Fund Types</label>
+                </div>
+                <hr />
+                <div class="checkbox">
+                    <label class="col-xs-6">
+                        <input type="checkbox"> Pension Funds
+                    </label>
+                    <label class="col-xs-6">
+                        <input type="checkbox"> Life Funds
+                    </label>
+                    <label class="col-xs-6">
+                        <input type="checkbox"> State Pension
+                    </label>
+                    <label class="col-xs-6">
+                        <input type="checkbox"> Linked Pension
+                    </label>               
+                    <label class="col-xs-6">
+                        <input type="checkbox"> VC Funds
+                    </label>
+                    <label class="col-xs-6">
+                        <input type="checkbox"> Investment Funds
+                    </label>
+                </div>
+                 <div class="">
+                    <label for="Score">Score</label>
+                </div>
+                <hr />
+                <div class="form-group">
+                     <slider floor="0" ceiling="100" ng-model-low="values.min" ng-model-high="values.max" translate="currencyFormatting"></slider>
+                </div>
+                
+                <div class="">
+                    <label for="Ratings">Ratings</label>
+                </div>
+                <hr />
+                <div class="form-group">
+                    <rating ng-model="rate" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null"></rating>
+                </div>
+                <div class="clearfix">&nbsp;</div>
+                <hr />
+                <div class="form-group">
+                    <button type="submit" class="btn btn-default btn-sm btn-success pull-right">Submit</button>
+                </div>
+            </form>
+        </div>
+        <div class="cos-xs-9"></div>
+    </div>
+</div>
