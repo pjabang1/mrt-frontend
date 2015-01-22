@@ -9,60 +9,21 @@
 
 				<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,300italic' rel='stylesheet' type='text/css'>
 
-        <!-- build:css lib/css/main.min.css -->
-        <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css">
-        <link rel="stylesheet" href="bower_components/ng-table/ng-table.min.css">
-        <!-- endbuild --> 
-		<!-- build:copy lib/font-awesome/css/font-awesome.min.css -->
-		<link rel="stylesheet" type="text/css" href="bower_components/font-awesome/css/font-awesome.min.css">
-		<!-- endbuild --> 
-        <!-- build:less css/mrt/dashboard.css -->
-        <link rel="stylesheet" type="text/css" href="less/mrt/variables.less">
-        <link rel="stylesheet" type="text/css" href="less/mrt/mixins.less">
-        <link rel="stylesheet" type="text/css" href="less/mrt/main.less">
-        <link rel="stylesheet" type="text/css" href="less/mrt/loading.less">
-        <link rel="stylesheet" type="text/css" href="less/mrt/content.less">
-        <link rel="stylesheet" type="text/css" href="less/mrt/header.less">
-        <link rel="stylesheet" type="text/css" href="less/mrt/sidebar.less">
-        <link rel="stylesheet" type="text/css" href="less/mrt/widgets.less">
-        <link rel="stylesheet" type="text/css" href="less/mrt/hamburg.less">
-        <link rel="stylesheet" type="text/css" href="less/mrt/tab-metric.less">
-        <link rel="stylesheet" type="text/css" href="less/mrt/sections.less">
-		<link rel="stylesheet" type="text/css" href="less/mrt/login-section.less">
-        <link rel="stylesheet" type="text/css" href="less/mrt/footer.less">
-        <!-- endbuild -->
+        <link rel="stylesheet" href="lib/css/main.min.css"/> 
+		<link rel="stylesheet" href="lib/font-awesome/css/font-awesome.min.css"/> 
+        <link rel="stylesheet" href="css/mrt/dashboard.css"/>
 		<!-- SCRIPTS -->
-		<!-- build:copy lib/angular/angular.min.js -->
-        <script type="text/javascript" src="bower_components/angular/angular.js"></script>
-        <!-- endbuild -->
-        <!-- build:copy lib/d3/d3.min.js -->
-        <script src="bower_components/d3/d3.min.js"></script>
-        <!-- endbuild -->
-        <!-- build:copy lib/topojson/topojson.js -->
-        <script src="bower_components/topojson/topojson.js"></script>
-        <!-- endbuild -->
-        <!-- build:copy lib/angular-animate/angular-animate.min.js -->
-        <script type="text/javascript" src="bower_components/angular-animate/angular-animate.js"></script>
-        <!-- endbuild -->
-        <!-- build:js2 lib/angular-cookies/angular-cookies.min.js -->
-        <script type="text/javascript" src="bower_components/angular-cookies/angular-cookies.js"></script>
-        <!-- endbuild -->
-        <!-- build:js3 lib/angular-bootstrap/ui-bootstrap.js -->
-        <script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
-        <!-- endbuild -->
-        <!-- build:js4 lib/angular-bootstrap/ui-bootstrap-tpls.js -->
-        <script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-        <!-- endbuild -->
-        <!-- build:js5 lib/angular-ui-router/angular-ui-router.js -->
-        <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-        <!-- endbuild -->
-        <!-- build:copy lib/ng-table/ng-table.min.js -->
-        <script src="bower_components/ng-table/ng-table.js"></script>
-        <!-- endbuild -->
+		<script src="lib/angular/angular.min.js"></script>
+        <script src="lib/d3/d3.min.js"></script>
+        <script src="lib/topojson/topojson.js"></script>
+        <script src="lib/angular-animate/angular-animate.min.js"></script>
+        <script src="lib/angular-cookies/angular-cookies.min.js"></script>
+        <script src="lib/angular-bootstrap/ui-bootstrap.js"></script>
+        <script src="lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+        <script src="lib/angular-ui-router/angular-ui-router.js"></script>
+        <script src="lib/ng-table/ng-table.min.js"></script>
         <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular-touch.min.js"></script>-->
-        <!-- build:js6 lib/angular-slider/slider.min.js -->
-        <script src="js/lib/angular-slider/slider.js"></script>
-        <!-- endbuild -->
+        <script src="lib/angular-slider/slider.min.js"></script>
 		<!-- SCRIPTS -->
     </head>
     <body ng-controller="MasterCtrl">
@@ -356,38 +317,7 @@
             </div>
             </div>
         </script>
-        <!-- build:js1 js/mrt.js -->
-        <script type="text/javascript" src="js/mrt/module.js"></script>
-        <script type="text/javascript" src="js/mrt/routes.js"></script>
-
-        <script type="text/javascript" src="js/mrt/services/term/term-service.js"></script>
-
-
-        <script type="text/javascript" src="js/mrt/controllers/master-ctrl.js"></script>
-        <script type="text/javascript" src="js/mrt/controllers/tab-metric-ctrl.js"></script>
-        <script type="text/javascript" src="js/mrt/controllers/alerts-ctrl.js"></script>
-        <script type="text/javascript" src="js/mrt/controllers/chart-line-ctrl.js"></script>
-        <script type="text/javascript" src="js/mrt/directives/loading.js"></script>
-        <script type="text/javascript" src="js/mrt/directives/tab-metric.js"></script>
-        <script type="text/javascript" src="js/mrt/controllers/term/term-search-ctrl.js"></script>
-
-        <script type="text/javascript" src="js/mrt/controllers/sections/list-funds-ctrl.js"></script>
-        <script type="text/javascript" src="js/mrt/controllers/sections/view-fund-ctrl.js"></script>
-
-        <script type="text/javascript" src="js/mrt/directives/term/term-search.js"></script>
-        <script type="text/javascript" src="js/mrt/controllers/term/term-search-pageview-ctrl.js"></script>
-        <script type="text/javascript" src="js/mrt/directives/term/term-search-pageview.js"></script>
-
-        <script type="text/javascript" src="js/mrt/controllers/sections/login-section-ctrl.js"></script>
-        <script type="text/javascript" src="js/mrt/directives/sections/login-section.js"></script>
-        <script type="text/javascript" src="js/mrt/directives/sections/latest-reviews.js"></script>
-        <script type="text/javascript" src="js/mrt/directives/sections/sector-thumbnails.js"></script>
-        <script type="text/javascript" src="js/mrt/directives/chart/world-map.js"></script>
-        <script type="text/javascript" src="js/mrt/directives/chart/line-chart.js"></script>
-		<script type="text/javascript" src="js/mrt/directives/chart/pie-chart.js"></script>
-        <script type="text/javascript" src="js/mrt/directives/spark-line.js"></script>
-        <script type="text/javascript" src="js/mrt/directives/sections/leading-sectors.js"></script>
-        <!-- endbuild -->
+        <script src="js/mrt.js"></script>
         <script type="text/javascript" src="tpls/mrt-tpl.js"></script>
     </body>
 </html>

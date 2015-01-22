@@ -1,0 +1,94 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/Cellar/node/0.10.24/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install' ]
+2 info using npm@1.3.21
+3 info using node@v0.10.24
+4 warn package.json mrt-frontend@0.0.1 No repository field.
+5 verbose readDependencies using package.json deps
+6 verbose install where, deps [ '/Library/WebServer/Documents/market-attractiveness/mrt-frontend',
+6 verbose install   [ 'bower',
+6 verbose install     'gulp',
+6 verbose install     'gulp-connect',
+6 verbose install     'gulp-less',
+6 verbose install     'gulp-usemin',
+6 verbose install     'gulp-watch',
+6 verbose install     'gulp-wrap',
+6 verbose install     'gulp-util',
+6 verbose install     'gulp-uglify',
+6 verbose install     'gulp-minify-css',
+6 verbose install     'gulp-concat',
+6 verbose install     'gulp-rename',
+6 verbose install     'gulp-minify-html',
+6 verbose install     'gulp-rev',
+6 verbose install     'gulp-angular-templatecache',
+6 verbose install     'karma',
+6 verbose install     'karma-jasmine' ] ]
+7 info preinstall mrt-frontend@0.0.1
+8 verbose readDependencies using package.json deps
+9 verbose already installed skipping gulp-less@~1.3.3 /Library/WebServer/Documents/market-attractiveness/mrt-frontend
+10 verbose already installed skipping gulp@~3.8.0 /Library/WebServer/Documents/market-attractiveness/mrt-frontend
+11 verbose already installed skipping gulp-usemin@^0.3.7 /Library/WebServer/Documents/market-attractiveness/mrt-frontend
+12 verbose already installed skipping gulp-connect@^2.0.6 /Library/WebServer/Documents/market-attractiveness/mrt-frontend
+13 verbose already installed skipping gulp-watch@^0.6.9 /Library/WebServer/Documents/market-attractiveness/mrt-frontend
+14 verbose already installed skipping gulp-wrap@^0.3.0 /Library/WebServer/Documents/market-attractiveness/mrt-frontend
+15 verbose already installed skipping gulp-util@~3.0.2 /Library/WebServer/Documents/market-attractiveness/mrt-frontend
+16 verbose already installed skipping gulp-uglify@1.0.2 /Library/WebServer/Documents/market-attractiveness/mrt-frontend
+17 verbose already installed skipping gulp-minify-css@0.3.13 /Library/WebServer/Documents/market-attractiveness/mrt-frontend
+18 verbose already installed skipping gulp-concat@2.4.3 /Library/WebServer/Documents/market-attractiveness/mrt-frontend
+19 verbose already installed skipping gulp-rename@1.2.0 /Library/WebServer/Documents/market-attractiveness/mrt-frontend
+20 verbose already installed skipping gulp-minify-html@0.1.8 /Library/WebServer/Documents/market-attractiveness/mrt-frontend
+21 verbose already installed skipping gulp-rev@2.0.1 /Library/WebServer/Documents/market-attractiveness/mrt-frontend
+22 verbose already installed skipping gulp-angular-templatecache@1.4.2 /Library/WebServer/Documents/market-attractiveness/mrt-frontend
+23 verbose already installed skipping karma@~0.12.0 /Library/WebServer/Documents/market-attractiveness/mrt-frontend
+24 verbose already installed skipping karma-jasmine@~0.2.2 /Library/WebServer/Documents/market-attractiveness/mrt-frontend
+25 verbose already installed skipping bower@^1.3.9 /Library/WebServer/Documents/market-attractiveness/mrt-frontend
+26 silly resolved []
+27 info build /Library/WebServer/Documents/market-attractiveness/mrt-frontend
+28 verbose linkStuff [ false,
+28 verbose linkStuff   false,
+28 verbose linkStuff   false,
+28 verbose linkStuff   '/Library/WebServer/Documents/market-attractiveness' ]
+29 info linkStuff mrt-frontend@0.0.1
+30 verbose linkBins mrt-frontend@0.0.1
+31 verbose linkMans mrt-frontend@0.0.1
+32 verbose rebuildBundles mrt-frontend@0.0.1
+33 verbose rebuildBundles [ '.bin',
+33 verbose rebuildBundles   'bower',
+33 verbose rebuildBundles   'gulp',
+33 verbose rebuildBundles   'gulp-angular-templatecache',
+33 verbose rebuildBundles   'gulp-concat',
+33 verbose rebuildBundles   'gulp-connect',
+33 verbose rebuildBundles   'gulp-less',
+33 verbose rebuildBundles   'gulp-minify-css',
+33 verbose rebuildBundles   'gulp-minify-html',
+33 verbose rebuildBundles   'gulp-rename',
+33 verbose rebuildBundles   'gulp-rev',
+33 verbose rebuildBundles   'gulp-uglify',
+33 verbose rebuildBundles   'gulp-usemin',
+33 verbose rebuildBundles   'gulp-util',
+33 verbose rebuildBundles   'gulp-watch',
+33 verbose rebuildBundles   'gulp-wrap',
+33 verbose rebuildBundles   'karma',
+33 verbose rebuildBundles   'karma-jasmine' ]
+34 info install mrt-frontend@0.0.1
+35 info postinstall mrt-frontend@0.0.1
+36 verbose unsafe-perm in lifecycle true
+37 info mrt-frontend@0.0.1 Failed to exec postinstall script
+38 error mrt-frontend@0.0.1 postinstall: `node node_modules/bower/bin/bower install`
+38 error Exit status 1
+39 error Failed at the mrt-frontend@0.0.1 postinstall script.
+39 error This is most likely a problem with the mrt-frontend package,
+39 error not with npm itself.
+39 error Tell the author that this fails on your system:
+39 error     node node_modules/bower/bin/bower install
+39 error You can get their info via:
+39 error     npm owner ls mrt-frontend
+39 error There is likely additional logging output above.
+40 error System Darwin 13.1.0
+41 error command "/usr/local/Cellar/node/0.10.24/bin/node" "/usr/local/bin/npm" "install"
+42 error cwd /Library/WebServer/Documents/market-attractiveness/mrt-frontend
+43 error node -v v0.10.24
+44 error npm -v 1.3.21
+45 error code ELIFECYCLE
+46 verbose exit [ 1, true ]

@@ -4,20 +4,25 @@ var gulp = require('gulp'),
 		wrap = require('gulp-wrap'),
 		connect = require('gulp-connect'),
 		watch = require('gulp-watch'),
-		templateCache = require('gulp-angular-templatecache'),
-		minifyCss = require('gulp-minify-css'),
-		minifyJs = require('gulp-uglify'),
-		concat = require('gulp-concat'),
-		rename = require('gulp-rename'),
-		minifyHTML = require('gulp-minify-html');
+		templateCache = require('gulp-angular-templatecache');
 // var es = require('event-stream');
 var gutil = require('gulp-util');
-// var uglify = require('gulp-uglify');
+var uglify = require('gulp-uglify');
 // var minifyHtml = require('gulp-minify-html');
 // var minifyCss = require('gulp-minify-css');
-// var rev = require('gulp-rev');
-// require('events').EventEmitter.prototype._maxListeners = 100;
+var rev = require('gulp-rev');
+require('events').EventEmitter.prototype._maxListeners = 100;
 
+// Allows gulp --dev to be run for a more verbose output
+var isProduction = true;
+var sassStyle = 'compressed';
+var sourceMap = false;
+
+if (gutil.env.dev === true) {
+	sassStyle = 'expanded';
+	sourceMap = true;
+	isProduction = false;
+}
 
 
 var paths = {
@@ -38,8 +43,8 @@ gulp.task('usemin', function() {
 	return gulp.src(paths.index)
 			.pipe(usemin({
 				less: ['concat', less()],
-				js: [minifyJs(), 'concat'],
-				css: [minifyCss({keepSpecialComments: 0}), 'concat'],
+				// js: [uglify(), rev()]
+				js: ['concat', wrap('(function(){ \n<%= contents %>\n})();')],
 			}))
 			.pipe(gulp.dest('dist/'));
 });
@@ -123,8 +128,6 @@ gulp.task('compile-less', function() {
 			.pipe(less())
 			.pipe(gulp.dest('dist/css'));
 });
-
-// gulp.task('build-compile', ['compile-less']);
 
 gulp.task('build', ['usemin', 'copy-assets']);
 gulp.task('default', ['build', 'webserver', 'livereload', 'watch']);

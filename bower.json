@@ -26,10 +26,10 @@
     "ng-table": "~0.3.1",
     "topojson": "~1.6.18",
     "venturocket-angular-slider": "",
-    "baidu-echarts": "~2.0.1"
+	"plottable": "0.40.0"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/pjabang1/p-directives.git"
+    "url": "git://github.com/pjabang1/mrt-frontend.git"
   }
 }
