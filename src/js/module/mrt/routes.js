@@ -13,16 +13,16 @@ angular.module('MRT').config(['$stateProvider', '$urlRouterProvider',
     $stateProvider
         .state('index', {
             url: '/',
-            templateUrl: 'tpls/mrt/tpls/index.html'
+            templateUrl: 'module/mrt/app/templates/index.html'
         })
 		.state('dashboard', {
             url: '/dashboard',
-            templateUrl: 'tpls/mrt/tpls/dashboard.html'
+            templateUrl: 'module/mrt/app/templates/dashboard.html'
         })
-        .state('list-funds', {
-            url: '/list-funds',
-            controller: 'ListFundsCtrl',
-            templateUrl: 'tpls/mrt/tpls/list-funds.html'
+        .state('geomodel', {
+            url: '/geomodel',
+            controller: 'GeoModelCtrl',
+            templateUrl: 'module/mrt/geomodel/templates/geomodel-index.html'
         })
          .state('view-fund', {
             url: '/view-fund/:phoneId',

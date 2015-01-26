@@ -7,15 +7,15 @@
 
         <title>Site</title>
 
-				<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,300italic' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,300italic' rel='stylesheet' type='text/css'>
 
         <!-- build:css lib/css/main.min.css -->
         <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css">
         <link rel="stylesheet" href="bower_components/ng-table/ng-table.min.css">
         <!-- endbuild --> 
-		<!-- build:copy lib/font-awesome/css/font-awesome.min.css -->
-		<link rel="stylesheet" type="text/css" href="bower_components/font-awesome/css/font-awesome.min.css">
-		<!-- endbuild --> 
+        <!-- build:copy lib/font-awesome/css/font-awesome.min.css -->
+        <link rel="stylesheet" type="text/css" href="bower_components/font-awesome/css/font-awesome.min.css">
+        <!-- endbuild --> 
         <!-- build:less css/mrt/dashboard.css -->
         <link rel="stylesheet" type="text/css" href="less/mrt/variables.less">
         <link rel="stylesheet" type="text/css" href="less/mrt/mixins.less">
@@ -28,11 +28,11 @@
         <link rel="stylesheet" type="text/css" href="less/mrt/hamburg.less">
         <link rel="stylesheet" type="text/css" href="less/mrt/tab-metric.less">
         <link rel="stylesheet" type="text/css" href="less/mrt/sections.less">
-		<link rel="stylesheet" type="text/css" href="less/mrt/login-section.less">
+        <link rel="stylesheet" type="text/css" href="less/mrt/login-section.less">
         <link rel="stylesheet" type="text/css" href="less/mrt/footer.less">
         <!-- endbuild -->
-		<!-- SCRIPTS -->
-		<!-- build:copy lib/angular/angular.min.js -->
+        <!-- SCRIPTS -->
+        <!-- build:copy lib/angular/angular.min.js -->
         <script type="text/javascript" src="bower_components/angular/angular.js"></script>
         <!-- endbuild -->
         <!-- build:copy lib/d3/d3.min.js -->
@@ -63,7 +63,7 @@
         <!-- build:js6 lib/angular-slider/slider.min.js -->
         <script src="js/lib/angular-slider/slider.js"></script>
         <!-- endbuild -->
-		<!-- SCRIPTS -->
+        <!-- SCRIPTS -->
     </head>
     <body ng-controller="MasterCtrl">
         <div id="page-wrapper">
@@ -79,11 +79,11 @@
                         <div class="col-xs-12">
                             <div class="user pull-right">
                                 <ul class="nav navbar-nav">
-									<!--
-                                    <li><a href="#/list-funds">Investments</a></li>
-                                    <li><a href="#/view-fund">Fund Managers</a></li>
-                                    <li><a href="#">Tools</a></li>
-									-->
+                                    <!--
+<li><a href="#/list-funds">Investments</a></li>
+<li><a href="#/view-fund">Fund Managers</a></li>
+<li><a href="#">Tools</a></li>
+                                    -->
                                 </ul>
                             </div>
                             <div class="meta">
@@ -120,184 +120,6 @@
 
 
         </div><!-- End Page Wrapper -->
-
-        <script type="text/ng-template" id="dashboard.html">
-            <div class="row" ng-controller="TabMetricCtrl" id="tab-metric">
-            <div tab-metric class="col-xs-12">
-
-            </div>
-            </div>
-            <div class="row">
-            <div class="col-lg-6">
-            <div class="widget">
-            <div class="widget-header">
-            <i class="fa fa-tasks"></i> Servers 
-            <a href="#" class="pull-right">Manage</a>
-            </div>
-            <div class="widget-body medium no-padding">
-            <div class="table-responsive">
-            <table class="table">
-            <tbody>
-            <tr><td><spark-line width="100" height="25" file="/data/goog.csv"></spark-line></td><td>238.103.133.37</td><td><span class="text-success"><i class="fa fa-check"></i></span></td></tr>
-            <tr><td><spark-line file="/data/fb.csv"></spark-line></td><td>68.66.63.170</td><td><span class="text-success"><i class="fa fa-check"></i></span></td></tr>
-            <tr><td><spark-line file="/data/aapl.csv"></spark-line></td><td>76.117.212.33</td><td><span tooltip="Server Down!" class="text-danger"><i class="fa fa-warning"></i></span></td></tr>
-            <tr><td>RDPHPC001</td><td>91.88.224.5</td><td><span class="text-success"><i class="fa fa-check"></i></span></td></tr>
-            <tr><td>RDESX001</td><td>197.188.15.93</td><td><span class="text-success"><i class="fa fa-check"></i></span></td></tr>
-            <tr><td>RDESX002</td><td>168.85.154.251</td><td><span class="text-success"><i class="fa fa-check"></i></span></td></tr>
-            <tr><td>RDESX003</td><td>209.25.191.61</td><td><span tooltip="Server Down!" class="text-danger"><i class="fa fa-warning"></i></span></td></tr>
-            <tr><td>RDESX004</td><td>252.37.192.235</td><td><span class="text-success"><i class="fa fa-check"></i></span></td></tr>
-            <tr><td>RDTerminal01</td><td>139.71.18.207</td><td><span class="text-success"><i class="fa fa-check"></i></span></td></tr>
-            <tr><td>RDTerminal02</td><td>136.80.122.212</td><td><span tooltip="Could not connect!" class="text-warning"><i class="fa fa-flash"></i></span></td></tr>
-            <tr><td>RDDomainCont01</td><td>196.80.245.33</td><td><span class="text-success"><i class="fa fa-check"></i></span></td></tr>
-            </tbody>
-            </table>
-            </div>
-            </div>
-            </div>
-            </div>
-            <div class="col-lg-6">
-            <div class="widget">
-            <div class="widget-header">
-            <i class="fa fa-users"></i> Users
-            <input type="text" placeholder="Search" class="form-control input-sm pull-right" />
-            <div class="clearfix"></div>
-            </div>
-            <div class="widget-body medium no-padding">
-            <div class="table-responsive">
-            <table class="table">
-            <thead>
-            <tr><th class="text-center">ID</th><th>Username</th><th>Role</th><th>Account</th></tr>
-            </thead>
-            <tbody>
-            <tr><td class="text-center">1</td><td>Joe Bloggs</td><td>Super Admin</td><td>AZ23045</td></tr>
-            <tr><td class="text-center">2</td><td>Timothy Hernandez</td><td>Admin</td><td>AU24783</td></tr>
-            <tr><td class="text-center">3</td><td>Joe Bickham</td><td>User</td><td>AM23781</td></tr>
-            </tbody>
-            </table>
-            </div>
-            </div>
-            </div>
-            </div>
-            </div>
-            <div class="row">
-            <div class="col-lg-6">
-            <div class="widget">
-            <div class="widget-header">
-            <i class="fa fa-plus"></i> Extras
-            <button class="btn btn-sm btn-info pull-right">Button</button>
-            <div class="clearfix"></div>
-            </div>
-            <div class="widget-body">
-
-            <div class="message">
-            This is a standard message which will also work the ".no-padding" class, I can also <span class="error">be an error message!</span>
-            </div>
-
-            <hr />
-
-            <div class="message">
-            <a href="http://angular-ui.github.io/bootstrap/" target="_blank">UI Bootstrap</a> is included, so you can use <a href="#" tooltip="I'm a tooltip!">tooltips</a> and all of the other native Bootstrap JS components!
-            </div>
-
-            <hr />
-
-            <form class="form-horizontal" role="form">
-            <div class="form-group has-feedback has-success">
-            <label for="label" class="col-sm-2 control-label">Inline Form</label>
-            <div class="col-sm-5">
-            <input  type="text" class="form-control" />
-            <span class="fa fa-key form-control-feedback"></span>
-            </div>
-            <div class="col-sm-5">
-            <div class="input-mask">I'm an input mask!</div>
-            </div>
-            </div>
-            </form>
-
-            </div>
-            </div>
-            </div>
-            <div class="col-lg-6">
-            <div class="widget">
-            <div class="widget-header">
-            <i class="fa fa-cog fa-spin"></i> Loading Directive
-            <a href="http://tobiasahlin.com/spinkit/" target="_blank" class="pull-right">SpinKit</a>
-            </div>
-            <div class="widget-body">
-            <!-- Check out the Angular Directive inside bootstrap.js! -->
-            <rd-loading></rd-loading>
-            </div>
-            </div>
-            </div>
-            </div>
-            <div class="row alerts-container" data-ng-controller="AlertsCtrl" data-ng-show="alerts.length">
-            <div class="col-xs-12">
-
-            <alert data-ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
-            </div>
-            </div>
-            <div class="row">
-            <div class="col-lg-3 col-md-6 col-xs-12">
-            <div class="widget">
-            <div class="widget-body">
-            <div class="widget-icon green pull-left">
-            <i class="fa fa-users"></i>
-            </div>
-            <div class="widget-content pull-left">
-            <div class="title">80</div>
-            <div class="comment">Users</div>
-            </div>
-            <div class="clearfix"></div>
-            </div>
-            </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-xs-12">
-            <div class="widget">
-            <div class="widget-body">
-            <div class="widget-icon red pull-left">
-            <i class="fa fa-tasks"></i>
-            </div>
-            <div class="widget-content pull-left">
-            <div class="title">16</div>
-            <div class="comment">Servers</div>
-            </div>
-            <div class="clearfix"></div>
-            </div>
-            </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-xs-12">
-            <div class="widget">
-            <div class="widget-body">
-            <div class="widget-icon orange pull-left">
-            <i class="fa fa-sitemap"></i>
-            </div>
-            <div class="widget-content pull-left">
-            <div class="title">225</div>
-            <div class="comment">Documents</div>
-            </div>
-            <div class="clearfix"></div>
-            </div>
-            </div>
-            </div>
-            <div class="spacer visible-xs"></div>
-            <div class="col-lg-3 col-md-6 col-xs-12">
-            <div class="widget">
-            <div class="widget-body">
-            <div class="widget-icon blue pull-left">
-            <i class="fa fa-support"></i>
-            </div>
-            <div class="widget-content pull-left">
-            <div class="title">62</div>
-            <div class="comment">Tickets</div>
-            </div>
-            <div class="clearfix"></div>
-            </div>
-            </div>
-            </div>
-            </div>
-            <!-- End Main Content -->
-        </script>
-
         <script type="text/ng-template" id="tables.html">
             <div class="row">
             <div class="col-lg-6">
@@ -357,36 +179,22 @@
             </div>
         </script>
         <!-- build:js1 js/mrt.js -->
-        <script type="text/javascript" src="js/mrt/module.js"></script>
-        <script type="text/javascript" src="js/mrt/routes.js"></script>
+        
+        
+        <script type="text/javascript" src="js/module/mrt/module.js"></script>
+        <script type="text/javascript" src="js/module/mrt/routes.js"></script>
+        
+        <script type="text/javascript" src="js/module/mrt/app/controllers/master-ctrl.js"></script>
 
-        <script type="text/javascript" src="js/mrt/services/term/term-service.js"></script>
-
-
-        <script type="text/javascript" src="js/mrt/controllers/master-ctrl.js"></script>
-        <script type="text/javascript" src="js/mrt/controllers/tab-metric-ctrl.js"></script>
-        <script type="text/javascript" src="js/mrt/controllers/alerts-ctrl.js"></script>
-        <script type="text/javascript" src="js/mrt/controllers/chart-line-ctrl.js"></script>
-        <script type="text/javascript" src="js/mrt/directives/loading.js"></script>
-        <script type="text/javascript" src="js/mrt/directives/tab-metric.js"></script>
-        <script type="text/javascript" src="js/mrt/controllers/term/term-search-ctrl.js"></script>
-
-        <script type="text/javascript" src="js/mrt/controllers/sections/list-funds-ctrl.js"></script>
-        <script type="text/javascript" src="js/mrt/controllers/sections/view-fund-ctrl.js"></script>
-
-        <script type="text/javascript" src="js/mrt/directives/term/term-search.js"></script>
-        <script type="text/javascript" src="js/mrt/controllers/term/term-search-pageview-ctrl.js"></script>
-        <script type="text/javascript" src="js/mrt/directives/term/term-search-pageview.js"></script>
-
-        <script type="text/javascript" src="js/mrt/controllers/sections/login-section-ctrl.js"></script>
-        <script type="text/javascript" src="js/mrt/directives/sections/login-section.js"></script>
-        <script type="text/javascript" src="js/mrt/directives/sections/latest-reviews.js"></script>
-        <script type="text/javascript" src="js/mrt/directives/sections/sector-thumbnails.js"></script>
-        <script type="text/javascript" src="js/mrt/directives/chart/world-map.js"></script>
-        <script type="text/javascript" src="js/mrt/directives/chart/line-chart.js"></script>
-		<script type="text/javascript" src="js/mrt/directives/chart/pie-chart.js"></script>
-        <script type="text/javascript" src="js/mrt/directives/spark-line.js"></script>
-        <script type="text/javascript" src="js/mrt/directives/sections/leading-sectors.js"></script>
+        
+        <script type="text/javascript" src="js/module/mrt/geomodel/services/geomodel-service.js"></script>
+        <script type="text/javascript" src="js/module/mrt/geomodel/controllers/geomodel-ctrl.js"></script>
+        <script type="text/javascript" src="js/module/mrt/geomodel/directives/*.js"></script>
+        
+        <script type="text/javascript" src="js/module/mrt/authentication/directives/*.js"></script>
+        
+        <script type="text/javascript" src="js/module/mrt/chart/directives/*.js"></script>
+        
         <!-- endbuild -->
         <script type="text/javascript" src="tpls/mrt-tpl.js"></script>
     </body>

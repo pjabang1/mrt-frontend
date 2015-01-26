@@ -1,0 +1,5 @@
+<table>
+    <tr ng-repeat="indicator in data.values.indicators">
+        <td>{{ indicator.name }}<br /><slider floor="0" ceiling="100" ng-model-low="data.score.min" ng-model-high="data.score.max" translate="currencyFormatting"></slider></td>
+    </tr>
+</table>

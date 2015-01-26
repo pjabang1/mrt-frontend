@@ -56,7 +56,7 @@ gulp.task('copy-images', function() {
 
 gulp.task('copy-templates', function() {
 	return gulp.src(paths.templates)
-			.pipe(gulp.dest('dist/tpls'));
+			.pipe(gulp.dest('dist/js/'));
 	;
 });
 
