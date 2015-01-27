@@ -16,21 +16,7 @@
         <!-- build:copy lib/font-awesome/css/font-awesome.min.css -->
         <link rel="stylesheet" type="text/css" href="bower_components/font-awesome/css/font-awesome.min.css">
         <!-- endbuild --> 
-        <!-- build:less css/mrt/dashboard.css -->
-        <link rel="stylesheet" type="text/css" href="less/mrt/variables.less">
-        <link rel="stylesheet" type="text/css" href="less/mrt/mixins.less">
-        <link rel="stylesheet" type="text/css" href="less/mrt/main.less">
-        <link rel="stylesheet" type="text/css" href="less/mrt/loading.less">
-        <link rel="stylesheet" type="text/css" href="less/mrt/content.less">
-        <link rel="stylesheet" type="text/css" href="less/mrt/header.less">
-        <link rel="stylesheet" type="text/css" href="less/mrt/sidebar.less">
-        <link rel="stylesheet" type="text/css" href="less/mrt/widgets.less">
-        <link rel="stylesheet" type="text/css" href="less/mrt/hamburg.less">
-        <link rel="stylesheet" type="text/css" href="less/mrt/tab-metric.less">
-        <link rel="stylesheet" type="text/css" href="less/mrt/sections.less">
-        <link rel="stylesheet" type="text/css" href="less/mrt/login-section.less">
-        <link rel="stylesheet" type="text/css" href="less/mrt/footer.less">
-        <!-- endbuild -->
+       <link rel="stylesheet" href="css/mrt.min.css">
         <!-- SCRIPTS -->
         <!-- build:copy lib/angular/angular.min.js -->
         <script type="text/javascript" src="bower_components/angular/angular.js"></script>
@@ -40,6 +26,12 @@
         <!-- endbuild -->
         <!-- build:copy lib/topojson/topojson.js -->
         <script src="bower_components/topojson/topojson.js"></script>
+        <!-- endbuild -->
+        <!-- build:copy lib/angular-touch/angular-touch.js -->
+        <script src="bower_components/angular-touch/angular-touch.js"></script>
+        <!-- endbuild -->
+        <!-- build:copy lib/venturocket-angular-slider/build/angular-slider.js -->
+        <script src="bower_components/venturocket-angular-slider/build/angular-slider.js"></script>
         <!-- endbuild -->
         <!-- build:copy lib/angular-animate/angular-animate.min.js -->
         <script type="text/javascript" src="bower_components/angular-animate/angular-animate.js"></script>
@@ -59,10 +51,8 @@
         <!-- build:copy lib/ng-table/ng-table.min.js -->
         <script src="bower_components/ng-table/ng-table.js"></script>
         <!-- endbuild -->
-        <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular-touch.min.js"></script>-->
-        <!-- build:js6 lib/angular-slider/slider.min.js -->
-        <script src="js/lib/angular-slider/slider.js"></script>
-        <!-- endbuild -->
+         
+
         <!-- SCRIPTS -->
     </head>
     <body ng-controller="MasterCtrl">
@@ -178,24 +168,8 @@
             </div>
             </div>
         </script>
-        <!-- build:js1 js/mrt.js -->
-        
-        
-        <script type="text/javascript" src="js/module/mrt/module.js"></script>
-        <script type="text/javascript" src="js/module/mrt/routes.js"></script>
-        
-        <script type="text/javascript" src="js/module/mrt/app/controllers/master-ctrl.js"></script>
+                <script type="text/javascript" src="js/mrt.min.js"></script>
 
-        
-        <script type="text/javascript" src="js/module/mrt/geomodel/services/geomodel-service.js"></script>
-        <script type="text/javascript" src="js/module/mrt/geomodel/controllers/geomodel-ctrl.js"></script>
-        <script type="text/javascript" src="js/module/mrt/geomodel/directives/*.js"></script>
-        
-        <script type="text/javascript" src="js/module/mrt/authentication/directives/*.js"></script>
-        
-        <script type="text/javascript" src="js/module/mrt/chart/directives/*.js"></script>
-        
-        <!-- endbuild -->
         <script type="text/javascript" src="tpls/mrt-tpl.js"></script>
     </body>
 </html>
