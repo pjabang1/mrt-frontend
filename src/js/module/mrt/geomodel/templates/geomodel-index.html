@@ -1,5 +1,15 @@
 <div class="container-fluid">
     <div class="row">
+        <div class="col-sm-2">
+            <ui-select ng-model="response.geogroups.selected" on-select="getValues($item, $model)">
+                <ui-select-match placeholder="Select Group">{{$select.selected.name}}</ui-select-match>
+                <ui-select-choices repeat="group in response.geogroups.data | filter: $select.search track by group.name">
+                    <div ng-bind-html="group.name | highlight: $select.search"></div>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-sm-3 filters">
             <geo-model-weight></geo-model-weight>
         </div>

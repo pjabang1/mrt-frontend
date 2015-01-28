@@ -1,13 +1,19 @@
 angular.module('MRT')
-        .factory('geoModelService', ['$http', function($http) {
+        .factory('geoModelService', ['$http', 'env', function($http, env) {
 
 
-        var urlBase = 'http://10.51.130.212/mrt/web/app_dev.php/api';
+        var urlBase = env.apiUrl;
         var dataFactory = {};
 
-        dataFactory.getValues = function(id) {
+        dataFactory.getValues = function(params) {
             return $http.get(urlBase + '/geomodel/values', {
-                params: {id: id}
+                params: params
+            });
+        };
+
+        dataFactory.getIndicators = function(params) {
+            return $http.get(urlBase + '/geomodel/indicators', {
+                params: params
             });
         };
 

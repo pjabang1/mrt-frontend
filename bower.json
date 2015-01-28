@@ -28,7 +28,9 @@
         "venturocket-angular-slider": "",
         "plottable": "0.40.0",
         "nghandsontable": "~0.5.1",
-        "venturocket-angular-slider": "0.3.2"
+        "venturocket-angular-slider": "0.3.2",
+        "angular-sanitize": "1.3.12-build.33+sha.d1b6480",
+        "ui-select": "angular-ui/ui-select#0.9.6"
     },
     "repository": {
         "type": "git",

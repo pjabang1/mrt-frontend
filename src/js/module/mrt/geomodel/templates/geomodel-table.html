@@ -2,14 +2,14 @@
     <thead>
         <tr>
             <th>Country</th>
-            <th ng-repeat="indicator in data.values.indicators"><a tooltip-animation="false" tooltip="{{ indicator.name }}" tooltip-placement="left">{{ indicator._label }}</a></th>
+            <th ng-repeat="indicator in response.geoindicators.list"><a tooltip-animation="false" tooltip="{{ indicator.name }}" tooltip-placement="left">{{ indicator._label }}</a></th>
             <th>Score</th>
         </tr>
     </thead>
     <tbody>
-    <tr ng-repeat="geography in data.values.geographies">
+    <tr ng-repeat="geography in data.values.geographies | orderBy:predicate:false">
         <td>{{ geography.name }}</td>
-        <td ng-repeat="indicator in data.values.indicators">{{ getGeographyIndicator(geography, indicator) }}</td>
+        <td ng-repeat="indicator in response.geoindicators.list">{{ getGeographyIndicator(geography, indicator) }}</td>
         <td>{{ getScore(geography) }}</td>
     </tr>
     </tbody>
