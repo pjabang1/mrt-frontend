@@ -11,33 +11,19 @@
 
         <!-- build:css lib/css/main.min.css -->
         <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css">
-        <link rel="stylesheet" href="bower_components/ng-table/ng-table.min.css">
+        <link rel="stylesheet" href="bower_components/ng-table/ng-table.css">
         <link rel="stylesheet" href="bower_components/ui-select/dist/select.css">
+        <link rel="stylesheet" type="text/css" href="bower_components/font-awesome/css/font-awesome.css">
         <!-- endbuild --> 
-        <!-- build:copy lib/font-awesome/css/font-awesome.min.css -->
-        <link rel="stylesheet" type="text/css" href="bower_components/font-awesome/css/font-awesome.min.css">
-        <!-- endbuild --> 
-       <link rel="stylesheet" href="css/mrt.min.css">
+		<link rel="stylesheet" href="css/mrt.min.css">
         <!-- SCRIPTS -->
-        <!-- build:copy lib/angular/angular.min.js -->
-        <script type="text/javascript" src="bower_components/angular/angular.js"></script>
-        <!-- endbuild -->
-        <!-- build:copy lib/d3/d3.min.js -->
-        <script src="bower_components/d3/d3.min.js"></script>
-        <!-- endbuild -->
-        <!-- build:copy lib/topojson/topojson.js -->
-        <script src="bower_components/topojson/topojson.js"></script>
-        <!-- endbuild -->
-        <!-- build:copy lib/angular-touch/angular-touch.js -->
-        <script src="bower_components/angular-touch/angular-touch.js"></script>
-        <!-- endbuild -->
-        <!-- build:copy lib/venturocket-angular-slider/build/angular-slider.js -->
-        <script src="bower_components/venturocket-angular-slider/build/angular-slider.js"></script>
-        <!-- endbuild -->
-        <!-- build:copy lib/angular-animate/angular-animate.min.js -->
-        <script type="text/javascript" src="bower_components/angular-animate/angular-animate.js"></script>
-        <!-- endbuild -->
         <!-- build:js lib/js/main.min.js -->
+        <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/d3/d3.js"></script>
+        <script src="bower_components/topojson/topojson.js"></script>
+        <script src="bower_components/angular-touch/angular-touch.js"></script>
+        <script src="bower_components/venturocket-angular-slider/build/angular-slider.js"></script>
+        <script type="text/javascript" src="bower_components/angular-animate/angular-animate.js"></script>
         <script type="text/javascript" src="bower_components/angular-cookies/angular-cookies.js"></script>
         <script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
         <script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
@@ -46,7 +32,7 @@
         <script src="bower_components/ng-table/ng-table.js"></script>
         <script src="bower_components/ui-select/dist/select.js"></script>
         <!-- endbuild -->
-         
+
 
         <!-- SCRIPTS -->
     </head>
@@ -106,64 +92,8 @@
 
         </div><!-- End Page Wrapper -->
         <script type="text/ng-template" id="tables.html">
-            <div class="row">
-            <div class="col-lg-6">
-            <div class="widget">
-            <div class="widget-header">
-            <i class="fa fa-tasks"></i> Servers 1
-            <a href="#" class="pull-right">Manage</a>
-            </div>
-            <div class="widget-body medium no-padding">
-            <div class="table-responsive">
-            <table class="table">
-            <tbody>
-            <tr><td></td><td>238.103.133.37</td><td><span class="text-success"><i class="fa fa-check"></i></span></td></tr>
-            <tr><td>RDVMPC002</td><td>68.66.63.170</td><td><span class="text-success"><i class="fa fa-check"></i></span></td></tr>
-            <tr><td>RDVMPC003</td><td>76.117.212.33</td><td><span tooltip="Server Down!" class="text-danger"><i class="fa fa-warning"></i></span></td></tr>
-            <tr><td>RDPHPC001</td><td>91.88.224.5</td><td><span class="text-success"><i class="fa fa-check"></i></span></td></tr>
-            <tr><td>RDESX001</td><td>197.188.15.93</td><td><span class="text-success"><i class="fa fa-check"></i></span></td></tr>
-            <tr><td>RDESX002</td><td>168.85.154.251</td><td><span class="text-success"><i class="fa fa-check"></i></span></td></tr>
-            <tr><td>RDESX003</td><td>209.25.191.61</td><td><span tooltip="Server Down!" class="text-danger"><i class="fa fa-warning"></i></span></td></tr>
-            <tr><td>RDESX004</td><td>252.37.192.235</td><td><span class="text-success"><i class="fa fa-check"></i></span></td></tr>
-            <tr><td>RDTerminal01</td><td>139.71.18.207</td><td><span class="text-success"><i class="fa fa-check"></i></span></td></tr>
-            <tr><td>RDTerminal02</td><td>136.80.122.212</td><td><span tooltip="Could not connect!" class="text-warning"><i class="fa fa-flash"></i></span></td></tr>
-            <tr><td>RDDomainCont01</td><td>196.80.245.33</td><td><span class="text-success"><i class="fa fa-check"></i></span></td></tr>
-            </tbody>
-            </table>
-            </div>
-            </div>
-            </div>
-            </div>
-            <div class="col-lg-6">
-            <div class="widget">
-            <div class="widget-header">
-            <i class="fa fa-tasks"></i> Striped Servers
-            <a href="#" class="pull-right">Manage</a>
-            </div>
-            <div class="widget-body medium no-padding">
-            <div class="table-responsive table-striped">
-            <table class="table">
-            <tbody>
-            <tr><td>RDVMPC001</td><td>238.103.133.37</td><td><span class="text-success"><i class="fa fa-check"></i></span></td></tr>
-            <tr><td>RDVMPC002</td><td>68.66.63.170</td><td><span class="text-success"><i class="fa fa-check"></i></span></td></tr>
-            <tr><td>RDVMPC003</td><td>76.117.212.33</td><td><span tooltip="Server Down!" class="text-danger"><i class="fa fa-warning"></i></span></td></tr>
-            <tr><td>RDPHPC001</td><td>91.88.224.5</td><td><span class="text-success"><i class="fa fa-check"></i></span></td></tr>
-            <tr><td>RDESX001</td><td>197.188.15.93</td><td><span class="text-success"><i class="fa fa-check"></i></span></td></tr>
-            <tr><td>RDESX002</td><td>168.85.154.251</td><td><span class="text-success"><i class="fa fa-check"></i></span></td></tr>
-            <tr><td>RDESX003</td><td>209.25.191.61</td><td><span tooltip="Server Down!" class="text-danger"><i class="fa fa-warning"></i></span></td></tr>
-            <tr><td>RDESX004</td><td>252.37.192.235</td><td><span class="text-success"><i class="fa fa-check"></i></span></td></tr>
-            <tr><td>RDTerminal01</td><td>139.71.18.207</td><td><span class="text-success"><i class="fa fa-check"></i></span></td></tr>
-            <tr><td>RDTerminal02</td><td>136.80.122.212</td><td><span tooltip="Could not connect!" class="text-warning"><i class="fa fa-flash"></i></span></td></tr>
-            <tr><td>RDDomainCont01</td><td>196.80.245.33</td><td><span class="text-success"><i class="fa fa-check"></i></span></td></tr>
-            </tbody>
-            </table>
-            </div>
-            </div>
-            </div>
-            </div>
-            </div>
         </script>
-                <script type="text/javascript" src="js/mrt.min.js"></script>
+		<script type="text/javascript" src="js/mrt.min.js"></script>
 
         <script type="text/javascript" src="tpls/mrt-tpl.js"></script>
     </body>
