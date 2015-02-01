@@ -13,6 +13,8 @@ function MasterCtrl($scope, $cookieStore) {
     // $scope.term = 'Hairdressers';
     
     var mobileView = 992;
+	$scope.app = {};
+	$scope.app.loggedIn = true;
 
     $scope.getWidth = function() { return window.innerWidth; };
 

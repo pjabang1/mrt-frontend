@@ -1,19 +1,19 @@
 var gulp = require('gulp'),
-        less = require('gulp-less'),
-        usemin = require('gulp-usemin'),
-        wrap = require('gulp-wrap'),
-        connect = require('gulp-connect'),
-        watch = require('gulp-watch'),
-        templateCache = require('gulp-angular-templatecache'),
-        minifyCss = require('gulp-minify-css'),
-        minifyJs = require('gulp-uglify'),
-        concat = require('gulp-concat'),
-        rename = require('gulp-rename'),
-        minifyHtml = require('gulp-minify-html'),
-        replace = require('gulp-replace-task'),
-        argv = require('yargs').argv,
-        fs = require('fs-utils'),
-        gutil = require('gulp-util');
+		less = require('gulp-less'),
+		usemin = require('gulp-usemin'),
+		wrap = require('gulp-wrap'),
+		connect = require('gulp-connect'),
+		watch = require('gulp-watch'),
+		templateCache = require('gulp-angular-templatecache'),
+		minifyCss = require('gulp-minify-css'),
+		minifyJs = require('gulp-uglify'),
+		concat = require('gulp-concat'),
+		rename = require('gulp-rename'),
+		minifyHtml = require('gulp-minify-html'),
+		replace = require('gulp-replace-task'),
+		argv = require('yargs').argv,
+		fs = require('fs-utils'),
+		gutil = require('gulp-util');
 // var es = require('event-stream');
 
 // var uglify = require('gulp-uglify');
@@ -25,51 +25,51 @@ var gulp = require('gulp'),
 
 
 var paths = {
-    module: 'src/js/module/mrt/',
-    js: 'src/js/module/**/*.js',
-    data: 'src/data/**/*.*',
-    fonts: 'src/fonts/**.*',
-    images: 'src/img/**/*.*',
-    templates: 'src/js/**/*.html',
-    styles: 'src/less/**/*.less',
-    index: 'src/index.html',
-    config: 'src/js/config/',
-    parameter: 'src/js/config/parameters.js',
-    // index: 'src/*.html',
-    bower_fonts: 'src/bower_components/**/*.{ttf,woff,eof,svg}',
-    bower_components: 'src/bower_components/**/*.*',
+	module: 'src/js/module/mrt/',
+	js: 'src/js/module/**/*.js',
+	data: 'src/data/**/*.*',
+	fonts: 'src/fonts/**.*',
+	images: 'src/img/**/*.*',
+	templates: 'src/js/**/*.html',
+	styles: 'src/less/**/*.less',
+	index: 'src/index.html',
+	config: 'src/js/config/',
+	parameter: 'src/js/config/parameters.js',
+	// index: 'src/*.html',
+	bower_fonts: 'src/bower_components/**/*.{otf,ttf,woff,eof,svg,woff2}',
+	bower_components: 'src/bower_components/**/*.*',
 };
 
 
 gulp.task('usemin', function() {
-    return gulp.src(paths.index)
-            .pipe(usemin({
-        less: ['concat', less()],
-        js: [minifyJs(), 'concat'],
-        css: [minifyCss({keepSpecialComments: 0}), 'concat'],
-        html: [minifyHtml({empty: true})]
-    }))
-            .pipe(gulp.dest('dist/'));
+	return gulp.src(paths.index)
+			.pipe(usemin({
+				less: ['concat', less()],
+				js: [minifyJs(), 'concat'],
+				css: [minifyCss({keepSpecialComments: 0}), 'concat'],
+				html: [minifyHtml({empty: true})]
+			}))
+			.pipe(gulp.dest('dist/'));
 });
 
 gulp.task('replace', function() {
-    // Get the environment from the command line
-    var env = argv.env || 'dev';
+	// Get the environment from the command line
+	var env = argv.env || 'dev';
 
-    // Read the settings from the right file
-    var filename = env + '.json';
-    var evn = JSON.parse(fs.readFileSync(paths.config + filename, 'utf8'));
+	// Read the settings from the right file
+	var filename = env + '.json';
+	var evn = JSON.parse(fs.readFileSync(paths.config + filename, 'utf8'));
 
 // Replace each placeholder with the correct value for the variable.  
-    gulp.src(paths.parameter)
-            .pipe(replace({
-        patterns: [
-            {
-                match: 'env',
-                replacement: evn
-            }
-        ]
-    })).pipe(gulp.dest(paths.module));
+	gulp.src(paths.parameter)
+			.pipe(replace({
+				patterns: [
+					{
+						match: 'env',
+						replacement: evn
+					}
+				]
+			})).pipe(gulp.dest(paths.module));
 });
 
 /**
@@ -81,39 +81,44 @@ gulp.task('copy-assets', ['copy-images', 'copy-templates', 'concatenate-template
 gulp.task('build-custom', ['custom-js', 'custom-less']);
 
 gulp.task('copy-images', function() {
-    return gulp.src(paths.images)
-            .pipe(gulp.dest('dist/img'));
+	return gulp.src(paths.images)
+			.pipe(gulp.dest('dist/img'));
 });
 
 gulp.task('copy-templates', function() {
-    return gulp.src(paths.templates)
-            .pipe(gulp.dest('dist/js/'));
-    ;
+	return gulp.src(paths.templates)
+			.pipe(gulp.dest('dist/js/'));
+	;
 });
 
 gulp.task('concatenate-templates', function() {
-    return gulp.src(paths.templates)
-            .pipe(templateCache('mrt-tpl.js', {module: 'MRT'}))
-            .pipe(gulp.dest('dist/tpls'));
-    ;
+	return gulp.src(paths.templates)
+			.pipe(templateCache('mrt-tpl.js', {module: 'MRT'}))
+			.pipe(gulp.dest('dist/tpls'));
+	;
 });
 
 gulp.task('copy-fonts', function() {
-    return gulp.src(paths.fonts)
-            .pipe(gulp.dest('dist/fonts'));
+	return gulp.src(paths.fonts)
+			.pipe(gulp.dest('dist/fonts'));
 });
 
 gulp.task('copy-bower_fonts', function() {
-    return gulp.src(paths.bower_fonts)
-            .pipe(gulp.dest('dist/lib'));
+	return gulp.src(paths.bower_fonts)
+			.pipe(rename({
+				dirname: '/fonts'
+			}))
+			.pipe(gulp.dest('dist/lib'));
 });
 
 
+
+
 gulp.task('custom-js', function() {
-    return gulp.src(paths.js)
-            .pipe(minifyJs())
-            .pipe(concat('mrt.min.js'))
-            .pipe(gulp.dest('dist/js'));
+	return gulp.src(paths.js)
+			// .pipe(minifyJs())
+			.pipe(concat('mrt.min.js'))
+			.pipe(gulp.dest('dist/js'));
 });
 
 
@@ -121,29 +126,29 @@ gulp.task('custom-js', function() {
  * Compile less
  */
 gulp.task('custom-less', function() {
-    gulp.src(paths.styles)
-            .pipe(less())
-            .pipe(concat('mrt.css'))
-            .pipe(gulp.dest('dist/css'));
+	gulp.src(paths.styles)
+			.pipe(less())
+			.pipe(concat('mrt.css'))
+			.pipe(gulp.dest('dist/css'));
 
-    return gulp.src('dist/css/mrt.css')
-            .pipe(minifyCss())
-            .pipe(rename('mrt.min.css'))
-            .pipe(gulp.dest('dist/css/'))
+	return gulp.src('dist/css/mrt.css')
+			.pipe(minifyCss())
+			.pipe(rename('mrt.min.css'))
+			.pipe(gulp.dest('dist/css/'))
 });
 
 gulp.task('copy-data', function() {
-    return gulp.src(paths.data)
-            .pipe(gulp.dest('dist/data'));
+	return gulp.src(paths.data)
+			.pipe(gulp.dest('dist/data'));
 });
 
 /**
  * Compile less
  */
 gulp.task('compile-less', function() {
-    return gulp.src(paths.styles)
-            .pipe(less())
-            .pipe(gulp.dest('dist/css'));
+	return gulp.src(paths.styles)
+			.pipe(less())
+			.pipe(gulp.dest('dist/css'));
 });
 
 
@@ -153,32 +158,33 @@ gulp.task('compile-less', function() {
  */
 gulp.task('watch', function() {
 
-    gulp.watch([paths.styles], ['custom-less']);
-    gulp.watch([paths.images], ['copy-images']);
-    gulp.watch([paths.templates], ['copy-templates', 'concatenate-templates']);
-    // gulp.watch([paths.templates], []);
-    gulp.watch([paths.js], ['custom-js']);
-    gulp.watch([paths.fonts], ['copy-fonts']);
-    gulp.watch([paths.bower_fonts], ['copy-bower_fonts']);
-    gulp.watch([paths.data], ['copy-data']);
-    gulp.watch([paths.index], ['usemin']);
+	gulp.watch([paths.styles], ['custom-less']);
+	gulp.watch([paths.styles], ['compile-less']);
+	gulp.watch([paths.images], ['copy-images']);
+	gulp.watch([paths.templates], ['copy-templates', 'concatenate-templates']);
+	// gulp.watch([paths.templates], []);
+	gulp.watch([paths.js], ['custom-js']);
+	gulp.watch([paths.fonts], ['copy-fonts']);
+	gulp.watch([paths.bower_fonts], ['copy-bower_fonts']);
+	gulp.watch([paths.data], ['copy-data']);
+	gulp.watch([paths.index], ['usemin']);
 
 });
 
 
 
 gulp.task('webserver', function() {
-    connect.server({
-        root: 'dist',
-        port: 8086,
-        livereload: true
-    });
+	connect.server({
+		root: 'dist',
+		port: 8086,
+		livereload: true
+	});
 });
 
 gulp.task('livereload', function() {
-    gulp.src(['dist/**/*.*'])
-            .pipe(watch())
-            .pipe(connect.reload());
+	gulp.src(['dist/**/*.*'])
+			.pipe(watch())
+			.pipe(connect.reload());
 });
 
 

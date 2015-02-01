@@ -1,0 +1,30 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-4">
+			Geography Group
+			<hr />
+			<div class="form-group">
+			<input class="form-control" ng-model="data.geogroup.name" />
+			</div>
+			<div class="form-group">
+				<textarea class="form-control" ng-model="data.geogroup.description"></textarea>
+			</div>
+		</div>
+		<div class="col-md-4">
+			Countries (Click country to add)
+			<hr />
+			<ul class="list-group">
+				<li class="list-group-item" ng-click="select(row.id)" ng-repeat="row in data.geographies | filter: { selected: '!true' }">{{ row.name }}</li>
+			</ul>
+
+		</div>
+		<div class="col-md-4">
+			Selected Countries (Click country to remove)
+			<hr />
+			<ul class="list-group">
+				<li class="list-group-item" ng-click="deselect(row.id)" ng-repeat="row in data.geographies | filter: { selected: true }">{{ row.name }}</li>
+			</ul>
+		</div>
+
+	</div>
+</div>

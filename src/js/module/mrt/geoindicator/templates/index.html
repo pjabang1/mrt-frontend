@@ -1,0 +1,34 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-3 pull-right">
+		
+			<input class="form-control" type="text">
+		</div>
+	</div>
+    <div class="row">
+		<div class="col-md-12">
+			<rd-widget>
+				<rd-widget-header icon="fa-map-marker" title="Indicators">
+					<a href="#">Add Indicator</a>
+				</rd-widget-header>
+				<rd-widget-body classes="auto no-padding">
+					<div class="table-responsive">
+						<table ng-table="tableParams" class="table">
+							<tr ng-repeat="indicator in $data">
+								<td data-title="'Code'">
+									{{indicator.code}}
+								</td>
+								<td data-title="'Name'" filter="{ 'name': 'text' }">
+									{{indicator.name}}
+								</td>
+								
+								
+							</tr>
+						</table> 
+					</div>
+				</rd-widget-body>
+				
+			</rd-widget>
+		</div> 
+	</div>
+</div>

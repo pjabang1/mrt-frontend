@@ -3,10 +3,25 @@ angular.module('MRT')
 
         var urlBase = env.apiUrl;
         
-        var dataFactory = {};
+        var dataFactory = {
+			data : {
+				geogroups: []
+			} 
+		};
+		
+		dataFactory.getGeoGroupsData = function() {
+			return dataFactory.data.geogroups;
+			
+		};
 
         dataFactory.list = function(params) {
             return $http.get(urlBase + '/geogroup/', {
+                params: params
+            });
+        };
+		
+		dataFactory.getGeographies = function(params) {
+            return $http.get(urlBase + '/geogroup/geographies', {
                 params: params
             });
         };

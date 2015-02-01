@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <div class="row">
+	<div class="row">
         <div class="col-sm-3">
             <ui-select ng-model="response.geogroups.selected" on-select="getIndicatorValues($item, $model)">
                 <ui-select-match placeholder="Select Group">{{$select.selected.name}}</ui-select-match>
@@ -9,8 +9,8 @@
             </ui-select>
         </div>
 		<div class="col-sm-3">
-		<select ng-model="data.params.date" ng-change="getValues()">
-			<option ng-repeat="option in data.dates" value="{{option}}">{{option}}</option>
+			<select ng-model="data.params.date" ng-change="getValues()">
+				<option ng-repeat="option in data.dates" value="{{option}}">{{option}}</option>
             </select>
 		</div>
     </div>

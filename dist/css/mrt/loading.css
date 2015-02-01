@@ -1,0 +1,91 @@
+/* #592727 RED */
+/* #2f5927 GREEN */
+/* #30426a BLUE (default)*/
+/** 
+/ Palette
+// -------
+
+@turquoise:        #1abc9c;
+@green-sea:        #16a085;
+
+@emerald:          #2ecc71;
+@nephritis:        #27ae60;
+
+@peter-river:      #3498db;
+@belize-hole:      #2980b9;
+
+@amethyst:         #9b59b6;
+@wisteria:         #8e44ad;
+
+@wet-asphalt:      #34495e;
+@midnight-blue:    #2c3e50;
+
+@sun-flower:       #f1c40f;
+@orange:           #f39c12;
+
+@carrot:           #e67e22;
+@pumpkin:          #d35400;
+
+@alizarin:         #e74c3c;
+@pomegranate:      #c0392b;
+
+@clouds:           #ecf0f1;
+@silver:           #bdc3c7;
+
+@concrete:         #95a5a6;
+@asbestos:         #7f8c8d;
+
+
+**/
+/**
+@baseColor1: #8e44ad;
+@baseColor2: #2c3e50;
+
+**/
+/* Sidebar background color */
+/* Sidebar header and footer color */
+/* Sidebar title text colour */
+/*#627cb7*/
+.loading {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  margin: 100px auto;
+}
+.double-bounce1,
+.double-bounce2 {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #333;
+  opacity: 0.6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-animation: bounce 2s infinite ease-in-out;
+  animation: bounce 2s infinite ease-in-out;
+}
+.double-bounce2 {
+  -webkit-animation-delay: -1s;
+  animation-delay: -1s;
+}
+@-webkit-keyframes bounce {
+  0%,
+  100% {
+    -webkit-transform: scale(0);
+  }
+  50% {
+    -webkit-transform: scale(1);
+  }
+}
+@keyframes bounce {
+  0%,
+  100% {
+    transform: scale(0);
+    -webkit-transform: scale(0);
+  }
+  50% {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+  }
+}

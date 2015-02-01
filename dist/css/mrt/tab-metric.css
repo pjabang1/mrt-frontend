@@ -1,0 +1,123 @@
+/* #592727 RED */
+/* #2f5927 GREEN */
+/* #30426a BLUE (default)*/
+/** 
+/ Palette
+// -------
+
+@turquoise:        #1abc9c;
+@green-sea:        #16a085;
+
+@emerald:          #2ecc71;
+@nephritis:        #27ae60;
+
+@peter-river:      #3498db;
+@belize-hole:      #2980b9;
+
+@amethyst:         #9b59b6;
+@wisteria:         #8e44ad;
+
+@wet-asphalt:      #34495e;
+@midnight-blue:    #2c3e50;
+
+@sun-flower:       #f1c40f;
+@orange:           #f39c12;
+
+@carrot:           #e67e22;
+@pumpkin:          #d35400;
+
+@alizarin:         #e74c3c;
+@pomegranate:      #c0392b;
+
+@clouds:           #ecf0f1;
+@silver:           #bdc3c7;
+
+@concrete:         #95a5a6;
+@asbestos:         #7f8c8d;
+
+
+**/
+/**
+@baseColor1: #8e44ad;
+@baseColor2: #2c3e50;
+
+**/
+/* Sidebar background color */
+/* Sidebar header and footer color */
+/* Sidebar title text colour */
+/*#627cb7*/
+#tab-metric .tab-metric-widget {
+  overflow: none;
+}
+#tab-metric .tab-metric-widget * {
+  overflow: none;
+}
+#tab-metric .nav-tabs.nav-justified {
+  cursor: pointer;
+}
+#tab-metric .nav-tabs.nav-justified .title {
+  font-size: 14px;
+  color: #767676;
+  display: block;
+  clear: both;
+}
+#tab-metric .nav-tabs.nav-justified .value {
+  font-size: 30px;
+  color: #767676;
+  display: block;
+  clear: both;
+}
+#tab-metric .nav-tabs.nav-justified .description {
+  font-size: 10px;
+  color: #767676;
+  display: block;
+  clear: both;
+}
+#tab-metric .nav-tabs.nav-justified > li {
+  border-bottom: 1px double #ddd;
+  background-color: #f6f6f6;
+  border-left: 1px solid #ddd;
+}
+#tab-metric .nav-tabs.nav-justified > li > a {
+  border-top-width: 2px;
+  border-top-color: #3498db;
+  text-align: left;
+  height: auto;
+  border-radius: 0 0 0 0;
+  border-left: 0px;
+  border-right: 0px;
+  padding: 0px 0px;
+  border-bottom: 0px;
+}
+#tab-metric .nav-tabs.nav-justified > li tab-heading {
+  display: block;
+  padding: 10px 15px 10px 15px;
+}
+#tab-metric .nav-tabs.nav-justified > li:first-child {
+  border-left: 0;
+}
+#tab-metric .nav-tabs.nav-justified .active {
+  background-color: #fff;
+  cursor: pointer;
+  border-bottom-color: #fff;
+}
+#tab-metric .nav-tabs.nav-justified .active > a,
+#tab-metric .nav-tabs.nav-justified .active > a:hover,
+#tab-metric .nav-tabs.nav-justified .active > a:focus,
+#tab-metric .nav-tabs.nav-justified .active > a:hover {
+  cursor: pointer;
+  border-top-width: 2px;
+  border-top-color: #3498db;
+  border-bottom-color: #fff;
+  border-left: 0px;
+  border-right: 0px;
+}
+#tab-metric .sparkline {
+  fill: none;
+  stroke: #000;
+  stroke-width: 0.5px;
+}
+#tab-metric .sparkcircle {
+  fill: #f00;
+  stroke: none;
+}

@@ -1,0 +1,38 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-3 pull-right">
+
+			<input class="form-control" type="text">
+		</div>
+	</div>
+    <div class="row">
+		<div class="col-md-12">
+			<rd-widget>
+				<rd-widget-header icon="fa-map-marker" title="Country Groups">
+					<a href="#">Add Country Group</a>
+				</rd-widget-header>
+				<rd-widget-body classes="auto no-padding">
+					<div class="table-responsive">
+						<table class="table">
+							<thead>
+							<th>Name</th>
+							<th>Description</th>
+							</thead>
+							<tbody>
+								<tr ng-repeat="row in data.geogroups">
+									<td data-title="'Name'">
+										<a href="#/geogroup-view/{{row.id}}">{{row.name}}</a>
+									</td>
+									<td data-title="'Description'">
+										{{row.description}}
+									</td>
+								</tr>
+							</tbody>
+						</table> 
+					</div>
+				</rd-widget-body>
+
+			</rd-widget>
+		</div> 
+	</div>
+</div>

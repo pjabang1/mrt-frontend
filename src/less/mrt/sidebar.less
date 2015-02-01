@@ -8,11 +8,11 @@
 
 ul.sidebar .sidebar-main a,
 .sidebar-footer,
-ul.sidebar .sidebar-list a:hover,
+ul.sidebar .sidebar-list a:hover, ul.sidebar .sidebar-list a.active,
 #page-wrapper:not(.active) ul.sidebar .sidebar-title.separator {
     /* Sidebar header and footer color */
     background: @sidebarHeaderColor;
-    
+   
 }
 
 ul.sidebar {
@@ -37,7 +37,7 @@ ul.sidebar {
     .sidebar-main {
         height: 65px;
         a {
-            font-size: 18px;
+            font-size: 120%;
             line-height: 60px;
         }
         .menu-icon {
@@ -58,13 +58,13 @@ ul.sidebar {
         height: 40px;
         a {
             text-indent: 25px;
-            font-size: 15px;
+            font-size: 100%;
             color: @sidebarListLinkColor;
             line-height: 40px;
         }
-        a:hover {
+        a:hover, a.active {
             color: @sidebarListLinkChangeColor;
-            border-left: 3px solid #e99d1a;
+            border-left: 3px solid @sidebarListLinkBorderColor;
             text-indent: 22px;
             .menu-icon {
                 text-indent: 25px;

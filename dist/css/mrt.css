@@ -38,7 +38,6 @@
 
 **/
 /**
-
 @baseColor1: #8e44ad;
 @baseColor2: #2c3e50;
 
@@ -54,16 +53,16 @@
   height: auto;
 }
 @media only screen and (min-width: 561px) {
-  #page-wrapper.active {
+  #page-wrapper.active.logged-in {
     padding-left: 250px;
   }
 }
 @media only screen and (max-width: 560px) {
-  #page-wrapper.active {
+  #page-wrapper.active.logged-in {
     padding-left: 70px;
   }
 }
-#page-wrapper.active #sidebar-wrapper {
+#page-wrapper.active.logged-in #sidebar-wrapper {
   left: 150px;
 }
 
@@ -107,7 +106,6 @@
 
 **/
 /**
-
 @baseColor1: #8e44ad;
 @baseColor2: #2c3e50;
 
@@ -168,7 +166,6 @@ hr {
 
 **/
 /**
-
 @baseColor1: #8e44ad;
 @baseColor2: #2c3e50;
 
@@ -245,7 +242,6 @@ hr {
 
 **/
 /**
-
 @baseColor1: #8e44ad;
 @baseColor2: #2c3e50;
 
@@ -386,7 +382,6 @@ hr {
 
 **/
 /**
-
 @baseColor1: #8e44ad;
 @baseColor2: #2c3e50;
 
@@ -436,7 +431,6 @@ hr {
 
 **/
 /**
-
 @baseColor1: #8e44ad;
 @baseColor2: #2c3e50;
 
@@ -529,7 +523,6 @@ hr {
 
 **/
 /**
-
 @baseColor1: #8e44ad;
 @baseColor2: #2c3e50;
 
@@ -637,7 +630,6 @@ hr {
 
 **/
 /**
-
 @baseColor1: #8e44ad;
 @baseColor2: #2c3e50;
 
@@ -672,10 +664,11 @@ html {
 body {
   /** background: #f3f3f3; **/
   background: #fff;
-  font-family: 'Roboto', sans-serif;
+  /** font-family: 'Roboto', sans-serif; **/
+  font-family: Montserrat;
   color: #546678 !important;
-  font-weight: 400;
-  font-size: 120%;
+  /** font-weight: 400; **/
+  font-size: 100%;
 }
 .row {
   margin-left: 0 !important;
@@ -688,7 +681,7 @@ body {
   margin-bottom: 0;
 }
 #page-wrapper {
-  /** padding-left: 70px;**/
+  padding-left: 70px;
   height: 100%;
 }
 #sidebar-wrapper {
@@ -743,6 +736,10 @@ div.input-mask {
 .center {
   text-align: center;
 }
+.col-centered {
+  float: none;
+  margin: 0 auto;
+}
 
 /* #592727 RED */
 /* #2f5927 GREEN */
@@ -784,7 +781,6 @@ div.input-mask {
 
 **/
 /**
-
 @baseColor1: #8e44ad;
 @baseColor2: #2c3e50;
 
@@ -834,7 +830,6 @@ div.input-mask {
 
 **/
 /**
-
 @baseColor1: #8e44ad;
 @baseColor2: #2c3e50;
 
@@ -918,7 +913,7 @@ slider span.pointer {
 }
 slider span.pointer:after {
   content: '';
-  background-color: #2980b9;
+  background-color: #3498db;
   width: 8px;
   height: 8px;
   position: absolute;
@@ -931,7 +926,7 @@ slider span.pointer:hover:after {
   background-color: #000;
 }
 slider span.pointer.active:after {
-  background-color: #d35400;
+  background-color: #3498db;
 }
 slider span.bubble {
   cursor: default;
@@ -2083,7 +2078,6 @@ slider div.bubble.limit,
 
 **/
 /**
-
 @baseColor1: #8e44ad;
 @baseColor2: #2c3e50;
 
@@ -2096,14 +2090,15 @@ slider div.bubble.limit,
  * Sidebar
  */
 #sidebar-wrapper {
-  background: #2980b9;
+  background: #3498db;
 }
 ul.sidebar .sidebar-main a,
 .sidebar-footer,
 ul.sidebar .sidebar-list a:hover,
+ul.sidebar .sidebar-list a.active,
 #page-wrapper:not(.active) ul.sidebar .sidebar-title.separator {
   /* Sidebar header and footer color */
-  background: #c95000;
+  background: #2b94d9;
 }
 ul.sidebar {
   position: absolute;
@@ -2117,7 +2112,7 @@ ul.sidebar {
   overflow-y: auto;
 }
 ul.sidebar li a {
-  color: #000000;
+  color: #ffffff;
   display: block;
   float: left;
   text-decoration: none;
@@ -2127,7 +2122,7 @@ ul.sidebar .sidebar-main {
   height: 65px;
 }
 ul.sidebar .sidebar-main a {
-  font-size: 18px;
+  font-size: 120%;
   line-height: 60px;
 }
 ul.sidebar .sidebar-main .menu-icon {
@@ -2137,7 +2132,7 @@ ul.sidebar .sidebar-main .menu-icon {
   line-height: 60px;
 }
 ul.sidebar .sidebar-title {
-  color: #ffa76d;
+  color: #b6daf2;
   font-size: 12px;
   height: 35px;
   line-height: 40px;
@@ -2148,16 +2143,18 @@ ul.sidebar .sidebar-list {
 }
 ul.sidebar .sidebar-list a {
   text-indent: 25px;
-  font-size: 15px;
+  font-size: 100%;
   color: #ffffff;
   line-height: 40px;
 }
-ul.sidebar .sidebar-list a:hover {
-  color: #3399cc;
+ul.sidebar .sidebar-list a:hover,
+ul.sidebar .sidebar-list a.active {
+  color: #ffffff;
   border-left: 3px solid #e99d1a;
   text-indent: 22px;
 }
-ul.sidebar .sidebar-list a:hover .menu-icon {
+ul.sidebar .sidebar-list a:hover .menu-icon,
+ul.sidebar .sidebar-list a.active .menu-icon {
   text-indent: 25px;
 }
 ul.sidebar .sidebar-list .menu-icon {
@@ -2194,7 +2191,7 @@ ul.sidebar .sidebar-list .menu-icon {
   text-align: center;
 }
 .sidebar-footer div a {
-  color: #000000;
+  color: #ffffff;
   font-size: 12px;
   line-height: 43px;
 }
@@ -2243,7 +2240,6 @@ ul.sidebar .sidebar-list .menu-icon {
 
 **/
 /**
-
 @baseColor1: #8e44ad;
 @baseColor2: #2c3e50;
 
@@ -2286,7 +2282,7 @@ ul.sidebar .sidebar-list .menu-icon {
 }
 #tab-metric .nav-tabs.nav-justified > li > a {
   border-top-width: 2px;
-  border-top-color: #2980b9;
+  border-top-color: #3498db;
   text-align: left;
   height: auto;
   border-radius: 0 0 0 0;
@@ -2313,7 +2309,7 @@ ul.sidebar .sidebar-list .menu-icon {
 #tab-metric .nav-tabs.nav-justified .active > a:hover {
   cursor: pointer;
   border-top-width: 2px;
-  border-top-color: #d35400;
+  border-top-color: #3498db;
   border-bottom-color: #fff;
   border-left: 0px;
   border-right: 0px;
@@ -2368,7 +2364,6 @@ ul.sidebar .sidebar-list .menu-icon {
 
 **/
 /**
-
 @baseColor1: #8e44ad;
 @baseColor2: #2c3e50;
 
@@ -2418,7 +2413,6 @@ ul.sidebar .sidebar-list .menu-icon {
 
 **/
 /**
-
 @baseColor1: #8e44ad;
 @baseColor2: #2c3e50;
 
@@ -2453,9 +2447,6 @@ ul.sidebar .sidebar-list .menu-icon {
 .widget .widget-header i {
   margin-right: 5px;
 }
-.widget .widget-header input {
-  width: 25%;
-}
 .widget .widget-body {
   padding: 20px;
 }
@@ -2478,7 +2469,11 @@ ul.sidebar .sidebar-list .menu-icon {
   margin-bottom: 10px;
 }
 .widget .widget-body.large {
-  height: 450px;
+  height: 350px;
+  overflow-y: auto;
+}
+.widget .widget-body.auto {
+  height: auto;
   overflow-y: auto;
 }
 .widget .widget-body.medium {
@@ -2513,6 +2508,14 @@ ul.sidebar .sidebar-list .menu-icon {
   line-height: 66px;
   color: #ffffff;
   font-size: 30px;
+}
+.widget .widget-footer {
+  border-top: 1px solid #e9e9e9;
+  padding: 10px;
+}
+.widget .widget-title .pagination,
+.widget .widget-footer .pagination {
+  margin: 0;
 }
 .widget .widget-content .title {
   font-size: 28px;

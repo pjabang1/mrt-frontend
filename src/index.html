@@ -7,13 +7,12 @@
 
         <title>Site</title>
 
-        <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,300italic' rel='stylesheet' type='text/css'>
-
+        <!--<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,300italic' rel='stylesheet' type='text/css'>-->
         <!-- build:css lib/css/main.min.css -->
         <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css">
         <link rel="stylesheet" href="bower_components/ng-table/ng-table.css">
         <link rel="stylesheet" href="bower_components/ui-select/dist/select.css">
-        <link rel="stylesheet" type="text/css" href="bower_components/font-awesome/css/font-awesome.css">
+		<link rel="stylesheet" type="text/css" href="bower_components/font-awesome/css/font-awesome.min.css">
         <!-- endbuild --> 
 		<link rel="stylesheet" href="css/mrt.min.css">
         <!-- SCRIPTS -->
@@ -29,50 +28,139 @@
         <script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
         <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
         <script type="text/javascript" src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-        <script src="bower_components/ng-table/ng-table.js"></script>
-        <script src="bower_components/ui-select/dist/select.js"></script>
+        <script type="text/javascript" src="bower_components/ng-table/ng-table.js"></script>
+        <script type="text/javascript" src="bower_components/ui-select/dist/select.js"></script>
+		<script type="text/javascript" src="bower_components/clusterio/dist/js/clusterio.js"></script>
+		<script type="text/javascript" src="bower_components/echarts/build/dist/echarts-all.js"></script>
         <!-- endbuild -->
-
-
         <!-- SCRIPTS -->
     </head>
     <body ng-controller="MasterCtrl">
-        <div id="page-wrapper">
-            <!-- Sidebar -->
-            <!-- End Sidebar -->
+        <div id="page-wrapper" ng-class="{'active': toggle, 'logged-in': app.loggedIn}" ng-cloak>
+			<!-- Sidebar -->
+			<div id="sidebar-wrapper" ng-if="app.loggedIn === true">
+				<ul class="sidebar">
+					<li class="sidebar-main">
+						<a ng-click="toggleSidebar()">
+							Dashboard
+							<span class="menu-icon glyphicon glyphicon-transfer"></span>
+						</a>
+					</li>
+					<li class="sidebar-title"><span>NAVIGATION</span></li>
+					<li class="sidebar-list">
+						<a href="#/geomodel" active-link="active">Models <span class="menu-icon fa fa-adjust"></span></a>
+					</li>
+					<li class="sidebar-list">
+						<a href="#/geoindicator" active-link="active">Indicators <span class="menu-icon fa fa-tachometer"></span></a>
+					</li>
+					<li class="sidebar-list">
+						<a href="#/geography" active-link="active">Countries <span class="menu-icon fa fa-map-marker"></span></a>
+					</li>
+					<li class="sidebar-list">
+						<a href="#/geogroup" active-link="active">Country Groups <span class="menu-icon fa fa-globe"></span></a>
+					</li>
+					<li class="sidebar-list">
+						<a href="#/market" active-link="active">Markets <span class="menu-icon fa fa-random"></span></a>
+					</li>
+					<li class="sidebar-list">
+						<a href="#/forecast" active-link="active">Forecasts <span class="menu-icon fa fa-line-chart"></span></a>
+					</li>
+					<li class="sidebar-list">
+						<a href="#/admin" active-link="active">Admin <span class="menu-icon fa fa-cogs"></span></a>
+					</li>
+					<li class="sidebar-title separator"><span>QUICK LINKS</span></li>
+					<li class="sidebar-list">
+						<a href="#/my-favourite" active-link="active">Favourites <span class="menu-icon fa fa-bookmark"></span></a>
+						<a href="#/my-model" active-link="active">My Models <span class="menu-icon fa fa-briefcase"></span></a>
+					</li>
+				</ul>
+				<div class="sidebar-footer">
+					<div class="col-xs-4">
+						<a href="" target="_blank">
+							Manual
+						</a>
+					</div>
+					<div class="col-xs-4">
+						<a href="#" target="_blank" active-link="active">
+							About
+						</a>
+					</div>
+					<div class="col-xs-4" active-link="active">
+						<a href="#">
+							Support
+						</a>
+					</div>
+				</div>
+			</div>
+			<!-- End Sidebar -->
+
 
             <div id="content-wrapper">
                 <div class="page-content">
 
                     <!-- Header Bar -->
+					<div class="row header" ng-if="app.loggedIn == true">
+						<div class="col-xs-12">
+							<div class="user pull-right">
+								<div class="item dropdown">
+									<a href="#" class="dropdown-toggle">
+										<img src="img/avatar.jpg">
+									</a>
+									<ul class="dropdown-menu dropdown-menu-right">
+										<li class="dropdown-header">
+											Joe Bloggs
+										</li>
+										<li class="divider"></li>
+										<li class="link">
+											<a href="#">
+												Profile
+											</a>
+										</li>
+										<li class="link">
+											<a href="#">
+												Menu Item
+											</a>
+										</li>
+										<li class="link">
+											<a href="#">
+												Menu Item
+											</a>
+										</li>
+										<li class="divider"></li>
+										<li class="link">
+											<a href="#">
+												Logout
+											</a>
+										</li>
+									</ul>
+								</div>
 
-                    <div class="row header">
-                        <div class="col-xs-12">
-                            <div class="user pull-right">
-                                <ul class="nav navbar-nav">
-                                    <!--
-<li><a href="#/list-funds">Investments</a></li>
-<li><a href="#/view-fund">Fund Managers</a></li>
-<li><a href="#">Tools</a></li>
-                                    -->
-                                </ul>
-                            </div>
-                            <div class="meta">
-                                <div class="page">
-                                    <!-- InformedInvestor -->
-                                </div>
-                                <div class="breadcrumb-links">
-                                </div>
-                                <div class="">
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-                    <!-- End Header Bar -->
+								<div class="item dropdown">
+									<a href="#" class="dropdown-toggle">
+										<i class="fa fa-bell-o"></i>
+									</a>
+									<ul class="dropdown-menu dropdown-menu-right">
+										<li class="dropdown-header">
+											Notifications
+										</li>
+										<li class="divider"></li>
+										<li>
+											<a href="#">Server Down!</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="meta">
+								<div class="page">
+									Dashboard
+								</div>
+								<div class="breadcrumb-links">
+									Home / Dashboard
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- End Header Bar -->
 
                     <!-- Main Content -->
                     <section data-ui-view>
