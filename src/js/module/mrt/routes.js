@@ -3,63 +3,76 @@
 /**
  * Route configuration for the Dashboard module.
  */
-angular.module('MRT').config(['$stateProvider', '$urlRouterProvider', 
+angular.module('MRT').config(['$stateProvider', '$urlRouterProvider',
     function($stateProvider, $urlRouterProvider) {
 
-    // For unmatched routes
-    $urlRouterProvider.otherwise('/');
-	
-    // Application routes
-	
-    $stateProvider
-        .state('index', {
+        // For unmatched routes
+        $urlRouterProvider.otherwise('/');
+
+        // Application routes
+
+        $stateProvider
+                .state('index', {
             url: '/',
-			controller: 'AuthenticationCtrl',
+            controller: 'AuthenticationCtrl',
             templateUrl: 'module/mrt/app/templates/index.html'
         })
-		.state('dashboard', {
+                .state('dashboard', {
             url: '/dashboard',
-			controller: 'DashboardCtrl',
+            controller: 'DashboardCtrl',
             templateUrl: 'module/mrt/app/templates/dashboard.html'
         })
-        .state('geomodel', {
+                .state('geomodel-weight', {
+            url: '/geomodel/weight/:id',
+            controller: 'GeoModelWeightCtrl',
+            templateUrl: 'module/mrt/geomodel/templates/weight-index.html'
+        }).state('geomodel', {
             url: '/geomodel',
             controller: 'GeoModelCtrl',
-            templateUrl: 'module/mrt/geomodel/templates/geomodel-index.html'
+            templateUrl: 'module/mrt/geomodel/templates/index.html'
         })
-		
-		.state('geography', {
+                .state('geography', {
             url: '/geography',
             controller: 'GeographyCtrl',
             templateUrl: 'module/mrt/geography/templates/index.html'
         })
-		.state('geogroup', {
+                .state('geogroup', {
             url: '/geogroup',
             controller: 'GeoGroupCtrl',
             templateUrl: 'module/mrt/geogroup/templates/index.html'
         })
-		.state('geogroup-view', {
+                .state('geogroup-view', {
             url: '/geogroup-view/:id',
             controller: 'GeoGroupViewCtrl',
             templateUrl: 'module/mrt/geogroup/templates/view.html'
         })
-		.state('geoindicator', {
+                .state('geoindicatorgroup', {
+            url: '/geoindicatorgroup',
+            controller: 'GeoIndicatorGroupCtrl',
+            templateUrl: 'module/mrt/geoindicatorgroup/templates/index.html'
+        })
+                .state('geoindicatorgroup-view', {
+            url: '/geoindicatorgroup-view/:id',
+            controller: 'GeoIndicatorGroupViewCtrl',
+            templateUrl: 'module/mrt/geoindicatorgroup/templates/view.html'
+        })
+                .state('geoindicator', {
             url: '/geoindicator',
-            controller: 'GeoindicatorCtrl',
+            controller: 'GeoIndicatorCtrl',
             templateUrl: 'module/mrt/geoindicator/templates/index.html'
         })
-		.state('geomodel-cluster', {
+                .state('geomodel-cluster', {
             url: '/geomodel/cluster',
             controller: 'GeoModelCtrl',
             templateUrl: 'module/mrt/geomodel/templates/geomodel-cluster-index.html'
         })
-         .state('view-fund', {
+                .state('view-fund', {
             url: '/view-fund/:phoneId',
             controller: 'ViewFundCtrl',
             templateUrl: 'tpls/mrt/tpls/tpls/view-fund.html'
         })
-        .state('tables', {
-            url: '/tables', 
+                .state('tables', {
+            url: '/tables',
             templateUrl: 'tables.html'
         });
-}]);
+    }]);

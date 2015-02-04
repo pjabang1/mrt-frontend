@@ -12,155 +12,141 @@
         <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css">
         <link rel="stylesheet" href="bower_components/ng-table/ng-table.css">
         <link rel="stylesheet" href="bower_components/ui-select/dist/select.css">
-		<link rel="stylesheet" type="text/css" href="bower_components/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="bower_components/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="bower_components/angular-loading-bar/build/loading-bar.css">
         <!-- endbuild --> 
-		<link rel="stylesheet" href="css/mrt.min.css">
-        <!-- SCRIPTS -->
-        <!-- build:js lib/js/main.min.js -->
-        <script type="text/javascript" src="bower_components/angular/angular.js"></script>
-        <script src="bower_components/d3/d3.js"></script>
-        <script src="bower_components/topojson/topojson.js"></script>
-        <script src="bower_components/angular-touch/angular-touch.js"></script>
-        <script src="bower_components/venturocket-angular-slider/build/angular-slider.js"></script>
-        <script type="text/javascript" src="bower_components/angular-animate/angular-animate.js"></script>
-        <script type="text/javascript" src="bower_components/angular-cookies/angular-cookies.js"></script>
-        <script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
-        <script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-        <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-        <script type="text/javascript" src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-        <script type="text/javascript" src="bower_components/ng-table/ng-table.js"></script>
-        <script type="text/javascript" src="bower_components/ui-select/dist/select.js"></script>
-		<script type="text/javascript" src="bower_components/clusterio/dist/js/clusterio.js"></script>
-		<script type="text/javascript" src="bower_components/echarts/build/dist/echarts-all.js"></script>
-        <!-- endbuild -->
-        <!-- SCRIPTS -->
+        <link rel="stylesheet" href="css/mrt.min.css">
+
     </head>
     <body ng-controller="MasterCtrl">
         <div id="page-wrapper" ng-class="{'active': toggle, 'logged-in': app.loggedIn}" ng-cloak>
-			<!-- Sidebar -->
-			<div id="sidebar-wrapper" ng-if="app.loggedIn === true">
-				<ul class="sidebar">
-					<li class="sidebar-main">
-						<a ng-click="toggleSidebar()">
-							Dashboard
-							<span class="menu-icon glyphicon glyphicon-transfer"></span>
-						</a>
-					</li>
-					<li class="sidebar-title"><span>NAVIGATION</span></li>
-					<li class="sidebar-list">
-						<a href="#/geomodel" active-link="active">Models <span class="menu-icon fa fa-adjust"></span></a>
-					</li>
-					<li class="sidebar-list">
-						<a href="#/geoindicator" active-link="active">Indicators <span class="menu-icon fa fa-tachometer"></span></a>
-					</li>
-					<li class="sidebar-list">
-						<a href="#/geography" active-link="active">Countries <span class="menu-icon fa fa-map-marker"></span></a>
-					</li>
-					<li class="sidebar-list">
-						<a href="#/geogroup" active-link="active">Country Groups <span class="menu-icon fa fa-globe"></span></a>
-					</li>
-					<li class="sidebar-list">
-						<a href="#/market" active-link="active">Markets <span class="menu-icon fa fa-random"></span></a>
-					</li>
-					<li class="sidebar-list">
-						<a href="#/forecast" active-link="active">Forecasts <span class="menu-icon fa fa-line-chart"></span></a>
-					</li>
-					<li class="sidebar-list">
-						<a href="#/admin" active-link="active">Admin <span class="menu-icon fa fa-cogs"></span></a>
-					</li>
-					<li class="sidebar-title separator"><span>QUICK LINKS</span></li>
-					<li class="sidebar-list">
-						<a href="#/my-favourite" active-link="active">Favourites <span class="menu-icon fa fa-bookmark"></span></a>
-						<a href="#/my-model" active-link="active">My Models <span class="menu-icon fa fa-briefcase"></span></a>
-					</li>
-				</ul>
-				<div class="sidebar-footer">
-					<div class="col-xs-4">
-						<a href="" target="_blank">
-							Manual
-						</a>
-					</div>
-					<div class="col-xs-4">
-						<a href="#" target="_blank" active-link="active">
-							About
-						</a>
-					</div>
-					<div class="col-xs-4" active-link="active">
-						<a href="#">
-							Support
-						</a>
-					</div>
-				</div>
-			</div>
-			<!-- End Sidebar -->
+            <!-- Sidebar -->
+            <div id="sidebar-wrapper" ng-if="app.loggedIn === true">
+                <ul class="sidebar">
+                    <li class="sidebar-main">
+                        <a ng-click="toggleSidebar()">
+                            Dashboard
+                            <span class="menu-icon glyphicon glyphicon-transfer"></span>
+                        </a>
+                    </li>
+                    <li class="sidebar-title"><span>NAVIGATION</span></li>
+                    <li class="sidebar-list">
+                        <a ui-sref="geomodel" ui-sref-active="active">Models <span class="menu-icon fa fa-adjust"></span></a>
+                    </li>
+                    <li class="sidebar-list">
+                        <a ui-sref="geoindicator" ui-sref-active="active">Indicators <span class="menu-icon fa fa-tachometer"></span></a>
+                    </li>
+                    <li class="sidebar-list">
+                        <a ui-sref="geoindicatorgroup" ui-sref-active="active">Indicator Groups <span class="menu-icon fa fa-tachometer"></span></a>
+                    </li>
+                    <li class="sidebar-list">
+                        <a ui-sref="geography" ui-sref-active="active">Countries <span class="menu-icon fa fa-map-marker"></span></a>
+                    </li>
+                    <li class="sidebar-list">
+                        <a ui-sref="geogroup" ui-sref-active="active">Country Groups <span class="menu-icon fa fa-globe"></span></a>
+                    </li>
+                    <li class="sidebar-list">
+                        <a ui-sref="geogroup" ui-sref-active="active">Markets <span class="menu-icon fa fa-random"></span></a>
+                    </li>
+                    <li class="sidebar-list">
+                        <a ui-sref="geogroup" ui-sref-active="active">Forecasts <span class="menu-icon fa fa-line-chart"></span></a>
+                    </li>
+                    <li class="sidebar-list">
+                        <a ui-sref="geogroup" ui-sref-active="active">Admin <span class="menu-icon fa fa-cogs"></span></a>
+                    </li>
+                    <li class="sidebar-title separator"><span>QUICK LINKS</span></li>
+                    <li class="sidebar-list">
+                        <a ui-sref="geogroup" ui-sref-active="active">Favourites <span class="menu-icon fa fa-bookmark"></span></a>
+                        <a ui-sref="geogroup" ui-sref-active="active">My Models <span class="menu-icon fa fa-briefcase"></span></a>
+                    </li>
+                </ul>
+                <div class="sidebar-footer">
+                    <div class="col-xs-4">
+                        <a href="" target="_blank">
+                            Manual
+                        </a>
+                    </div>
+                    <div class="col-xs-4">
+                        <a href="#" target="_blank" active-link="active">
+                            About
+                        </a>
+                    </div>
+                    <div class="col-xs-4" active-link="active">
+                        <a href="#">
+                            Support
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- End Sidebar -->
 
 
             <div id="content-wrapper">
                 <div class="page-content">
 
                     <!-- Header Bar -->
-					<div class="row header" ng-if="app.loggedIn == true">
-						<div class="col-xs-12">
-							<div class="user pull-right">
-								<div class="item dropdown">
-									<a href="#" class="dropdown-toggle">
-										<img src="img/avatar.jpg">
-									</a>
-									<ul class="dropdown-menu dropdown-menu-right">
-										<li class="dropdown-header">
-											Joe Bloggs
-										</li>
-										<li class="divider"></li>
-										<li class="link">
-											<a href="#">
-												Profile
-											</a>
-										</li>
-										<li class="link">
-											<a href="#">
-												Menu Item
-											</a>
-										</li>
-										<li class="link">
-											<a href="#">
-												Menu Item
-											</a>
-										</li>
-										<li class="divider"></li>
-										<li class="link">
-											<a href="#">
-												Logout
-											</a>
-										</li>
-									</ul>
-								</div>
+                    <div class="row header" ng-if="app.loggedIn == true">
+                        <div class="col-xs-12">
+                            <div class="user pull-right">
+                                <div class="item dropdown">
+                                    <a href="#" class="dropdown-toggle">
+                                        <img src="img/avatar.jpg">
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li class="dropdown-header">
+                                            Joe Bloggs
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li class="link">
+                                            <a href="#">
+                                                Profile
+                                            </a>
+                                        </li>
+                                        <li class="link">
+                                            <a href="#">
+                                                Menu Item
+                                            </a>
+                                        </li>
+                                        <li class="link">
+                                            <a href="#">
+                                                Menu Item
+                                            </a>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li class="link">
+                                            <a href="#">
+                                                Logout
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
 
-								<div class="item dropdown">
-									<a href="#" class="dropdown-toggle">
-										<i class="fa fa-bell-o"></i>
-									</a>
-									<ul class="dropdown-menu dropdown-menu-right">
-										<li class="dropdown-header">
-											Notifications
-										</li>
-										<li class="divider"></li>
-										<li>
-											<a href="#">Server Down!</a>
-										</li>
-									</ul>
-								</div>
-							</div>
-							<div class="meta">
-								<div class="page">
-									Dashboard
-								</div>
-								<div class="breadcrumb-links">
-									Home / Dashboard
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- End Header Bar -->
+                                <div class="item dropdown">
+                                    <a href="#" class="dropdown-toggle">
+                                        <i class="fa fa-bell-o"></i>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li class="dropdown-header">
+                                            Notifications
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <a href="#">Server Down!</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="meta">
+                                <div class="page">
+                                    Dashboard
+                                </div>
+                                <div class="breadcrumb-links">
+                                    Home / Dashboard
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Header Bar -->
 
                     <!-- Main Content -->
                     <section data-ui-view>
@@ -181,7 +167,30 @@
         </div><!-- End Page Wrapper -->
         <script type="text/ng-template" id="tables.html">
         </script>
-		<script type="text/javascript" src="js/mrt.min.js"></script>
+        <!-- SCRIPTS -->
+        <!-- build:js lib/js/main.min.js -->
+        <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/d3/d3.js"></script>
+        <script src="bower_components/topojson/topojson.js"></script>
+        <script src="bower_components/angular-touch/angular-touch.js"></script>
+        <script src="bower_components/venturocket-angular-slider/build/angular-slider.js"></script>
+        <script type="text/javascript" src="bower_components/angular-animate/angular-animate.js"></script>
+        <script type="text/javascript" src="bower_components/angular-cookies/angular-cookies.js"></script>
+        <script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+        <script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+        <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+        <script type="text/javascript" src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+        <script type="text/javascript" src="bower_components/ng-table/ng-table.js"></script>
+        <script type="text/javascript" src="bower_components/ui-select/dist/select.js"></script>
+        <script type="text/javascript" src="bower_components/clusterio/dist/js/clusterio.js"></script>
+        <script type="text/javascript" src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
+        
+        <!-- endbuild -->
+        <!-- build:copy lib/js/echarts-all.js -->
+        <<script type="text/javascript" src="bower_components/echarts/build/dist/echarts-all.js"></script>
+        <!-- endbuild -->
+        <!-- SCRIPTS -->
+        <script type="text/javascript" src="js/mrt.min.js"></script>
 
         <script type="text/javascript" src="tpls/mrt-tpl.js"></script>
     </body>

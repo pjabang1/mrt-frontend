@@ -3,7 +3,7 @@
         <div class="col-sm-3">
             <ui-select ng-model="response.geogroups.selected" on-select="getIndicatorValues($item, $model)">
                 <ui-select-match placeholder="Select Group">{{$select.selected.name}}</ui-select-match>
-                <ui-select-choices repeat="group in response.geogroups.data | filter: $select.search track by group.name">
+                <ui-select-choices repeat="group in response.geogroups.data | filter: $select.search track by group.id">
                     <div ng-bind-html="group.name | highlight: $select.search"></div>
                 </ui-select-choices>
             </ui-select>

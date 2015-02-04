@@ -1,0 +1,32 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3">
+            <ui-select ng-model="response.geogroups.selected" on-select="getIndicatorValues($item, $model)">
+                <ui-select-match placeholder="Select Group">{{$select.selected.name}}</ui-select-match>
+                <ui-select-choices repeat="group in response.geogroups.data | filter: $select.search track by group.id">
+                    <div ng-bind-html="group.name | highlight: $select.search"></div>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+        <div class="col-sm-3">
+            <select ng-model="data.params.date" ng-change="getValues()">
+                <option ng-repeat="option in data.dates" value="{{option}}">{{option}}</option>
+            </select>
+        </div>
+        <div class="col-sm-6">
+            <div class="btn-group pull-right">
+                
+                <label ng-repeat="row in response.parameters" class="btn btn-default" ng-model="data.selectedParameterId" btn-radio="row.id" ng-click="selectParameters(row.id)">{{ row.name }}</label>
+                <label class="btn btn-default" ng-model="data.selectedParameterId" btn-radio="'matrix'">Matrix</label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3 filters">
+            <geo-model-weight></geo-model-weight>
+        </div>
+        <div class="col-sm-9">
+            <geo-model-table></geo-model-table>
+        </div>
+    </div>
+</div>

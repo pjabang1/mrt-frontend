@@ -4,6 +4,12 @@ angular.module('MRT')
 
         var urlBase = env.apiUrl;
         var dataFactory = {};
+                
+        dataFactory.list = function(params) {
+            return $http.get(urlBase + '/geomodel/', {
+                params: params
+            });
+        };
 
         dataFactory.getValues = function(params) {
             return $http.get(urlBase + '/geomodel/values', {

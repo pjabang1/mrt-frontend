@@ -39,3 +39,21 @@
         -webkit-transform: scale(1.0);
     }
 }
+
+
+#loading-bar .bar {
+  background: @sidebarListLinkBorderColor;
+  height: 4px;
+}
+
+#loading-bar .peg {
+  -moz-box-shadow: @sidebarListLinkBorderColor 1px 0 6px 1px;
+  -ms-box-shadow: @sidebarListLinkBorderColor 1px 0 6px 1px;
+  -webkit-box-shadow: @sidebarListLinkBorderColor 1px 0 6px 1px;
+  box-shadow: @sidebarListLinkBorderColor 1px 0 6px 1px;
+}
+
+#loading-bar-spinner .spinner-icon {
+  border-top-color:  @sidebarListLinkBorderColor;
+  border-left-color: @sidebarListLinkBorderColor;
+}
