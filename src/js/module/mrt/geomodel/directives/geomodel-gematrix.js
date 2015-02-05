@@ -1,4 +1,4 @@
-angular.module('MRT').directive('GeoModelGeMatrix', GeoModelGeMatrix);
+angular.module('MRT').directive('geoModelGeMatrix', GeoModelGeMatrix);
 function GeoModelGeMatrix() {
     var directive = {
         restrict: 'AE',

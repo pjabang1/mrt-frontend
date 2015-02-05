@@ -15,9 +15,8 @@
         </div>
         <div class="col-sm-6">
             <div class="btn-group pull-right">
-                
                 <label ng-repeat="row in response.parameters" class="btn btn-default" ng-model="data.selectedParameterId" btn-radio="row.id" ng-click="selectParameters(row.id)">{{ row.name }}</label>
-                <label class="btn btn-default" ng-model="data.selectedParameterId" btn-radio="'matrix'">Matrix</label>
+                <label class="btn btn-default" ng-model="data.selectedParameterId" btn-radio="'matrix'" ng-click="updateMatrix(3, 3)">Matrix</label>
             </div>
         </div>
     </div>
@@ -25,8 +24,15 @@
         <div class="col-sm-3 filters">
             <geo-model-weight></geo-model-weight>
         </div>
-        <div class="col-sm-9">
+        <div class="col-sm-9" ng-show="data.selectedParameterId != 'matrix'">
             <geo-model-table></geo-model-table>
         </div>
+        <div class="col-sm-9" ng-show="data.selectedParameterId == 'matrix'">
+            <geo-model-ge-matrix></geo-model-ge-matrix>
+        </div>
     </div>
+    <div class="row">
+
+    </div>
+
 </div>
