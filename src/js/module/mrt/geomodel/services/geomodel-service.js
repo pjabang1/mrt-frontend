@@ -16,6 +16,12 @@ angular.module('MRT')
                 params: params
             });
         };
+		
+		dataFactory.new = function(params) {
+            return $http.get(urlBase + '/geomodel/new', {
+                params: params
+            });
+        };
 
         dataFactory.getIndicators = function(params) {
             return $http.get(urlBase + '/geomodel/indicators', {

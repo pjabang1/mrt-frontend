@@ -1,12 +1,83 @@
 <div class="geo-model-weight xxx-large">
-    <div class="row" ng-repeat="indicator in response.geoindicators.list | filter : {selected: true}">
-        <div class="col-sm-12" tooltip-animation="false" tooltip="Relevance Sort : {{ getRelevanceSortDescription(indicator) }}" tooltip-placement="top" popover-append-to-body="true">{{ indicator.name }} ({{ indicator._label }}) 
+	<div class="row">
+		<button class="btn btn-default btn-xs pull-left" ng-click="open('lg')">Add / Remove Indicators</button>
+		
+	</div>
+	<hr />
+    <div class="row" ng-repeat="indicator in response.geoindicators.list| filter : {selected: true}">
+        <div class="col-sm-12" tooltip-animation="false" tooltip="Relevance Sort : {{ getRelevanceSortDescription(indicator)}}" tooltip-placement="top" popover-append-to-body="true">{{ indicator.name}} ({{ indicator._label}}) 
             <a class="fa pull-right" ng-class="indicator.relevance_sort === 'ASC' ? 'fa-sort-numeric-asc' : 'fa-sort-numeric-desc'" ng-click="toggleRelevanceSort(indicator)"></a>
         </div>
         <div class="col-sm-12">
-            <slider floor="0" ceiling="100" ng-model="indicator.weight" ng-change="updateScores()">
-                
-            </slider>
+            <slider floor="0" ceiling="100" ng-model="indicator.weight" ng-change="updateScores()"></slider>
         </div>
     </div>
+	<script type="text/ng-template" id="indicator-update.html">
+        <div class="modal-header">
+		<h3 class="modal-title">Model</h3>
+        </div>
+        <div class="modal-body">
+		
+		<div class="container-fluid">
+			<div class="row">
+				<form name="form" ng-submit="submitForm(form.$valid)" novalidate>
+				<div class="col-sm-4">
+					
+					<div class="form-group" ng-class="{ 'has-error' : form.name.$invalid && !form.name.$pristine }">
+						<label>Name*</label>
+						<input name="name" class="form-control" ng-model="data.model.name" required />
+						<p class="help-block">Name is required.</p>
+					</div>
+					<div class="form-group">
+						<label>Description </label>
+						<textarea class="form-control" ng-model="data.model.description"></textarea>
+					</div>
+					<button type="submit" ng-disabled="!form.$valid" class="btn btn-primary pull-right">
+						Save Model
+					</button>
+				</div>
+				<div class="col-sm-8">
+					<tabset>
+						<tab ng-repeat="parameter in data.model.parameters" heading="{{parameter.axis}} axis">
+							
+							<div class="row">
+								<div class="col-sm-6">
+									List to select here 
+								</div>
+								<div class="col-sm-6">
+									{{parameter.name}}
+								</div>
+							</div>
+						</tab>
+					</tabset>
+				</div>
+			</div>
+			<div class="row">
+				
+					<div class="col-md-4">
+						Indicators - {{ data.list.length }} (Click indicator to add)
+						<hr />
+						<input type="text" class="form-control" ng-model="listSearchText" />
+						<ul class="list-group large">
+							<li class="list-group-item" ng-click="select(row.id)" ng-repeat="row in data.list | filter: { selected: '!true' } | filter : listSearchText">{{ row.name }}</li>
+						</ul>
+					</div>
+					<div class="col-md-8">
+						Selected Indicator (Click indicator to remove)
+						<hr />
+						<input type="text" class="form-control" ng-model="selectedListSearchText" />
+						<ul class="list-group large">
+							<li class="list-group-item" ng-click="deselect(row.id)" ng-repeat="row in data.list | filter: { selected: true} | filter : selectedListSearchText">
+							<span>{{ row.name }}</span>
+							</li>
+						</ul>
+					</div>
+				</form>
+			</div>
+		</div>
+        <div class="modal-footer">
+		<button class="btn btn-primary" ng-click="submitForm()">Save Indicators</button>
+		<button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
 </div>

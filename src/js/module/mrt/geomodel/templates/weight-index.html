@@ -15,8 +15,8 @@
         </div>
         <div class="col-sm-6">
             <div class="btn-group pull-right">
-                <label ng-repeat="row in response.parameters" class="btn btn-default" ng-model="data.selectedParameterId" btn-radio="row.id" ng-click="selectParameters(row.id)">{{ row.name }}</label>
-                <label class="btn btn-default" ng-model="data.selectedParameterId" btn-radio="'matrix'" ng-click="updateMatrix(3, 3)">Matrix</label>
+                <label ng-repeat="row in response.parameters" class="btn btn-mrt" ng-model="data.selectedParameterId" btn-radio="row.id" ng-click="selectParameters(row.id)">{{ row.name}}</label>
+                <label class="btn btn-mrt" ng-model="data.selectedParameterId" btn-radio="'matrix'" ng-click="updateMatrix(3, 3)">Matrix</label>
             </div>
         </div>
     </div>
@@ -34,5 +34,6 @@
     <div class="row">
 
     </div>
+
 
 </div>

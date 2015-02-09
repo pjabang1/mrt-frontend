@@ -79,7 +79,7 @@ function mrtMapChart($parse) {
 					text: ['High', 'Low'],
 					realtime: false,
 					calculable: true,
-					color: ['#c0392b', '#f1c40f', '#3498db']
+					color: ['#EB5367', '#ffce54', '#00bff3']
 				},
 				series: [
 					{

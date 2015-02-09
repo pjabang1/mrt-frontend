@@ -1,0 +1,22 @@
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Country</th>
+            <th ng-repeat="indicator in response.geoindicators.list | filter : {selected: true}"><a tooltip-animation="false" tooltip="{{ indicator.name }}" tooltip-placement="left">{{ indicator._label }}</a></th>
+            <th>Score</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="geography in data.values.geographies | orderBy:predicate:false">
+            <td>{{$index + 1}}</td>
+            <td>{{ geography.name }}</td>
+            <td ng-repeat="indicator in response.geoindicators.list | filter : {selected: true}" ng-init="i = getSelectedGeographyIndicator(geography, indicator)" style="background-color: rgba(52, 152, 219, {{ getSelectedScore(i)/indicator.maxScore}});">
+                {{ i.value | number }}
+            </td>
+            <td ng-init="" style="background-color: rgba(52, 152, 219, {{ geGeoSelectedParameterScore(geography)/data.selectedParameter.maxScore}});">
+                {{ geGeoSelectedParameterScore(geography) | number:2 }}
+            </td>
+        </tr>
+    </tbody>
+</table>

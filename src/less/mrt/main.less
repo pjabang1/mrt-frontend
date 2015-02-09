@@ -27,7 +27,7 @@ html {
 }
 body {
     /** background: #f3f3f3; **/
-    background: #fff;
+    background: @backgroundColor; 
     /** font-family: 'Roboto', sans-serif; **/
 	font-family: Montserrat;
     color: #546678 !important;
@@ -39,7 +39,8 @@ body {
     margin-right: 0 !important;
 }
 .row > div {
-    margin-bottom: 15px;
+	margin-top: 10px; 
+    margin-bottom: 10px; 
 }
 .alerts-container .alert:last-child {
     margin-bottom: 0;
@@ -106,4 +107,7 @@ div.input-mask {
 .col-centered{
     float: none;
     margin: 0 auto;
+}
+.form-control {
+	font-size: 100%;
 }

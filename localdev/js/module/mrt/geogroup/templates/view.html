@@ -1,0 +1,38 @@
+<div class="container-fluid">
+    <div class="row">
+        <form name="form" ng-submit="submitForm(form.$valid)" novalidate>
+            <div class="col-md-4">
+                Geography Group 
+                <button type="submit" ng-disabled="!form.$valid" class="btn btn-primary pull-right">
+                    Submit
+                </button>
+                <hr />
+                <div class="form-group" ng-class="{ 'has-error' : form.name.$invalid && !form.name.$pristine }">
+                    <label>Name*</label>
+                    <input name="name" class="form-control" ng-model="data.geogroup.name" required />
+                    <p class="help-block">Name is required.</p>
+                </div>
+                <div class="form-group">
+                    <label>Description </label>
+                    <textarea class="form-control" ng-model="data.geogroup.description"></textarea>
+                </div>
+            </div>
+            <div class="col-md-4">
+                Countries (Click country to add)
+                <hr />
+                <input type="text" class="form-control" ng-model="listSearchText" />
+                <ul class="list-group large">
+                    <li class="list-group-item" ng-click="select(row.id)" ng-repeat="row in data.geographies | filter: { selected: '!true' } | filter : listSearchText">{{ row.name }}</li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                Selected Countries (Click country to remove)
+                <hr />
+                <input type="text" class="form-control" ng-model="selectedListSearchText" />
+                <ul class="list-group large">
+                    <li class="list-group-item" ng-click="deselect(row.id)" ng-repeat="row in data.geographies | filter: { selected: true }">{{ row.name }}</li>
+                </ul>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,16 +1,34 @@
 angular.module('MRT')
-        .factory('geoIndicatorService', ['$http', 'env', function($http, env) {
+		.factory('geoIndicatorService', ['$http', 'env', 'localStorageService', function($http, env, localStorageService) {
 
 
-        var urlBase = env.apiUrl;
-        var dataFactory = {};
+				var urlBase = env.apiUrl;
+				var dataFactory = {};
 
-        dataFactory.getGeoIndicators = function(params) {
-            return $http.get(urlBase + '/geoindicator/', {
-                params: params
-            });
-        };
+				dataFactory.getGeoIndicators = function(params) {
+					return $http.get(urlBase + '/geoindicator/', {
+						params: params,
+						cache: true
+					});
+				};
+
+				dataFactory.getGeoIndicatorsFromCache = function(params) {
+					var key = 'geo_indicator_list';
+					var $return = localStorageService.get(key);
+					if (typeof $return !== "undefined" && $return.length)  {
+						return $return;
+					} else {
+						dataFactory.getGeoIndicators(params).success(function(data) {
+							localStorageService.set(key, data);
+							return data;
+
+						}).error(function(error) {
+							status = 'Unable to load customer data: ' + error.message;
+
+						});
+					}
+				};
 
 
-        return dataFactory;
-    }]);
+				return dataFactory;
+			}]);
