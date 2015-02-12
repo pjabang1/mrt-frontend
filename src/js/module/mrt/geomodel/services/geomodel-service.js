@@ -4,7 +4,7 @@ angular.module('MRT')
 
         var urlBase = env.apiUrl;
         var dataFactory = {};
-                
+
         dataFactory.list = function(params) {
             return $http.get(urlBase + '/geomodel/', {
                 params: params
@@ -16,11 +16,15 @@ angular.module('MRT')
                 params: params
             });
         };
-		
-		dataFactory.new = function(params) {
+
+        dataFactory.new = function(params) {
             return $http.get(urlBase + '/geomodel/new', {
                 params: params
             });
+        };
+        
+        dataFactory.replace = function(data) {
+            return $http.put(urlBase + '/geomodel/replace', data);
         };
 
         dataFactory.getIndicators = function(params) {
@@ -29,40 +33,7 @@ angular.module('MRT')
             });
         };
 
-        dataFactory.getFundSectors = function(fund) {
-            return $http.get(urlBase + '/fund/sectors', {
-                params: {fund: fund}
-            });
-        };
-
-        dataFactory.getFundCountries = function(fund) {
-            return $http.get(urlBase + '/fund/countries', {
-                params: {fund: fund}
-            });
-        };
-
-        dataFactory.getFunds = function() {
-            return $http.get(urlBase + '/fund/funds');
-        };
-
-
-
-        dataFactory.listCountries = function() {
-            return $http.get(urlBase);
-        };
-
-        dataFactory.listSectors = function() {
-            return $http.get(urlBase);
-        };
-
-        dataFactory.listFundTypes = function() {
-            return $http.get(urlBase);
-        };
-
-        dataFactory.listFundcategories = function() {
-            return $http.get(urlBase);
-        };
-
+        
 
         return dataFactory;
     }]);
