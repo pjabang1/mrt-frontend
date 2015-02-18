@@ -119,7 +119,8 @@ angular.module('MRT').controller('GeoModelWeightCtrl', ['$scope', '$filter', '$s
                         indicator.selected = false;
                     }
                 });
-            }
+            };
+            $scope.updateScores();
         };
 
         // get indicators
@@ -224,6 +225,15 @@ angular.module('MRT').controller('GeoModelWeightCtrl', ['$scope', '$filter', '$s
 
         };
 
+        $scope.getTotalIndicatorWeight = function(parameter_id) {
+            var indicators = $filter('filter')($scope.response.geoindicators.list, {parameter_id: parameter_id}, true);
+            var $return = 0;
+            angular.forEach(indicators, function(indicator, key) {
+                $return += indicator.weight;
+            });
+            return $return;
+        };
+
         $scope.updateScores = function() {
             var x = 3;
             var y = 3;
@@ -234,8 +244,10 @@ angular.module('MRT').controller('GeoModelWeightCtrl', ['$scope', '$filter', '$s
                 var axis = $scope.getParameterAxis(parameter.id);
                 var factor = (axis === 'x') ? x : y;
                 var maxScore = 0;
+                var totalIndicatorWeight = $scope.getTotalIndicatorWeight(parameter.id);
+                
                 angular.forEach($scope.data.values.geographies, function(geography, key) {
-                    var score = $scope.calculateGeographyScore(geography, parameter.id);
+                    var score = $scope.calculateGeographyScore(geography, parameter.id, totalIndicatorWeight);
 
                     if (score < parameter.minScore) {
                         parameter.minScore = score;
@@ -273,11 +285,11 @@ angular.module('MRT').controller('GeoModelWeightCtrl', ['$scope', '$filter', '$s
             // console.log($scope.response.parameters);
         };
 
-        $scope.calculateGeographyScore = function(geography, parameter_id) {
+        $scope.calculateGeographyScore = function(geography, parameter_id, totalIndicatorWeight) {
 
             var $return = 0;
             var indicators = $filter('filter')($scope.response.geoindicators.list, {parameter_id: parameter_id}, true);
-            var per = indicators.length * this.data.values.settings.max_weight;
+            var per = totalIndicatorWeight;
             var parameterAxis = $scope.getParameterAxis(parameter_id);
             var scoreKey = parameterAxis + 'Score';
             angular.forEach(indicators, function(indicator, key) {
@@ -404,7 +416,7 @@ angular.module('MRT').controller('GeoModelWeightCtrl', ['$scope', '$filter', '$s
 
     }]).controller('GeoModelCtrl', ['$scope', '$filter', '$modal', 'geoModelService', 'geoGroupService', function($scope, $filter, $modal, geoModelService, geoGroupService) {
         $scope.data = {};
-        
+
         $scope.load = function() {
 
             geoModelService.list($scope.data.params).success(function(data) {
@@ -414,7 +426,7 @@ angular.module('MRT').controller('GeoModelWeightCtrl', ['$scope', '$filter', '$s
 
             });
         };
-        
+
         $scope.load();
 
         $scope.open = function(size) {
