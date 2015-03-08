@@ -22,9 +22,6 @@ angular.module('MRT').controller('GeoIndicatorCtrl', ['$scope', '$filter', 'ngTa
     // $scope.data.selectedDate;
     $scope.data.params = {};
 
-    $scope.cache = $cacheFactory('GeoIndicatorViewCtrl');
-
-
 
     $scope.data.params.id = $stateParams.id;
     $scope.data.params.date;
