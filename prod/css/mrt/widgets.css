@@ -75,6 +75,9 @@
 .widget .widget-body {
   padding: 20px;
 }
+.widget .widget-body table th {
+  cursor: pointer;
+}
 .widget .widget-body table thead {
   background: #fafafa;
 }

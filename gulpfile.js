@@ -132,10 +132,8 @@ gulp.task('custom-less', function() {
 	gulp.src(paths.styles)
 			.pipe(less())
 			.pipe(concat('mrt.css'))
-			.pipe(gulp.dest(paths.outputDir + 'css'));
-
-	return gulp.src(paths.outputDir + 'css/mrt.css')
-			.pipe(minifyCss())
+        .pipe(gulp.dest(paths.outputDir + 'css/'))
+ 			.pipe(minifyCss())
 			.pipe(rename('mrt.min.css'))
 			.pipe(gulp.dest(paths.outputDir + 'css/'));
 });

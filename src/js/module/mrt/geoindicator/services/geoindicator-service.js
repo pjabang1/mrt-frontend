@@ -12,6 +12,20 @@ angular.module('MRT')
 					});
 				};
 
+                dataFactory.getGeoIndicatorTotals = function(params) {
+                    return $http.get(urlBase + '/geoindicator/total/', {
+                        params: params,
+                        cache: true
+                    });
+                };
+
+        dataFactory.getGeoIndicatorValues = function(params) {
+            return $http.get(urlBase + '/geoindicator/values', {
+                params: params,
+                cache: true
+            });
+        };
+
 				dataFactory.getGeoIndicatorsFromCache = function(params) {
 					var key = 'geo_indicator_list';
 					var $return = localStorageService.get(key);

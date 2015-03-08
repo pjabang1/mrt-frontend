@@ -1,0 +1,71 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3 pull-right">
+            <input class="form-control" ng-model="filterText" type="text">
+        </div>
+        <div class="col-md-2 pull-right">
+            <ui-select ng-model="data.selectedDate" on-select="getValues($item, $model)">
+                <ui-select-match placeholder="Select Date">{{$select.selected.date}}</ui-select-match>
+                <ui-select-choices repeat="date in data.dates | filter: $select.search track by date.date">
+                    <div ng-bind-html="date.date | highlight: $select.search"></div>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <rd-widget>
+                <rd-widget-header icon="fa-map-marker" title="{{ data.indicator.name }}">
+                    <!--<a href="#/geogroup-view/">Add Country Group</a>-->
+
+                </rd-widget-header>
+                <rd-widget-body classes="large no-padding">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                            <th ng-click="predicate = 'code'; reverse=!reverse">Code</th>
+                            <th ng-click="predicate = 'name'; reverse=!reverse">Name</th>
+                            <th ng-click="predicate = 'value'; reverse=!reverse" align="right"><span class="pull-right">Value</span>
+                            </th>
+                            <th ng-click="predicate = 'Date'; reverse=!reverse" align="right"><span class="pull-right">Date</span>
+                            </th>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="row in data.values | filter:filterText | orderBy:predicate:reverse" class="repeated-item">
+                                <td>
+                                    {{row.code}}
+                                </td>
+                                <td>
+                                    {{row.name}}
+                                </td>
+                                <td align="right">
+                                    {{row.value}}
+                                </td>
+                                <td align="right">
+                                    {{row.date}}
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </rd-widget-body>
+                <rd-widget-footer>
+                    <!--
+                    <ul class="pagination pagination-sm pull-right">
+                        <li><a href="#">&laquo;</a></li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">&raquo;</a></li>
+                    </ul>
+                    -->
+                    <div class="clearfix"></div>
+                </rd-widget-footer>
+
+            </rd-widget>
+        </div>
+    </div>
+</div>

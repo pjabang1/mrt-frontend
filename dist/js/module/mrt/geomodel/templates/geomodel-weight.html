@@ -1,6 +1,13 @@
-<div class="geo-model-weight">
-    <div class="row" ng-repeat="indicator in response.geoindicators.list">
-        <div class="col-sm-12">{{ indicator.name }} {{ indicator.max }} ({{ indicator._label }})</div><div class="col-sm-12"><slider floor="0" ceiling="100" ng-model="indicator.weight" ng-change="indicatorChanged(indicator)"></slider></div>
+<div class="geo-model-weight xxx-large">
+    <div class="row" ng-repeat="indicator in response.geoindicators.list| filter : {selected: true}">
+        <div class="col-sm-12" tooltip-animation="false" tooltip="Relevance Sort : {{ getRelevanceSortDescription(indicator)}}" tooltip-placement="top" popover-append-to-body="true">{{ indicator.name}} ({{ indicator._label}}) 
+            <a class="fa pull-right" ng-class="indicator.relevance_sort === 'ASC' ? 'fa-sort-numeric-asc' : 'fa-sort-numeric-desc'" ng-click="toggleRelevanceSort(indicator)"></a>
+        </div>
+        <div class="col-sm-12">
+            <slider floor="0" ceiling="100" ng-model="indicator.weight" ng-change="updateScores()"></slider>
+        </div>
     </div>
+	<script type="text/ng-template" id="indicator-update.html">
 
+    </script>
 </div>

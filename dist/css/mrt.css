@@ -342,6 +342,35 @@ hr {
   content: '';
 }
 
+.xxx-large {
+  height: 650px;
+  overflow-y: auto;
+}
+.xx-large {
+  height: 550px;
+  overflow-y: auto;
+}
+.x-large {
+  height: 450px;
+  overflow-y: auto;
+}
+.large {
+  height: 350px;
+  overflow-y: auto;
+}
+.auto {
+  height: auto;
+  overflow-y: auto;
+}
+.medium {
+  height: 250px;
+  overflow-y: auto;
+}
+.small {
+  height: 150px;
+  overflow-y: auto;
+}
+
 /* #592727 RED */
 /* #2f5927 GREEN */
 /* #30426a BLUE (default)*/
@@ -481,6 +510,20 @@ hr {
     transform: scale(1);
     -webkit-transform: scale(1);
   }
+}
+#loading-bar .bar {
+  background: #e99d1a;
+  height: 4px;
+}
+#loading-bar .peg {
+  -moz-box-shadow: #e99d1a 1px 0 6px 1px;
+  -ms-box-shadow: #e99d1a 1px 0 6px 1px;
+  -webkit-box-shadow: #e99d1a 1px 0 6px 1px;
+  box-shadow: #e99d1a 1px 0 6px 1px;
+}
+#loading-bar-spinner .spinner-icon {
+  border-top-color: #e99d1a;
+  border-left-color: #e99d1a;
 }
 
 /* #592727 RED */
@@ -641,8 +684,8 @@ hr {
 /* Fonts */
 @font-face {
   font-family: 'Montserrat';
-  src: url('../../fonts/montserrat-regular-webfont.eot');
-  src: url('../../fonts/montserrat-regular-webfont.eot?#iefix') format('embedded-opentype'), url('../../fonts/montserrat-regular-webfont.woff') format('woff'), url('../../fonts/montserrat-regular-webfont.ttf') format('truetype'), url('../../fonts/montserrat-regular-webfont.svg#montserratregular') format('svg');
+  src: url('../fonts/montserrat-regular-webfont.eot');
+  src: url('../fonts/montserrat-regular-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/montserrat-regular-webfont.woff') format('woff'), url('../fonts/montserrat-regular-webfont.ttf') format('truetype'), url('../fonts/montserrat-regular-webfont.svg#montserratregular') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -650,7 +693,7 @@ hr {
 @media screen and (-webkit-min-device-pixel-ratio:0) {
     @font-face {
       font-family: 'Montserrat';
-      src: url('../../fonts/montserrat-regular-webfont.svg') format('svg');
+      src: url('../fonts/montserrat-regular-webfont.svg') format('svg');
     }
     select {
       font-family: Arial, Helvetica, sans-serif;
@@ -663,7 +706,7 @@ html {
 }
 body {
   /** background: #f3f3f3; **/
-  background: #fff;
+  background: #ffffff;
   /** font-family: 'Roboto', sans-serif; **/
   font-family: Montserrat;
   color: #546678 !important;
@@ -675,7 +718,8 @@ body {
   margin-right: 0 !important;
 }
 .row > div {
-  margin-bottom: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .alerts-container .alert:last-child {
   margin-bottom: 0;
@@ -739,6 +783,80 @@ div.input-mask {
 .col-centered {
   float: none;
   margin: 0 auto;
+}
+.form-control {
+  font-size: 100%;
+}
+
+/* #592727 RED */
+/* #2f5927 GREEN */
+/* #30426a BLUE (default)*/
+/** 
+/ Palette
+// -------
+
+@turquoise:        #1abc9c;
+@green-sea:        #16a085;
+
+@emerald:          #2ecc71;
+@nephritis:        #27ae60;
+
+@peter-river:      #3498db;
+@belize-hole:      #2980b9;
+
+@amethyst:         #9b59b6;
+@wisteria:         #8e44ad;
+
+@wet-asphalt:      #34495e;
+@midnight-blue:    #2c3e50;
+
+@sun-flower:       #f1c40f;
+@orange:           #f39c12;
+
+@carrot:           #e67e22;
+@pumpkin:          #d35400;
+
+@alizarin:         #e74c3c;
+@pomegranate:      #c0392b;
+
+@clouds:           #ecf0f1;
+@silver:           #bdc3c7;
+
+@concrete:         #95a5a6;
+@asbestos:         #7f8c8d;
+
+
+**/
+/**
+@baseColor1: #8e44ad;
+@baseColor2: #2c3e50;
+
+**/
+/* Sidebar background color */
+/* Sidebar header and footer color */
+/* Sidebar title text colour */
+/*#627cb7*/
+table.matrix td {
+  height: 100px;
+  vertical-align: middle !important;
+  text-align: center;
+  width: 33% !important;
+}
+table.matrix td .label {
+  float: left;
+  margin-right: 3px;
+  margin-bottom: 3px;
+  font-size: 120%;
+}
+table.matrix tr.header td,
+table.matrix td.header {
+  width: auto !important;
+  height: auto !important;
+  font-size: 200%;
+}
+table.matrix .rotate {
+  transform: translate(0, 0) rotate(270deg);
+  display: block;
 }
 
 /* #592727 RED */
@@ -913,7 +1031,7 @@ slider span.pointer {
 }
 slider span.pointer:after {
   content: '';
-  background-color: #3498db;
+  background-color: #34495e;
   width: 8px;
   height: 8px;
   position: absolute;
@@ -926,7 +1044,7 @@ slider span.pointer:hover:after {
   background-color: #000;
 }
 slider span.pointer.active:after {
-  background-color: #3498db;
+  background-color: #34495e;
 }
 slider span.bubble {
   cursor: default;
@@ -2090,7 +2208,7 @@ slider div.bubble.limit,
  * Sidebar
  */
 #sidebar-wrapper {
-  background: #3498db;
+  background: #34495e;
 }
 ul.sidebar .sidebar-main a,
 .sidebar-footer,
@@ -2098,7 +2216,7 @@ ul.sidebar .sidebar-list a:hover,
 ul.sidebar .sidebar-list a.active,
 #page-wrapper:not(.active) ul.sidebar .sidebar-title.separator {
   /* Sidebar header and footer color */
-  background: #2b94d9;
+  background: #304457;
 }
 ul.sidebar {
   position: absolute;
@@ -2132,7 +2250,7 @@ ul.sidebar .sidebar-main .menu-icon {
   line-height: 60px;
 }
 ul.sidebar .sidebar-title {
-  color: #b6daf2;
+  color: #7795b4;
   font-size: 12px;
   height: 35px;
   line-height: 40px;
@@ -2174,7 +2292,8 @@ ul.sidebar .sidebar-list .menu-icon {
   height: 2px;
   margin: 13px 0;
 }
-#page-wrapper:not(.active) ul.sidebar .sidebar-list a:hover span {
+#page-wrapper:not(.active) ul.sidebar .sidebar-list a:hover span,
+#page-wrapper:not(.active) ul.sidebar .sidebar-list a.active span {
   border-left: 3px solid #e99d1a;
   text-indent: 22px;
 }
@@ -2282,7 +2401,7 @@ ul.sidebar .sidebar-list .menu-icon {
 }
 #tab-metric .nav-tabs.nav-justified > li > a {
   border-top-width: 2px;
-  border-top-color: #3498db;
+  border-top-color: #34495e;
   text-align: left;
   height: auto;
   border-radius: 0 0 0 0;
@@ -2309,7 +2428,7 @@ ul.sidebar .sidebar-list .menu-icon {
 #tab-metric .nav-tabs.nav-justified .active > a:hover {
   cursor: pointer;
   border-top-width: 2px;
-  border-top-color: #3498db;
+  border-top-color: #34495e;
   border-bottom-color: #fff;
   border-left: 0px;
   border-right: 0px;
@@ -2322,6 +2441,61 @@ ul.sidebar .sidebar-list .menu-icon {
 #tab-metric .sparkcircle {
   fill: #f00;
   stroke: none;
+}
+
+/* #592727 RED */
+/* #2f5927 GREEN */
+/* #30426a BLUE (default)*/
+/** 
+/ Palette
+// -------
+
+@turquoise:        #1abc9c;
+@green-sea:        #16a085;
+
+@emerald:          #2ecc71;
+@nephritis:        #27ae60;
+
+@peter-river:      #3498db;
+@belize-hole:      #2980b9;
+
+@amethyst:         #9b59b6;
+@wisteria:         #8e44ad;
+
+@wet-asphalt:      #34495e;
+@midnight-blue:    #2c3e50;
+
+@sun-flower:       #f1c40f;
+@orange:           #f39c12;
+
+@carrot:           #e67e22;
+@pumpkin:          #d35400;
+
+@alizarin:         #e74c3c;
+@pomegranate:      #c0392b;
+
+@clouds:           #ecf0f1;
+@silver:           #bdc3c7;
+
+@concrete:         #95a5a6;
+@asbestos:         #7f8c8d;
+
+
+**/
+/**
+@baseColor1: #8e44ad;
+@baseColor2: #2c3e50;
+
+**/
+/* Sidebar background color */
+/* Sidebar header and footer color */
+/* Sidebar title text colour */
+/*#627cb7*/
+.form-group .help-block {
+  display: none;
+}
+.form-group.has-error .help-block {
+  display: block;
 }
 
 /* #592727 RED */

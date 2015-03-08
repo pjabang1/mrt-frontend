@@ -8,39 +8,32 @@
     <div class="row">
         <div class="col-md-12">
             <rd-widget>
-                <rd-widget-header icon="fa-map-marker" title="Indicators">
-                    <!--<a href="#/geogroup-view/">Add Country Group</a>-->
+                <rd-widget-header icon="fa-map-marker" title="Indicator Groups">
+                    <a href="#/geoindicatorgroup-view/">Add Indicator Group</a>
                 </rd-widget-header>
                 <rd-widget-body classes="large no-padding">
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
-                            <th  ng-click="predicate = 'code'; reverse=!reverse">Code</th>
                             <th  ng-click="predicate = 'name'; reverse=!reverse">Name</th>
-                            <th  ng-click="predicate = 'indicator_count'; reverse=!reverse">Indicators</th>
-                            <th  ng-click="predicate = 'geography_count'; reverse=!reverse">Countries</th>
+                            <th  ng-click="predicate = 'description'; reverse=!reverse">Description</th>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="row in data.geoindicators | filter:filterText | orderBy:predicate:reverse">
-                                    <td>
-                                        <a ui-sref="geoindicator-view({id: row.id})">{{row.code}}</a>
+                                <tr ng-repeat="row in data.geoindicatorgroups | filter:filterText | orderBy:predicate:reverse">
+                                    <td data-title="'Name'">
+                                        <a href="#/geoindicatorgroup-view/{{row.id}}">{{row.name}}</a>
                                     </td>
-                                    <td>
-                                        <a ui-sref="geoindicator-view({id: row.id})">{{row.name}}</a>
-                                    </td>
-                                    <td align="right">
-                                        {{row.indicator_count}}
-                                    </td>
-                                    <td align="right">
-                                        {{row.geography_count}}
+                                    <td data-title="'Description'">
+                                        {{row.description}}
                                     </td>
                                 </tr>
                             </tbody>
                         </table> 
                     </div>
                 </rd-widget-body>
+                <!--
                 <rd-widget-footer>
-                    <!--
+                    
                     <ul class="pagination pagination-sm pull-right">
                         <li><a href="#">&laquo;</a></li>
                         <li><a href="#">1</a></li>
@@ -50,10 +43,10 @@
                         <li><a href="#">5</a></li>
                         <li><a href="#">&raquo;</a></li>
                     </ul>
-                    -->
+                    
                     <div class="clearfix"></div>
                 </rd-widget-footer>
-
+                -->
             </rd-widget>
         </div> 
     </div>
