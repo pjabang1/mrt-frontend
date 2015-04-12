@@ -1,10 +1,10 @@
 /**
  * Master Controller
  */
-angular.module('MRT')
-		.controller('MasterCtrl', ['$scope', '$cookieStore', MasterCtrl]);
+ angular.module('MRT')
+ .controller('MasterCtrl', ['$scope', '$cookieStore', MasterCtrl]);
 
-function MasterCtrl($scope, $cookieStore) {
+ function MasterCtrl($scope, $cookieStore) {
 	/**
 	 * Sidebar Toggle & Cookie Control
 	 *
@@ -28,6 +28,41 @@ function MasterCtrl($scope, $cookieStore) {
 
 	$scope.getWidth = function() {
 		return window.innerWidth;
+	};
+
+	$scope.chartData = {
+		title: {
+			text: 'World Population (2015)',
+			subtext: 'from United Nations, Total population, both sexes combined, as of 1 July (thousands)'
+		},
+		dataRange: {
+			min: 0,
+			max: 1000000,
+			text: ['High', 'Low'],
+			realtime: false,
+			calculable: true,
+			color: ['#ffce54', '#00bff3', '#EB5367']
+		},
+		series: [
+		{
+			name: 'World Population (2010)',
+			type: 'map',
+			mapType: 'world',
+			roam: true,
+			mapLocation: {
+				y: 60
+			},
+			itemStyle: {
+				emphasis: {label: {show: true}}
+			},
+
+			data: [
+			{name: 'Afghanistan', value: 28397.812},
+			{name: 'Angola', value: 19549.124},
+			{name: 'Albania', value: 3150.143}
+			]
+		}
+		]
 	};
 
 	$scope.$watch($scope.getWidth, function(newValue, oldValue)

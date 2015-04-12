@@ -59,7 +59,8 @@ angular.module('MRT').config(['$stateProvider', '$urlRouterProvider',
             .state('geoindicator', {
                 url: '/geoindicator',
                 controller: 'GeoIndicatorCtrl',
-                templateUrl: 'module/mrt/geoindicator/templates/index.html'
+                templateUrl: 'module/mrt/geoindicator/templates/index.html',
+
             })
             .state('geoindicator-view', {
                 url: '/geoindicator/view/:id',
