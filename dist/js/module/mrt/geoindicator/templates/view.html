@@ -1,0 +1,142 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3 pull-right">
+            <input class="form-control" ng-model="filterText" type="text" placeholder="Search">
+        </div>
+        <div class="col-md-2 pull-right">
+            <ui-select ng-model="data.selectedDate" on-select="getValues($item, $model)">
+            <ui-select-match placeholder="Select Date">{{$select.selected.date}}</ui-select-match>
+            <ui-select-choices repeat="date in data.dates | filter: $select.search track by date.date">
+            <div ng-bind-html="date.date | highlight: $select.search"></div>
+        </ui-select-choices>
+    </div>
+        <div class="col-md-4 pull-right">
+            <ui-select ng-model="data.selectedIndicator" on-select="selectIndicator($item, $model)">
+            <ui-select-match placeholder="Select Indicator">{{$select.selected.name}}</ui-select-match>
+            <ui-select-choices repeat="indicator in data.indicators | filter: $select.search track by indicator.name">
+            <div ng-bind-html="indicator.name | highlight: $select.search"></div>
+        </ui-select-choices>
+    </ui-select>
+</div>
+
+</div>
+<div class="row">
+
+    <mrt-map-chart class="col-xs-9 widget-body large" chart-data="chartData"></mrt-map-chart>  
+<div class="col-xs-3">
+    <table class="table summary-table">
+      
+        <tr>
+            <td>
+                <span class="small-label">Minimum : <br />{{ summary.min.name }}</span>
+                <h3>{{ summary.min.value }}</h3>
+            </td> 
+            <td>
+                <span class="small-label">Maximum : <br />{{ summary.max.name }}</span>
+                <h3>{{ summary.max.value }}</h3>
+            </td>
+        </tr>
+        
+        <tr>
+            <td>Year With Most Data</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Year With Least Data</td> 
+            <td></td>
+        </tr>
+        <tr>
+            <td>Data Completion</td>  
+            <td>
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="{{ summary.percentageCompletion }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ summary.percentageCompletion }}%;">
+                    {{ summary.percentageCompletion }}%
+                </div>
+            </div>
+        </td>
+        </tr>
+    </table>
+</div>
+</div>
+<div class="row">
+    <div class="col-xs-2">
+        <span class="small-label">Minimum : <br />{{ summary.min.name }}</span>
+                <h3>{{ summary.min.value }}</h3>
+    </div>
+    <div class="col-xs-2"> 
+         <span class="small-label">Maximum : <br />{{ summary.max.name }}</span>
+                <h3>{{ summary.max.value }}</h3>
+    </div>
+    <div class="col-xs-2">
+        <span class="small-label">Maximum : <br />{{ summary.max.name }}</span>
+                <h3>{{ summary.max.value }}</h3>
+    </div>
+    <div class="col-xs-2">
+        <span class="small-label">Highest Data Completion<br />&nbsp;</span> 
+                <h3>2000</h3>
+    </div>
+    <div class="col-xs-2">
+        <span class="small-label">Lowest Data Completion<br />&nbsp;</span>
+                <h3>2015</h3>
+    </div>
+    <div class="col-xs-2">
+        <span class="small-label">Data Completion<br />&nbsp;</span> 
+          <h3>{{ summary.percentageCompletion }}%</h3>
+    </div>
+</div> 
+<div class="row">
+<div class="col-xs-12">
+    <rd-widget>
+    <rd-widget-header icon="fa-map-marker" title="{{ data.indicator.name }}">
+    <!--<a href="#/geogroup-view/">Add Country Group</a>-->
+
+</rd-widget-header>
+<rd-widget-body classes="large no-padding">
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <th ng-click="predicate = 'code'; reverse=!reverse">Code</th>
+            <th ng-click="predicate = 'name'; reverse=!reverse">Name</th>
+            <th ng-click="predicate = 'value'; reverse=!reverse" align="right"><span class="pull-right">Value</span>
+            </th>
+            <th ng-click="predicate = 'Date'; reverse=!reverse" align="right"><span class="pull-right">Date</span>
+            </th>
+        </thead>
+        <tbody>
+            <tr ng-repeat="row in data.values | filter:filterText | orderBy:predicate:reverse" class="repeated-item">
+                <td>
+                    {{row.code}}
+                </td>
+                <td>
+                    {{row.name}}
+                </td>
+                <td align="right">
+                    {{row.value}}
+                </td>
+                <td align="right">
+                    {{row.date}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</rd-widget-body>
+<rd-widget-footer>
+                    <!--
+                    <ul class="pagination pagination-sm pull-right">
+                        <li><a href="#">&laquo;</a></li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">&raquo;</a></li>
+                    </ul>
+                -->
+                <div class="clearfix"></div>
+            </rd-widget-footer>
+
+        </rd-widget>
+    </div>
+</div>
+</div>

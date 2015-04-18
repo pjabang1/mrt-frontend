@@ -30,6 +30,8 @@
 		return window.innerWidth;
 	};
 
+
+
 	$scope.chartData = {
 		title: {
 			text: 'World Population (2015)',
@@ -55,13 +57,63 @@
 			itemStyle: {
 				emphasis: {label: {show: true}}
 			},
+			markPoint : {
+                symbol:'emptyCircle',
+                symbolSize : function (v){
+                    return 10 + v/100
+                },
+                effect : {
+                    show: true,
+                    shadowBlur : 0
+                },
+                itemStyle:{
+                    normal:{
+                        label:{show:true}
+                    }
+                },
+                data : [
+                  // {name: 'Afghanistan', value: 100},
+				   {name: 'Angola', value: 20},
+				   //{name: 'Albania', value: 50}
 
+                ]
+            },
+  			 geoCoord: {
+            	'Angola': [-16.56666666, 13.46666666]
+            },
 			data: [
 			{name: 'Afghanistan', value: 28397.812},
 			{name: 'Angola', value: 19549.124},
 			{name: 'Albania', value: 3150.143}
 			]
-		}
+		 },
+		 {
+            name: 'Top5',
+            type: 'map',
+            mapType: 'world',
+            roam: true,
+            data:[],
+            markPoint : {
+                symbol:'emptyCircle',
+                symbolSize : function (v){
+                    return 10 + v/100
+                },
+                effect : {
+                    show: true,
+                    shadowBlur : 0
+                },
+                itemStyle:{
+                    normal:{
+                        label:{show:true}
+                    }
+                },
+                data : [
+                   // {name: 'Albania', value: 193},
+                    //{name: 'Angola', value: 50},
+
+                ]
+            }
+        }
 		]
 	};
 

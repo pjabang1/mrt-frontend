@@ -1,9 +1,5 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-3 pull-left">
-            <span ng-if="data.playing!=true" ng-click="startPlay()"><i class="fa fa-play"></i> Play </span>
-            <span ng-if="data.playing==true" ng-click="stopPlay()"><i class="fa fa-pause"></i> Stop </span> 
-        </div>
         <div class="col-md-3 pull-right">
             <input class="form-control" ng-model="filterText" type="text" placeholder="Search">
         </div>
@@ -32,7 +28,40 @@
 <div class="row">
 
     <mrt-map-chart class="col-xs-9 widget-body large" chart-data="chartData"></mrt-map-chart>  
-     <mrt-chart class="col-md-3 widget-body large" style="" chart-data="dataCompletionChartData"></mrt-chart>
+    <div class="col-xs-3">
+        <table class="table summary-table">
+
+            <tr>
+                <td>
+                    <span class="small-label">Minimum : <br />{{ summary.min.name }}</span>
+                    <h3>{{ summary.min.value }}</h3>
+                </td> 
+                <td>
+                    <span class="small-label">Maximum : <br />{{ summary.max.name }}</span>
+                    <h3>{{ summary.max.value }}</h3>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Year With Most Data</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Year With Least Data</td> 
+                <td></td>
+            </tr>
+            <tr>
+                <td>Data Completion</td>  
+                <td>
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" aria-valuenow="{{ summary.percentageCompletion }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ summary.percentageCompletion }}%;">
+                        {{ summary.percentageCompletion }}%
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
 </div>
 
 <div class="row">

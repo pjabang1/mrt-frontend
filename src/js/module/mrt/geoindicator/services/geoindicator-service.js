@@ -1,48 +1,78 @@
 angular.module('MRT')
-		.factory('geoIndicatorService', ['$http', 'env', 'localStorageService', function($http, env, localStorageService) {
+.factory('geoIndicatorService', ['$http', 'env', 'localStorageService', 'CacheFactory', function($http, env, localStorageService, CacheFactory) {
 
 
-				var urlBase = env.apiUrl;
-				var dataFactory = {};
+	var urlBase = env.apiUrl;
+	var dataFactory = {};
 
-				dataFactory.getGeoIndicators = function(params) {
-					return $http.get(urlBase + '/geoindicator/', {
-						params: params,
-						cache: true
-					});
-				};
+	if (!CacheFactory.get('geoIndicatorsCache')) {
+      // or CacheFactory('bookCache', { ... });
+      CacheFactory.createCache('geoIndicatorsCache', {
+        deleteOnExpire: 'aggressive',
+        recycleFreq: 60 * 60 * 1000,
+        storageMode: 'localStorage'
+      });
+    }
 
-                dataFactory.getGeoIndicatorTotals = function(params) {
-                    return $http.get(urlBase + '/geoindicator/total/', {
-                        params: params,
-                        cache: true
-                    });
-                };
-
-        dataFactory.getGeoIndicatorValues = function(params) {
-            return $http.get(urlBase + '/geoindicator/values', {
-                params: params,
-                cache: true
-            });
-        };
-
-				dataFactory.getGeoIndicatorsFromCache = function(params) {
-					var key = 'geo_indicator_list';
-					var $return = localStorageService.get(key);
-					if (typeof $return !== "undefined" && $return.length)  {
-						return $return;
-					} else {
-						dataFactory.getGeoIndicators(params).success(function(data) {
-							localStorageService.set(key, data);
-							return data;
-
-						}).error(function(error) {
-							status = 'Unable to load customer data: ' + error.message;
-
-						});
-					}
-				};
+    if (!CacheFactory.get('geoIndicatorTotalCache')) {
+      CacheFactory.createCache('geoIndicatorTotalCache', {
+        deleteOnExpire: 'aggressive',
+        recycleFreq: 60 * 60 * 1000,
+        storageMode: 'localStorage'
+      });
+    }
 
 
-				return dataFactory;
-			}]);
+	var geoIndicatorsCache = CacheFactory.get('geoIndicatorsCache');
+	var geoIndicatorTotalCache = CacheFactory.get('geoIndicatorTotalCache');
+
+	dataFactory.getGeoIndicators = function(params) {
+		return $http.get(urlBase + '/geoindicator/', {
+			// params: params,
+			cache: geoIndicatorsCache
+		});
+	};
+
+
+	dataFactory.getGeoIndicatorAverages= function(params) {
+		return $http.get(urlBase + '/geoindicator/average/', {
+			params: params,
+			cache: true
+		});
+	};
+
+
+	dataFactory.getGeoIndicatorTotals = function(params) {
+		return $http.get(urlBase + '/geoindicator/total/', {
+			params: params,
+			cache: geoIndicatorTotalCache
+		});
+	};
+
+	dataFactory.getGeoIndicatorValues = function(params) {
+		return $http.get(urlBase + '/geoindicator/values', {
+			params: params,
+			cache: true
+		});
+	};
+
+	dataFactory.getGeoIndicatorsFromCache = function(params) {
+		var key = 'geo_indicator_list';
+		var $return = localStorageService.get(key);
+		if (typeof $return !== "undefined" && $return.length)  {
+			return $return;
+		} else {
+			dataFactory.getGeoIndicators(params).success(function(data) {
+				localStorageService.set(key, data);
+				return data;
+
+			}).error(function(error) {
+				status = 'Unable to load customer data: ' + error.message;
+
+			});
+		}
+	};
+
+
+	return dataFactory;
+}]);

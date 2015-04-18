@@ -13,18 +13,26 @@
                 </rd-widget-header>
                 <rd-widget-body classes="large no-padding">
                     <div class="table-responsive">
-                        <table class="table">
+                        <table class="table"> 
                             <thead>
                             <th  ng-click="predicate = 'code'; reverse=!reverse">Code</th>
                             <th  ng-click="predicate = 'name'; reverse=!reverse">Name</th>
+                            <th  ng-click="predicate = 'indicator_count'; reverse=!reverse">Indicators</th>
+                            <th  ng-click="predicate = 'geography_count'; reverse=!reverse">Countries</th>
                             </thead>
                             <tbody>
                                 <tr ng-repeat="row in data.geoindicators | filter:filterText | orderBy:predicate:reverse">
                                     <td>
-                                        {{row.code}}
+                                        <a ui-sref="geoindicator-view({id: row.id})">{{row.code}}</a>
                                     </td>
                                     <td>
-                                        {{row.name}}
+                                        <a ui-sref="geoindicator-view({id: row.id})">{{row.name}}</a>
+                                    </td>
+                                    <td align="right">
+                                        {{row.indicator_count}}
+                                    </td>
+                                    <td align="right">
+                                        {{row.geography_count}}
                                     </td>
                                 </tr>
                             </tbody>
