@@ -101,8 +101,11 @@ function updateChartOptions() {
 			updateChartOptions();
 		});
 
+		window.onresize = function() {
+			myChart.resize();
+		};
 
-		window.onresize = myChart.resize;
+
 	}
 };
 return directive;

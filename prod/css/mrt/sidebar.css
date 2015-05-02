@@ -38,7 +38,7 @@
 
 **/
 /**
-@baseColor1: #8e44ad;
+@baseColor1: #8e44ad; 
 @baseColor2: #2c3e50;
 
 **/
@@ -50,7 +50,7 @@
  * Sidebar
  */
 #sidebar-wrapper {
-  background: #34495e;
+  background: #2a2f36;
 }
 ul.sidebar .sidebar-main a,
 .sidebar-footer,
@@ -58,7 +58,7 @@ ul.sidebar .sidebar-list a:hover,
 ul.sidebar .sidebar-list a.active,
 #page-wrapper:not(.active) ul.sidebar .sidebar-title.separator {
   /* Sidebar header and footer color */
-  background: #304457;
+  background: #262a30;
 }
 ul.sidebar {
   position: absolute;
@@ -70,29 +70,38 @@ ul.sidebar {
   text-indent: 20px;
   overflow-x: hidden;
   overflow-y: auto;
+  width: 250px;
+}
+ul.sidebar ul {
+  padding: 0;
+  margin: 0;
 }
 ul.sidebar li a {
   color: #ffffff;
   display: block;
   float: left;
   text-decoration: none;
-  width: 250px;
+  width: 100%;
 }
 ul.sidebar .sidebar-main {
   height: 65px;
 }
 ul.sidebar .sidebar-main a {
-  font-size: 120%;
+  font-size: 180%;
   line-height: 60px;
+  font-size: 1.875rem;
+  text-transform: uppercase;
+  letter-spacing: .125rem;
 }
 ul.sidebar .sidebar-main .menu-icon {
+  color: #00bff3;
   float: right;
   font-size: 18px;
   padding-right: 28px;
   line-height: 60px;
 }
 ul.sidebar .sidebar-title {
-  color: #7795b4;
+  color: #6d7a8c;
   font-size: 12px;
   height: 35px;
   line-height: 40px;
@@ -121,7 +130,21 @@ ul.sidebar .sidebar-list .menu-icon {
   float: right;
   padding-right: 29px;
   line-height: 40px;
-  width: 70px;
+}
+ul.sidebar .child-sidebar-list a {
+  text-indent: 35px;
+}
+ul.sidebar .child-sidebar-list a:hover,
+ul.sidebar .child-sidebar-list a.active {
+  text-indent: 32px;
+}
+ul.sidebar .child-sidebar-list a:hover .menu-icon,
+ul.sidebar .child-sidebar-list a.active .menu-icon {
+  text-indent: 35px;
+}
+#page-wrapper:not(.active) ul {
+  margin: 0px;
+  padding: 0px;
 }
 #page-wrapper:not(.active) ul.sidebar {
   bottom: 0;
@@ -134,10 +157,16 @@ ul.sidebar .sidebar-list .menu-icon {
   height: 2px;
   margin: 13px 0;
 }
+#page-wrapper:not(.active) ul.sidebar .sidebar-list a {
+  text-indent: 25px;
+}
 #page-wrapper:not(.active) ul.sidebar .sidebar-list a:hover span,
 #page-wrapper:not(.active) ul.sidebar .sidebar-list a.active span {
   border-left: 3px solid #e99d1a;
   text-indent: 22px;
+}
+#page-wrapper:not(.active) ul.sidebar .menu-icon {
+  width: 70px;
 }
 #page-wrapper:not(.active) .sidebar-footer {
   display: none;

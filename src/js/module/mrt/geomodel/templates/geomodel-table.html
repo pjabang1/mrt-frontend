@@ -10,7 +10,7 @@
     <tbody>
         <tr ng-repeat="geography in data.values.geographies | orderBy:predicate:false">
             <td>{{$index + 1}}</td>
-            <td>{{ geography.name }}</td>
+            <td><span class="flag {{ geography.code | lowercase }}"></span> {{ geography.name }}</td>
             <td ng-repeat="indicator in response.geoindicators.list | filter : {selected: true}" ng-init="i = getSelectedGeographyIndicator(geography, indicator)" style="background-color: rgba(52, 152, 219, {{ getSelectedScore(i)/indicator.maxScore}});">
                 {{ i.value | number }}
             </td>

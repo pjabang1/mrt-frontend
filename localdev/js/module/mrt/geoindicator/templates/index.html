@@ -21,7 +21,7 @@
                             <th  ng-click="predicate = 'geography_count'; reverse=!reverse">Countries</th>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="row in data.geoindicators | filter:filterText | orderBy:predicate:reverse">
+                                <tr ng-repeat="row in data.geoindicators | filter:filterText | orderBy:predicate:reverse track by row.id">
                                     <td>
                                         <a ui-sref="geoindicator-view({id: row.id})">{{row.code}}</a>
                                     </td>

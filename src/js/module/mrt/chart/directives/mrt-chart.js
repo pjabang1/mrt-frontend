@@ -25,7 +25,7 @@ function mrtChart($parse) {
 				if(typeof chartData.xAxis === 'undefined') {
 					myChart.setOption(chartData, true);
 				} else if(typeof chartData.xAxis[0].data !== 'undefined' && chartData.xAxis[0].data.length) {
-					console.log(chartData);
+					// console.log(chartData);
 					myChart.setOption(chartData);
 				}
 			}
@@ -34,7 +34,9 @@ function mrtChart($parse) {
 				updateChartOptions();
 			});
 
-			// window.onresize = myChart.resize;
+			window.onresize = function() {
+				myChart.resize();
+			};
 		}
 	};
 	return directive;

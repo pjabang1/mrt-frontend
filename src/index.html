@@ -18,7 +18,7 @@
         <link rel="stylesheet" href="css/mrt.min.css">
 
     </head>
-    <body ng-controller="MasterCtrl">
+    <body ng-controller="MasterCtrl" class="f16">
         <div id="page-wrapper" ng-class="{'active': toggle, 'logged-in': app.loggedIn}" ng-cloak>
             <!-- Sidebar -->
             <div id="sidebar-wrapper" ng-if="app.loggedIn === true">
@@ -29,36 +29,25 @@
                             <span class="menu-icon glyphicon glyphicon-transfer"></span>
                         </a>
                     </li>
-                    <li class="sidebar-title"><span>NAVIGATION</span></li>
-                    <li class="sidebar-list">
-                        <a ui-sref="geomodel" ui-sref-active="active">Models <span class="menu-icon fa fa-adjust"></span></a>
-                    </li>
-                    <li class="sidebar-list">
-                        <a ui-sref="geoindicator" ui-sref-active="active">Indicators <span class="menu-icon fa fa-tachometer"></span></a>
-                    </li>
-                    <li class="sidebar-list">
-                        <a ui-sref="geoindicatorgroup" ui-sref-active="active">Indicator Groups <span class="menu-icon fa fa-tachometer"></span></a>
-                    </li>
-                    <li class="sidebar-list">
-                        <a ui-sref="geography" ui-sref-active="active">Countries <span class="menu-icon fa fa-map-marker"></span></a>
-                    </li>
-                    <li class="sidebar-list">
-                        <a ui-sref="geogroup" ui-sref-active="active">Country Groups <span class="menu-icon fa fa-globe"></span></a>
-                    </li>
-                    <li class="sidebar-list">
-                        <a ui-sref="geogroup" ui-sref-active="active">Markets <span class="menu-icon fa fa-random"></span></a>
-                    </li>
-                    <li class="sidebar-list">
-                        <a ui-sref="geogroup" ui-sref-active="active">Forecasts <span class="menu-icon fa fa-line-chart"></span></a>
-                    </li>
-                    <li class="sidebar-list">
-                        <a ui-sref="geogroup" ui-sref-active="active">Admin <span class="menu-icon fa fa-cogs"></span></a>
-                    </li>
-                    <li class="sidebar-title separator"><span>QUICK LINKS</span></li>
-                    <li class="sidebar-list">
-                        <a ui-sref="geogroup" ui-sref-active="active">Favourites <span class="menu-icon fa fa-bookmark"></span></a>
-                        <a ui-sref="geogroup" ui-sref-active="active">My Models <span class="menu-icon fa fa-briefcase"></span></a>
-                    </li>
+                    <li class="sidebar-title"><span>NAVIGATION</span></li> 
+                    <li class="sidebar-list" ng-repeat="item in menu">
+                        <a ui-sref="{{ item.ui_sref }}" ui-sref-active="active" ng-if="item.ui_sref">
+                            {{ item.display }} 
+                            <span class="{{ item.class }}"></span>
+                        </a>
+                        <a ng-if="item.menu" ng-click="expandMenu(item)"> 
+                            {{ item.display }} 
+                            <span class="{{ item.class }}"></span>
+                            <ul class="children" ng-if="item.menu.length && item.expand">
+                                 <li class="child-sidebar-list" ng-repeat="_item in item.menu">
+                                    <a ui-sref="{{ _item.ui_sref }}" ui-sref-active="active" tooltip-placement="right" tooltip="{{ _item.display }}">
+                                        {{ _item.display }} 
+                                        <span class="{{ _item.class }}"></span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </a>
+                    </li> 
                 </ul>
                 <div class="sidebar-footer">
                     <div class="col-xs-4">
@@ -82,9 +71,12 @@
 
 
             <div id="content-wrapper">
+               
+
                 <div class="page-content">
 
                     <!-- Header Bar -->
+
                     <div class="row header" ng-if="app.loggedIn == true">
                         <div class="col-xs-12">
                             <div class="user pull-right">
@@ -191,6 +183,7 @@
         <<script type="text/javascript" src="bower_components/echarts/build/dist/echarts-all.js"></script>
         <!-- endbuild -->
         <!-- SCRIPTS -->
+        <link rel="stylesheet" type="text/css" href="//cloud.github.com/downloads/lafeber/world-flags-sprite/flags16.css" />
         <script type="text/javascript" src="js/mrt.min.js"></script>
 
         <script type="text/javascript" src="tpls/mrt-tpl.js"></script>

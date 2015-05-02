@@ -25,22 +25,32 @@ ul.sidebar {
     text-indent: 20px;
     overflow-x: hidden;
     overflow-y: auto;
+    width: 250px;
+    ul {
+        padding: 0;
+        margin: 0;
+    }
     li {
         a {
             color: @sidebarLinkColor;
             display: block;
             float: left;
             text-decoration: none;
-            width: 250px;
+            width: 100%;
         }
+
     }
     .sidebar-main {
         height: 65px;
         a {
-            font-size: 120%;
+            font-size: 180%;
             line-height: 60px;
+            font-size: 1.875rem;
+            text-transform: uppercase;
+            letter-spacing: .125rem;
         }
         .menu-icon {
+            color: #00bff3;
             float: right;
             font-size: 18px;
             padding-right: 28px;
@@ -54,6 +64,7 @@ ul.sidebar {
         line-height: 40px;
         text-transform: uppercase;
     }
+    
     .sidebar-list {
         height: 40px;
         a {
@@ -71,14 +82,31 @@ ul.sidebar {
             }
         }
         .menu-icon {
+            color: #6d7a8c;
             float: right;
             padding-right: 29px;
             line-height: 40px;
-            width: 70px;
+            
+        }
+    }
+    .child-sidebar-list {
+        a {
+            text-indent: 35px;
+        }
+        a:hover, a.active {
+            text-indent: 32px;
+            .menu-icon {
+                text-indent: 35px;
+            }
         }
     }
 }
+
 #page-wrapper:not(.active) {
+    ul {
+        margin: 0px;
+        padding: 0px;
+    }
     ul.sidebar {
         bottom: 0;
         .sidebar-title {
@@ -90,12 +118,18 @@ ul.sidebar {
             margin: 13px 0;
         }
         .sidebar-list {
+            a {
+                text-indent: 25px;
+            }
             a:hover, a.active {
                 span {
                     border-left: 3px solid @sidebarListLinkBorderColor;
                     text-indent: 22px;
                 }
             }
+        }
+        .menu-icon {
+            width: 70px;
         }
     }
     .sidebar-footer {

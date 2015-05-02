@@ -181,13 +181,23 @@ angular.module('MRT').controller('GeoIndicatorCtrl', ['$scope', '$filter', 'ngTa
 
 
     $scope.lineChartData = {
-                legend: {// legend configuration
+                // color: ['rgb(8,48,107)', 'rgb(8,81,156)', 'rgb(66,146,198)', 'rgb(158,202,225)'],
+                color: ['#E09100', '#9BC215', '#00BFF3'],
+                legend: {// legend configuration 
                     padding: 0, // The inner padding of the legend, in px, defaults to 5. Can be set as array - [top, right, bottom, left].
                     //itemGap: 10, // The pixel gap between each item in the legend. It is horizontal in a legend with horizontal layout, and vertical in a legend with vertical layout. 
-                    data: ['Minimum', 'Average', 'Maximum']
+                    data: ['Minimum', 'Average', 'Maximum'],
+                    textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    color: '#333',
+                    fontFamily: 'Montserrat',
+                }
+
                 },
                 tooltip: {// tooltip configuration
                     trigger: 'axis', // trigger type. Defaults to data trigger. Can also be: 'axis'
+                },
+                textStyle: {
+                    fontFamily: 'Montserrat',
                 },
                 toolbox: {
                     show: true,
@@ -207,20 +217,27 @@ angular.module('MRT').controller('GeoIndicatorCtrl', ['$scope', '$filter', 'ngTa
                         }
                     }
                 },
+                axisLabel: {           // 坐标轴文本标签，详见axis.axisLabel
+
+                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    color: '#333',
+                    fontFamily: 'Montserrat',
+                }
+            },
                 xAxis: [// The horizontal axis in Cartesian coordinates
-                    {
+                {
                         type: 'category', // Axis type. xAxis is category axis by default. As for value axis, please refer to the 'yAxis' chapter.
                         data: []
                     }
                     ],
                 yAxis: [// The vertical axis in Cartesian coordinates
-                    {
+                {
                         type: 'value', // Axis type. yAxis is value axis by default. As for category axis, please refer to the 'xAxis' chapter.
                         //boundaryGap: [0.1, 0.1], // Blank border on each side of the coordinate axis. Value in the array represents percentage. 
                         splitNumber: 4                      // Applicable to value axis. The number of segments. Defaults to 5. 
                     }
                     ],
-                series: [
+                    series: [
                     {
                         name: 'Minimum', // series name
                         type: 'line', // chart type, line, scatter, bar, pie, radar
@@ -244,23 +261,36 @@ angular.module('MRT').controller('GeoIndicatorCtrl', ['$scope', '$filter', 'ngTa
                 $scope.chartData = {
                     title: {
                         text: 'World Population (2015)',
-                        subtext: 'from United Nations, Total population, both sexes combined, as of 1 July (thousands)'
+                        subtext: 'from United Nations, Total population, both sexes combined, as of 1 July (thousands)',
+                        textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    color: '#333',
+                    fontFamily: 'Montserrat',
+                }
                     },
                     nameMap: {
                         'Gambia': 'Gambia, The',
                         'Gambia, The': 'Gambia'
                     },
+                    textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    color: '#333',
+                    fontFamily: 'Montserrat',
+                },
                     dataRange: {
                         min: 0,
                         max: 1000000,
                         text: ['High', 'Low'],
                         realtime: false,
                         calculable: true,
-                        color: ['#ffce54', '#00bff3', '#EB5367']
+                        // color: ['#ffce54', '#00bff3', '#EB5367']
+                        color: ['rgb(8,48,107)', 'rgb(8,81,156)', 'rgb(33,113,181)', 'rgb(66,146,198)', 'rgb(107,174,214)', 'rgb(158,202,225)']
                     },
                     series: [
                     {
                         name: 'World Population (2010)',
+                        textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    color: '#333',
+                    fontFamily: 'Montserrat',
+                },
                         type: 'map',
                         mapType: 'world',
                         roam: true,
@@ -284,38 +314,44 @@ angular.module('MRT').controller('GeoIndicatorCtrl', ['$scope', '$filter', 'ngTa
 
 
 
-        $scope.dataCompletionChartData = {
-    tooltip : {
-        formatter: "{a} <br/>{b} : {c}%"
-    },
-    toolbox: {
-        show : false,
-        feature : {
-            mark : {show: true},
-            restore : {show: true},
-            saveAsImage : {show: true}
-        }
-    },
-    series : [
-        {
-            name:'Data Completion',
-            type:'gauge',
-            center : ['50%', '50%'],    // 默认全局居中
-            radius : [0, '75%'],
-            startAngle: 140,
-            endAngle : -140,
-            min: 0,                     // 最小值
-            max: 100,                   // 最大值
-            precision: 0,               // 小数精度，默认为0，无小数点
-            splitNumber: 10,             // 分割段数，默认为5
-            axisLine: {            // 坐标轴线
-                show: true,        // 默认显示，属性show控制显示与否
-                lineStyle: {       // 属性lineStyle控制线条样式
-                    color: [[0.2, 'lightgreen'],[0.4, 'orange'],[0.8, 'skyblue'],[1, '#ff4500']], 
-                    width: 30
-                }
-            },
-            axisTick: {            // 坐标轴小标记
+                $scope.dataCompletionChartData = {
+                    tooltip : {
+                        formatter: "{b} : {c}%"
+                    },
+                    toolbox: {
+                        show : false,
+                        feature : {
+                            mark : {show: true},
+                            restore : {show: true},
+                            saveAsImage : {show: true}
+                        }
+                    },
+                    series : [
+                    {
+                        name:'Data Completion',
+                        textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    color: '#333',
+                    fontFamily: 'Montserrat',
+                },
+                        type:'gauge',
+                        center : ['50%', '50%'],   
+                        radius : [0, '75%'],
+                        startAngle: 140,
+                        endAngle : -140,
+                        min: 0,                     
+                        max: 100,                   
+                        precision: 0,               
+                        splitNumber: 10,             
+                        axisLine: {            
+                            show: true,        
+                            lineStyle: {       
+                                // color: [[0.2, 'lightgreen'],[0.4, 'orange'],[0.8, 'skyblue'],[1, '#ff4500']], 
+                                color: [[0.2, 'rgb(158,202,225)'],[0.4, 'rgb(66,146,198)'],[0.8, 'rgb(8,81,156)'],[1, 'rgb(8,48,107)']],
+                                // color: ['rgb(8,48,107)', 'rgb(8,81,156)', 'rgb(66,146,198)', 'rgb(158,202,225)'], 
+                                width: 30
+                            }
+                        },
+                    axisTick: {            // 坐标轴小标记
                 show: true,        // 属性show控制显示与否，默认不显示
                 splitNumber: 5,    // 每份split细分多少段
                 length :8,         // 属性length控制线长
@@ -337,7 +373,8 @@ angular.module('MRT').controller('GeoIndicatorCtrl', ['$scope', '$filter', 'ngTa
                     }
                 },
                 textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
-                    color: '#333'
+                    color: '#333',
+                    fontFamily: 'Montserrat',
                 }
             },
             splitLine: {           // 分隔线
@@ -369,21 +406,22 @@ angular.module('MRT').controller('GeoIndicatorCtrl', ['$scope', '$filter', 'ngTa
                 borderColor: '#ccc',
                 width: 100,
                 height: 40,
-                offsetCenter: ['-60%', 10],       // x, y，单位px
+                offsetCenter: ['-60%', -10],       // x, y，单位px
                 formatter:'{value}%',
                 textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
                     color: 'auto',
-                    fontSize : 30
+                    fontSize : 30,
+                    fontFamily: 'Montserrat'
                 }
             },
             data:[{value: 50, name: ''}]
         }
-    ]
-};
+        ]
+    };
 
-        
 
-        function getValues($item, $model) {
+
+    function getValues($item, $model) {
         // console.log($model);
         if(typeof $model !== "undefined") {
             $scope.data.params.date = $model.date;
@@ -453,7 +491,7 @@ angular.module('MRT').controller('GeoIndicatorCtrl', ['$scope', '$filter', 'ngTa
         series.average = [];
         series.minimum = [];
         series.maximum = [];
-        for(var i = min; i <= max; i++) {
+        for(var i = parseInt(min); i <= max; i++) {
             var date = String(i);
             dates.push(date);
             var line = $filter('filter')(data, {date: date}, true);
@@ -481,29 +519,29 @@ angular.module('MRT').controller('GeoIndicatorCtrl', ['$scope', '$filter', 'ngTa
 
     function getAverages() {
         geoIndicatorService.getGeoIndicatorAverages($scope.data.params).success(function (data) {
-        $scope.data.averages = data.geoindicators;
-        var min = null;
-        var max = null;
-        angular.forEach($scope.data.averages, function(value, key) {
-            if(min === null) {
-                min = value.date;
-            }
-            if(max === null) {
-                max = value.date;
-            }
+            $scope.data.averages = data.geoindicators;
+            var min = null;
+            var max = null;
+            angular.forEach($scope.data.averages, function(value, key) {
+                if(min === null) {
+                    min = value.date;
+                }
+                if(max === null) {
+                    max = value.date;
+                }
 
-            if(parseInt(max) < parseInt(value.date)) {
-                max = value.date;
-            }
+                if(parseInt(max) < parseInt(value.date)) {
+                    max = value.date;
+                }
 
-            if(parseInt(min) > parseInt(value.date)) {
-                min = value.date;
-            }
+                if(parseInt(min) > parseInt(value.date)) {
+                    min = value.date;
+                }
 
 
-        });
+            });
 
-        getAverageSeries($scope.data.averages, min, max);
+            getAverageSeries($scope.data.averages, min, max);
 
         }).error(function (error) {
             $scope.status = 'Unable to load customer data: ' + error.message;
@@ -552,6 +590,7 @@ angular.module('MRT').controller('GeoIndicatorCtrl', ['$scope', '$filter', 'ngTa
             $scope.summary.percentageCompletion = parseInt((i/countryTotal)*100);
         }
 
+        
 
         $scope.chartData.series[0].data = $scope.data.values;
         // console.log($scope.data.values);

@@ -12,10 +12,39 @@
 
 	// $scope.term = 'Hairdressers';
 
+
 	var mobileView = 992;
 	$scope.app = {};
 	$scope.app.loggedIn = true;
 	$scope.app.unsavedChanges = false;
+
+
+	$scope.menu = [
+		{'ui_sref': 'geomodel', 'display': 'Models', 'class': 'menu-icon fa fa-adjust'},
+		{
+			'display': 'Data Maintenance', 
+			'class': 'menu-icon fa fa-database', 
+			'menu': [
+				{'ui_sref': 'geoindicator', 'display': 'Indicators', 'class': 'menu-icon fa fa-adjust'},
+				{'ui_sref': 'geoindicatorgroup', 'display': 'Indicator Groups', 'class': 'menu-icon fa fa-adjust'},
+				{'ui_sref': 'geography', 'display': 'Countries', 'class': 'menu-icon fa fa-adjust'},
+				{'ui_sref': 'geogroup', 'display': 'Counrty Groups', 'class': 'menu-icon fa fa-adjust'}
+			]
+		},
+		{
+			'display': 'Admin', 
+			'class': 'menu-icon fa fa-adjust', 
+			'menu': [
+				{'ui_sref': '', 'display': 'Users', 'class': 'menu-icon fa fa-adjust'},
+				{'ui_sref': '', 'display': 'User Groups', 'class': 'menu-icon fa fa-adjust'}
+			]
+		}
+	];
+
+	$scope.expandMenu = function(item) {
+		item.expand = (typeof item.expand !== 'undefined' && item.expand === true) ? false : true;
+	}
+
 
 	$scope.$on('$locationChangeStart', function(event) {
 		if ($scope.app.unsavedChanges === true) {

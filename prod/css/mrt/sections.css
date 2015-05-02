@@ -38,7 +38,7 @@
 
 **/
 /**
-@baseColor1: #8e44ad;
+@baseColor1: #8e44ad; 
 @baseColor2: #2c3e50;
 
 **/
@@ -121,7 +121,7 @@ slider span.pointer {
 }
 slider span.pointer:after {
   content: '';
-  background-color: #34495e;
+  background-color: #2a2f36;
   width: 8px;
   height: 8px;
   position: absolute;
@@ -134,7 +134,7 @@ slider span.pointer:hover:after {
   background-color: #000;
 }
 slider span.pointer.active:after {
-  background-color: #34495e;
+  background-color: #2a2f36;
 }
 slider span.bubble {
   cursor: default;

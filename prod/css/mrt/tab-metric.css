@@ -38,7 +38,7 @@
 
 **/
 /**
-@baseColor1: #8e44ad;
+@baseColor1: #8e44ad; 
 @baseColor2: #2c3e50;
 
 **/
@@ -80,7 +80,7 @@
 }
 #tab-metric .nav-tabs.nav-justified > li > a {
   border-top-width: 2px;
-  border-top-color: #34495e;
+  border-top-color: #2a2f36;
   text-align: left;
   height: auto;
   border-radius: 0 0 0 0;
@@ -107,7 +107,7 @@
 #tab-metric .nav-tabs.nav-justified .active > a:hover {
   cursor: pointer;
   border-top-width: 2px;
-  border-top-color: #34495e;
+  border-top-color: #2a2f36;
   border-bottom-color: #fff;
   border-left: 0px;
   border-right: 0px;
