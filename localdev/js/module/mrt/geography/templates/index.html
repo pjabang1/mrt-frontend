@@ -13,14 +13,15 @@
                 </rd-widget-header>
                 <rd-widget-body classes="large no-padding">
                     <div class="table-responsive">
-                        <table class="table">
+                        <table class="table f16">
                             <thead>
                             <th  ng-click="predicate = 'code'; reverse=!reverse">Code</th>
                             <th  ng-click="predicate = 'name'; reverse=!reverse">Name</th>
                             </thead>
                             <tbody>
                                 <tr ng-repeat="row in data.geographies | filter:filterText | orderBy:predicate:reverse">
-                                    <td>
+                                    <td class="">
+                                        <span class="flag {{row.code | lowercase }}"></span>
                                         {{row.code}}
                                     </td>
                                     <td>
