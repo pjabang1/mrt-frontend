@@ -2345,6 +2345,9 @@ slider div.bubble.limit,
 .geo-model-weight .row {
   margin-bottom: 0px;
 }
+.handsontable {
+  display: absolute!important;
+}
 
 /* #592727 RED */
 /* #2f5927 GREEN */
@@ -2399,6 +2402,11 @@ slider div.bubble.limit,
  */
 #sidebar-wrapper {
   background: #2a2f36;
+}
+#sidebar-wrapper ul,
+#sidebar-wrapper ol,
+#sidebar-wrapper li {
+  list-style-type: none;
 }
 ul.sidebar .sidebar-main a,
 .sidebar-footer,
@@ -2661,6 +2669,11 @@ ul.sidebar .child-sidebar-list a.active .menu-icon {
 #tab-metric .sparkcircle {
   fill: #f00;
   stroke: none;
+}
+.indicator-view .tab-pane span.ng-scope {
+  display: block;
+  width: 100%;
+  height: 350px;
 }
 
 /* #592727 RED */

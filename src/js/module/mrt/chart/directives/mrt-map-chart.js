@@ -4,7 +4,7 @@
  */
  angular.module('MRT').directive('mrtMapChart', mrtMapChart);
 
- function mrtMapChart($parse) {
+ function mrtMapChart($parse, $timeout) {
  	var directive = {
  		restrict: 'AE',
 		// templateUrl: 'pension/tpls/term/term-search-pageview.html',
@@ -87,7 +87,10 @@ function updateChartOptions() {
 				dataRange: chartData.dataRange,
 				series: chartData.series
 			};
-			myChart.setOption(option);
+			myChart.setOption(option, true);
+								myChart.refresh();
+					myChart.resize();
+					myChart.restore();
 			// myChart.refresh();
 			// myChart.setSeries(option.series);
 
@@ -98,7 +101,11 @@ function updateChartOptions() {
 
 
 		scope.$watch('chartData.series[0].data', function() { 
-			updateChartOptions();
+
+						$timeout(function() {
+            updateChartOptions();
+        }, 250); // delay 250 ms
+			
 		});
 
 		window.onresize = function() {

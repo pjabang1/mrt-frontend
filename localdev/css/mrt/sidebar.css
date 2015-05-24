@@ -52,6 +52,11 @@
 #sidebar-wrapper {
   background: #2a2f36;
 }
+#sidebar-wrapper ul,
+#sidebar-wrapper ol,
+#sidebar-wrapper li {
+  list-style-type: none;
+}
 ul.sidebar .sidebar-main a,
 .sidebar-footer,
 ul.sidebar .sidebar-list a:hover,

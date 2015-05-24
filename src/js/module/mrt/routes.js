@@ -72,6 +72,11 @@ angular.module('MRT').config(['$stateProvider', '$urlRouterProvider',
                 controller: 'GeoIndicatorAddCtrl',
                 templateUrl: 'module/mrt/geoindicator/templates/add.html'
             })
+            .state('geoindicator-edit', {
+                url: '/geoindicator/edit/:id',
+                controller: 'GeoIndicatorAddCtrl',
+                templateUrl: 'module/mrt/geoindicator/templates/add.html'
+            })
             .state('geomodel-cluster', {
                 url: '/geomodel/cluster',
                 controller: 'GeoModelCtrl',

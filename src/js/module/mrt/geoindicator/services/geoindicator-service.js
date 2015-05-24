@@ -29,7 +29,7 @@ angular.module('MRT')
 	dataFactory.getGeoIndicators = function(params) {
 		return $http.get(urlBase + '/geoindicator/', {
 			// params: params,
-			cache: geoIndicatorsCache
+			// cache: geoIndicatorsCache
 		});
 	};
 
@@ -41,11 +41,18 @@ angular.module('MRT')
 		});
 	};
 
+	dataFactory.getGeographyGeoIndicatorAverages= function(params) {
+		return $http.get(urlBase + '/geoindicator/geography/average/', {
+			params: params,
+			cache: true
+		});
+	};
+
 
 	dataFactory.getGeoIndicatorTotals = function(params) {
 		return $http.get(urlBase + '/geoindicator/total/', {
 			params: params,
-			cache: geoIndicatorTotalCache
+			// cache: geoIndicatorTotalCache
 		});
 	};
 
@@ -54,6 +61,18 @@ angular.module('MRT')
 			params: params,
 			cache: true
 		});
+	};
+
+	dataFactory.get = function(id) {
+		return $http.get(urlBase + '/geoindicator/' + id + '/show', {});
+	};
+
+	dataFactory.save = function(data) {
+		return $http.post(urlBase + '/geoindicator/create', data);
+	};
+
+	dataFactory.update = function(data) {
+		return $http.post(urlBase + '/geoindicator/update', data);
 	};
 
 	dataFactory.getGeoIndicatorsFromCache = function(params) {

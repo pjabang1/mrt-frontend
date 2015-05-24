@@ -1,38 +1,97 @@
-<div class="container-fluid">
+<div class="container-fluid indicator-view">
     <div class="row">
-        <div class="col-md-3 pull-left">
+
+
+        <div class="col-md-1 pull-left"> 
             <span ng-if="data.playing!=true" ng-click="startPlay()"><i class="fa fa-play"></i> Play </span>
             <span ng-if="data.playing==true" ng-click="stopPlay()"><i class="fa fa-pause"></i> Stop </span> 
         </div>
-        <div class="col-md-3 pull-right">
-            <input class="form-control" ng-model="filterText" type="text" placeholder="Search">
-        </div>
-        <div class="col-md-2 pull-right">
+
+
+<div class="col-md-2">
+    <div class="input-group">
+       <input placeholder="From" type="text" class="form-control" ng-model="date.from" 
+       datepicker-popup="{{format}}" min-mode="'year'" datepicker-mode="'year'" datepicker-options="{minMode: 'year', datepickerMode: 'year'}"
+       is-open="fromOpened" ng-focus="openFrom($event)"
+       date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"></input>
+       <span class="input-group-btn">
+        <button type="button" class="btn btn-default" ng-click="openFrom($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+    </span> 
+</div> 
+</div> 
+<div class="col-md-2">
+    <div class="input-group">
+       <input placeholder="To" type="text" class="form-control" ng-model="date.to" 
+       datepicker-popup="{{format}}" min-mode="'year'" datepicker-mode="'year'" datepicker-options="{minMode: 'year', datepickerMode: 'year'}"
+       is-open="toOpened" ng-focus="openTo($event)"
+       date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"></input>
+       <span class="input-group-btn">
+        <button type="button" class="btn btn-default" ng-click="openTo($event)"><i class="glyphicon glyphicon-calendar"></i></button> 
+    </span> 
+</div> 
+</div>
+
+    <div class="col-md-4">
+        <ui-select ng-model="data.selectedIndicator" on-select="selectIndicator($item, $model)">
+        <ui-select-match placeholder="Select Indicator">{{$select.selected.name}}</ui-select-match>
+        <ui-select-choices repeat="indicator in data.indicators | filter: $select.search track by indicator.id">
+        <div ng-bind-html="indicator.name | highlight: $select.search"></div>
+    </ui-select-choices>
+</ui-select>
+</div>  
+
+    <div class="col-md-2"> 
+        <ui-select ng-model="data.selectedGeogroup">
+        <ui-select-match placeholder="Country Group">{{$select.selected.name}}</ui-select-match>
+        <ui-select-choices repeat="geogroup in data.geogroups | filter: $select.search track by geogroup.id">
+        <div ng-bind-html="geogroup.name | highlight: $select.search"></div>
+    </ui-select-choices>
+</ui-select>
+</div>  
+<div class="col-md-1"> 
+    <button type="button" class="btn btn-success" ng-click="reload()">Submit</button>
+    </div>
+
+<!--
+        <div class="col-md-2">
             <ui-select ng-model="data.selectedDate" on-select="getValues($item, $model)">
             <ui-select-match placeholder="Select Date">{{$select.selected.date}}</ui-select-match>
             <ui-select-choices repeat="date in data.dates | filter: $select.search track by date.date">
             <div ng-bind-html="date.date | highlight: $select.search"></div>
         </ui-select-choices>
     </div>
-    <div class="col-md-4 pull-right">
-        <ui-select ng-model="data.selectedIndicator" on-select="selectIndicator($item, $model)">
-        <ui-select-match placeholder="Select Indicator">{{$select.selected.name}}</ui-select-match>
-        <ui-select-choices repeat="indicator in data.indicators | filter: $select.search track by indicator.name">
-        <div ng-bind-html="indicator.name | highlight: $select.search"></div>
-    </ui-select-choices>
-</ui-select>
-</div>
+-->
+
+
 
 </div>
-<div class="row margin-top" style="background-color: #F0F3F6; padding: 10px">
-        <mrt-chart class="col-md-12 widget-body large" style="height:300px" chart-data="lineChartData">
+<div class="row">
+    <tabset>
+        <tab heading="Values" ng-click="tabSelected('values')"> 
+            <div class="row margin-top" style="background-color: #F0F3F6; padding: 10px">
+                <mrt-chart class="col-md-12 widget-body large" style="height:300px; width: 100%" chart-data="lineChartData"></mrt-chart>
+            </div>
+        </tab>
+        <tab heading="Completion (%)" ng-click="tabSelected('completion')">
+            <div class="row margin-top" style="background-color: #F0F3F6; padding: 10px">
+                <mrt-chart class="col-md-12 widget-body large" style="height:300px; width: 100%" chart-data="completionChartData"></mrt-chart>
+            </div>
+        </tab>
+        <tab heading="Average">
+            Average 
+        </tab>
+    </tabset>
+</div>
+<!--
+ <div class="row margin-top" style="background-color: #F0F3F6; padding: 10px">
+    <mrt-chart class="col-md-12 widget-body large" style="height:300px;" chart-data="lineChartData"></mrt-chart>
 
-        </mrt-chart>
     </div>
+--> 
 <div class="row margin-top">
 
     <mrt-map-chart class="col-xs-9 widget-body large" chart-data="chartData"></mrt-map-chart>  
-     <mrt-chart class="col-md-3 widget-body large" style="" chart-data="dataCompletionChartData"></mrt-chart>
+    <mrt-chart class="col-md-3 widget-body large" style="" chart-data="dataCompletionChartData"></mrt-chart>
 </div>
 
 <div class="row">
@@ -41,11 +100,11 @@
         <h3>{{ summary.min.value | number }}</h3>
     </div>
     <div class="col-xs-3"> 
-       <span class="small-label">Maximum : <br /><span class="flag {{ summary.max.code | lowercase }}"></span> {{ summary.max.name }}</span> 
-       <h3>{{ summary.max.value | number }}</h3>
-   </div>
+     <span class="small-label">Maximum : <br /><span class="flag {{ summary.max.code | lowercase }}"></span> {{ summary.max.name }}</span> 
+     <h3>{{ summary.max.value | number }}</h3>
+ </div>
 
-<div class="col-xs-2">
+ <div class="col-xs-2">
     <span class="small-label">High Data Completion<br />&nbsp;</span> 
     <h3>2000</h3>
 </div>
@@ -63,6 +122,9 @@
 
 
 <div class="row">
+    <div class="col-md-3 pull-right">
+        <input class="form-control" ng-model="filterText" type="text" placeholder="Search">
+    </div>
     <div class="col-xs-12">
         <rd-widget>
         <rd-widget-header icon="fa-map-marker" title="{{ data.indicator.name }}">
@@ -90,7 +152,7 @@
                         {{row.name}}
                     </td>
                     <td align="right">
-                        {{row.value}}
+                        {{row.value | number }}
                     </td>
                     <td align="right">
                         {{row.date}}

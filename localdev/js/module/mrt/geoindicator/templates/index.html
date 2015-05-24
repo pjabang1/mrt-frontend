@@ -10,6 +10,7 @@
             <rd-widget>
                 <rd-widget-header icon="fa-map-marker" title="Indicators">
                     <!--<a href="#/geogroup-view/">Add Country Group</a>-->
+                    <a ui-sref="geoindicator-add">Add Indicator</a>
                 </rd-widget-header>
                 <rd-widget-body classes="large no-padding">
                     <div class="table-responsive">
@@ -19,6 +20,7 @@
                             <th  ng-click="predicate = 'name'; reverse=!reverse">Name</th>
                             <th  ng-click="predicate = 'indicator_count'; reverse=!reverse">Indicators</th>
                             <th  ng-click="predicate = 'geography_count'; reverse=!reverse">Countries</th>
+                            <th></th>
                             </thead>
                             <tbody>
                                 <tr ng-repeat="row in data.geoindicators | filter:filterText | orderBy:predicate:reverse track by row.id">
@@ -33,6 +35,9 @@
                                     </td>
                                     <td align="right">
                                         {{row.geography_count}}
+                                    </td>
+                                    <td align="right">
+                                        <a ui-sref="geoindicator-edit({id: row.id})" ng-if="row.source === 'local'">Edit</a> 
                                     </td>
                                 </tr>
                             </tbody>

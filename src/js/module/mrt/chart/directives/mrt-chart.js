@@ -4,7 +4,7 @@
  */
 angular.module('MRT').directive('mrtChart', mrtChart);
 
-function mrtChart($parse) {
+function mrtChart($parse, $timeout) {
 	var directive = {
 		// templateUrl: 'pension/tpls/term/term-search-pageview.html',
 		replace: true,
@@ -26,12 +26,19 @@ function mrtChart($parse) {
 					myChart.setOption(chartData, true);
 				} else if(typeof chartData.xAxis[0].data !== 'undefined' && chartData.xAxis[0].data.length) {
 					// console.log(chartData);
-					myChart.setOption(chartData);
+					myChart.setOption(chartData, true);
+					myChart.refresh();
+					myChart.resize();
+					myChart.restore();
+					
 				}
 			}
 
 			scope.$watch('chartData.updatedAt', function() { 
-				updateChartOptions();
+				$timeout(function() {
+            updateChartOptions();
+        }, 250); // delay 250 ms
+				
 			});
 
 			window.onresize = function() {
