@@ -1,0 +1,99 @@
+<div class="container">
+  <div class="row">
+    <div class="wizard">
+      <a><span class="badge">1</span> Create Model</a>
+      <a><span class="badge">2</span> Select Countries</a>
+      <a class="current"><span class="badge badge-inverse">3</span> Select Indicators</a>
+    </div>
+  </div>
+</div>
+<div class="container">
+<div class="row">
+  <div class="col-xs-5">
+    <!--
+    <div class="col-xs-12">
+
+      <form class="form-inline">
+        <div class="form-group">
+          <label>
+            <input type="radio" ng-model="options.selectType" value="group">
+            Indicator Groups
+          </label>
+        </div>
+        <div class="form-group">
+          <label>
+            <input type="radio" ng-model="options.selectType" value="indicator">
+            Indicators
+          </label>
+        </div>
+      </form>
+    </div>
+    -->
+    <div class="group-selection" ng-if="options.selectType == 'group'">
+      <div class="col-xs-12 pull-right">
+        <input class="form-control" ng-model="groupFilter.name" type="text" placeholder="Search indicator groups">
+      </div>
+      <div class="country-list">
+        <ul>
+          <li ng-repeat="row in data.groups | filter:groupFilter | orderBy:predicate:reverse">
+            <span>
+              <input type="checkbox" ng-model="row.selected" value="true" ng-change="toggleGroupSelect(row)" />
+            </span>
+            <span class="name" ng-click="toggleGroupExpand(row)">{{ row.name }}</span>
+            <span class="pull-right">{{ countSelected(row) }}</span>
+            <ul ng-if="row.expand == true">
+              <li ng-repeat="indicator in row.children" style="margin-left: 15px">
+                <span>
+                  <input type="checkbox" ng-model="indicator.selected" value="true" />
+                </span>
+                <span class="name" ng-click="toggleSelection(indicator)">{{ row.name }} {{ indicator.name }}</span>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!--
+    <div class="country-selection" ng-if="options.selectType == 'indicator'">
+    <div class="col-xs-12 pull-right">
+      <input class="form-control" ng-model="filterText" type="text" placeholder="Search countries" />
+    </div>
+    <div class="country-list">
+      <ul>
+        <li ng-repeat="row in data.indicators | filter:filterText | orderBy:predicate:reverse track by $index" ng-click="toggleSelection(row)">
+          <span>
+            <input type="checkbox" ng-model="row.selected" />
+          </span>
+          <span class="name">{{ row.name }}</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+-->
+  </div>
+  <div class="col-xs-7">
+    <div class="col-xs-12">
+      <button class="btn btn-default pull-right" ng-click="clear()">Clear</button>
+    </div>
+    <div class="col-xs-12">
+      <ul>
+        <li ng-repeat="row in model.data.indicators">
+          <input ng-model="row.name" class="contenteditable" />
+          <ul>
+            <li ng-repeat="indicator in row.indicators">
+              {{ indicator.name }}
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+    </div>
+
+  </div>
+  <div class="col-xs-12">
+    <span class="btn btn-success pull-left" ng-click="back()">Back (Select Countries)</span>
+    <span class="btn btn-success pull-right" ng-click="next()">Next (Configure Parameters)</span>
+  </div>
+</div>
+</div>

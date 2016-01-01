@@ -1,0 +1,124 @@
+.no-padding {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.border-bottom {
+  border-bottom: 1px solid #f6f6f6;
+}
+.table-display {
+  font-size: 10px;
+  td {
+    padding: 4px;
+  }
+}
+.indicator-row {
+  .highlight .color {
+    font-weight: bold;
+  }
+}
+.indicator-row:nth-child(1n) {
+  .highlight {
+    .color {
+      color: #3498db;
+    }
+  }
+}
+.indicator-row:nth-child(2n) {
+  .highlight {
+    .color {
+      color: #27ae60;
+    }
+  }
+}
+.indicator-row:nth-child(3n) {
+  .highlight {
+    .color {
+      color: #e74c3c;
+    }
+  }
+}
+.indicator-row:nth-child(4n) {
+  .highlight {
+    .color {
+      color: #f39c12;
+    }
+  }
+}
+
+
+
+input.weight {
+  width: 70%;
+  margin-right: 0;
+  text-align: right;
+  font-size: 12px;
+
+}
+.selected-indicator {
+  .menu {
+    margin-top: 10px;
+    padding-left: 0px;
+    .menu-item {
+      cursor: pointer;
+    }
+  }
+  .fa {
+    font-size: 14px;
+    cursor: pointer;;
+  }
+  .list {
+    margin-top: 10px;
+    padding-left: 0px;
+
+    ul {
+      .header {
+        .header-input {
+          font: 16px Helvetica, Verdana, sans-serif;
+        }
+      }
+      li {
+        list-style-type: none;
+        vertical-align: middle;
+
+      }
+      li ul > li {
+        cursor: pointer;;
+
+        padding-left: 5px;
+        -webkit-transition: font-size 0.3s ease, background-color 0.3s ease;
+        -moz-transition: font-size 0.3s ease, background-color 0.3s ease;
+        -o-transition: font-size 0.3s ease, background-color 0.3s ease;
+        -ms-transition: font-size 0.3s ease, background-color 0.3s ease;
+        transition: font-size 0.3s ease, background-color 0.3s ease;
+
+      }
+      li ul > li.hover:hover {
+       /** background: #f6f6f6; **/
+      }
+    }
+  }
+}
+
+@import (once) "import";
+.indicator-list {
+  margin-top: 5px;
+  ul {
+    list-style-type: none;
+    li {
+      font-size: 12px;
+      padding: 2px;
+      cursor: pointer;
+      display: block;
+      span {
+        margin-right: 5px;
+      }
+    }
+  }
+  display: block;
+  min-height: 200px;
+  max-height: 440px;
+  overflow-y: auto;
+  padding: 10px;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: 4px;
+}

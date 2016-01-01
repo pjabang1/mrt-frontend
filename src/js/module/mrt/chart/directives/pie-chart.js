@@ -1,6 +1,6 @@
 /**
- * 
- * 
+ *
+ *
  */
 angular.module('MRT').directive('pieChart', pieChart);
 
@@ -37,7 +37,7 @@ function pieChart($parse) {
 			var color2 = ['#3498db', '#2ecc71', '#2c3e50', '#8e44ad', '#f39c12', '#e74c3c'];
 			var color2 = ['#00BFF3', '#EB5367', '#FFCE54', '#738F12', '#2A2F36']
 			var hex = color2[0];
-			
+
 			var colorLighter= d3.scale.linear().domain([0,dataset.apples.length])
       .range([d3.rgb(hex), d3.rgb('#c9e9f5')]);
 	  // d3.rgb(hex).brighter(1)
@@ -122,7 +122,7 @@ function pieChart($parse) {
 						}
 					});
 
-			
+
 		}
 	};
 	return directive;

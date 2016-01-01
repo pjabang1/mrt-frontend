@@ -1,3 +1,3 @@
 {
-    "apiUrl": "http://localhost/market-attractiveness/mrt-api/web/app_dev.php/api"
+    "apiUrl": "http://192.168.33.99/web/app_dev.php/api"
 }

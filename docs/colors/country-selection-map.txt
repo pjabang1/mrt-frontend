@@ -1,0 +1,2 @@
+default: #dadbdd
+selection color: #7ed6e0

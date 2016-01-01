@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="row">
+    <div class="wizard">
+      <a class="current"><span class="badge badge-inverse">1</span> Create Model</a>
+      <a><span class="badge">2</span> Select Countries</a>
+      <a><span class="badge">3</span> Select Indicators</a>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-4">
+
+      <div class="form-group">
+        <ui-select ng-model="models.selectedModel" on-select="selectedModel($item, $model)">
+          <ui-select-match placeholder="Select Group">{{$select.selected.name}}</ui-select-match>
+          <ui-select-choices repeat="group in options.models | filter: $select.search track by $index">
+            <div ng-bind-html="group.name | highlight: $select.search"></div>
+          </ui-select-choices>
+        </ui-select>
+      </div>
+      <div class="form-group" ng-class="{ 'has-error' : form.name.$invalid && !form.name.$pristine }">
+        <label>Name*</label>
+        <input name="name" class="form-control" ng-model="model.name" required />
+        <p class="help-block">Name is required.</p>
+      </div>
+      <div class="form-group">
+          <div class="input-group">
+             <input placeholder="From" type="text" class="form-control" ng-model="model.from"
+             datepicker-popup="{{format}}" min-mode="'year'" datepicker-mode="'year'" datepicker-options="{minMode: 'year', datepickerMode: 'year'}"
+             is-open="fromOpened" ng-focus="openFrom($event)"
+             date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"></input>
+             <span class="input-group-btn">
+              <button type="button" class="btn btn-default" ng-click="openFrom($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="input-group">
+         <input placeholder="To" type="text" class="form-control" ng-model="model.to"
+         datepicker-popup="{{format}}" min-mode="'year'" datepicker-mode="'year'" datepicker-options="{minMode: 'year', datepickerMode: 'year'}"
+         is-open="toOpened" ng-focus="openTo($event)"
+         date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"></input>
+         <span class="input-group-btn">
+          <button type="button" class="btn btn-default" ng-click="openTo($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+      </span>
+    </div>
+  </div>
+      <div class="form-group">
+        <label>Description </label>
+        <textarea rows="6" class="form-control" ng-model="model.description"></textarea>
+      </div>
+    </div>
+    <div class="col-xs-8">
+      Info about show here
+    </div>
+    <div class="col-xs-12">
+      <span class="btn btn-success pull-right" ng-click="next()">Next (Select Countries)</span>
+    </div>
+  </div>
+</container>

@@ -121,3 +121,8 @@
   fill: #f00;
   stroke: none;
 }
+.indicator-view .tab-pane span.ng-scope {
+  display: block;
+  width: 100%;
+  height: 350px;
+}

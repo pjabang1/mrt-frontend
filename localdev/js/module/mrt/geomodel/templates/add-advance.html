@@ -1,0 +1,47 @@
+<div class="container-fluid">
+  <div class="row">
+    <form name="form" ng-submit="submitForm(form.$valid)" novalidate>
+      <div class="col-md-4">
+        Model
+
+        <hr />
+        <div class="form-group" ng-class="{ 'has-error' : form.name.$invalid && !form.name.$pristine }">
+          <label>Model*</label>
+          <select class="form-control" model="model.model">
+            <option>Select Model</option>
+            <option>GE/McKinsey Matrix</option>
+          </select>
+          <p class="help-block">Model is required.</p>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error' : form.name.$invalid && !form.name.$pristine }">
+          <label>Country Group *</label>
+          <select class="form-control" model="model.model">
+            <option>Select Country Group</option>
+            <option>Africa</option>
+          </select>
+          <p class="help-block">Model is required.</p>
+        </div>
+        <div class="form-group">
+          <label>Description </label>
+          <textarea class="form-control" ng-model="data.geomodel.description"></textarea>
+        </div>
+      </div>
+      <div class="col-md-4">
+        Indicators - {{ data.list.length }} (Click indicator to add)
+        <hr />
+        <input type="text" class="form-control" ng-model="listSearchText" />
+        <ul class="list-group large">
+          <li class="list-group-item" ng-click="select(row.id)" ng-repeat="row in data.list | filter: { selected: '!true' } | filter : listSearchText">{{ row.name }}</li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        Selected Indicator (Click indicator to remove)
+        <hr />
+        <input type="text" class="form-control" ng-model="selectedListSearchText" />
+        <ul class="list-group large">
+          <li class="list-group-item" ng-click="deselect(row.id)" ng-repeat="row in data.list | filter: { selected: true} | filter : selectedListSearchText">{{ row.name }}</li>
+        </ul>
+      </div>
+    </form>
+  </div>
+</div>

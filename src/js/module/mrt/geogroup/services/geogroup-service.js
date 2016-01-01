@@ -11,7 +11,6 @@ angular.module('MRT')
 
         dataFactory.getGeoGroupsData = function() {
             return dataFactory.data.geogroups;
-
         };
 
         dataFactory.list = function(params) {
@@ -25,7 +24,7 @@ angular.module('MRT')
                 params: params
             });
         };
-        
+
         dataFactory.replaceGeographies = function(data) {
             return $http.put(urlBase + '/geogroup/geographies/replace', data);
         };

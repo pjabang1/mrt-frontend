@@ -1,0 +1,138 @@
+.no-padding {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.border-bottom {
+  border-bottom: 1px solid #f6f6f6;
+}
+.table-display {
+  font-size: 10px;
+}
+.table-display td {
+  padding: 4px;
+}
+.indicator-row .highlight .color {
+  font-weight: bold;
+}
+.indicator-row:nth-child(1n) .highlight .color {
+  color: #3498db;
+}
+.indicator-row:nth-child(2n) .highlight .color {
+  color: #27ae60;
+}
+.indicator-row:nth-child(3n) .highlight .color {
+  color: #e74c3c;
+}
+.indicator-row:nth-child(4n) .highlight .color {
+  color: #f39c12;
+}
+input.weight {
+  width: 70%;
+  margin-right: 0;
+  text-align: right;
+  font-size: 12px;
+}
+.selected-indicator .menu {
+  margin-top: 10px;
+  padding-left: 0px;
+}
+.selected-indicator .menu .menu-item {
+  cursor: pointer;
+}
+.selected-indicator .fa {
+  font-size: 14px;
+  cursor: pointer;
+}
+.selected-indicator .list {
+  margin-top: 10px;
+  padding-left: 0px;
+}
+.selected-indicator .list ul .header .header-input {
+  font: 16px Helvetica, Verdana, sans-serif;
+}
+.selected-indicator .list ul li {
+  list-style-type: none;
+  vertical-align: middle;
+}
+.selected-indicator .list ul li ul > li {
+  cursor: pointer;
+  padding-left: 5px;
+  -webkit-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -moz-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -o-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -ms-transition: font-size 0.3s ease, background-color 0.3s ease;
+  transition: font-size 0.3s ease, background-color 0.3s ease;
+}
+.selected-indicator .list ul li ul > li.hover:hover {
+  /** background: #f6f6f6; **/
+}
+/* #592727 RED */
+/* #2f5927 GREEN */
+/* #30426a BLUE (default)*/
+/** 
+/ Palette
+// -------
+
+@turquoise:        #1abc9c;
+@green-sea:        #16a085;
+
+@emerald:          #2ecc71;
+@nephritis:        #27ae60;
+
+@peter-river:      #3498db;
+@belize-hole:      #2980b9;
+
+@amethyst:         #9b59b6;
+@wisteria:         #8e44ad;
+
+@wet-asphalt:      #34495e;
+@midnight-blue:    #2c3e50;
+
+@sun-flower:       #f1c40f;
+@orange:           #f39c12;
+
+@carrot:           #e67e22;
+@pumpkin:          #d35400;
+
+@alizarin:         #e74c3c;
+@pomegranate:      #c0392b;
+
+@clouds:           #ecf0f1;
+@silver:           #bdc3c7;
+
+@concrete:         #95a5a6;
+@asbestos:         #7f8c8d;
+
+
+**/
+/**
+@baseColor1: #8e44ad; 
+@baseColor2: #2c3e50;
+
+**/
+/* Sidebar background color */
+/* Sidebar header and footer color */
+/* Sidebar title text colour */
+/*#627cb7*/
+.indicator-list {
+  margin-top: 5px;
+  display: block;
+  min-height: 200px;
+  max-height: 440px;
+  overflow-y: auto;
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+}
+.indicator-list ul {
+  list-style-type: none;
+}
+.indicator-list ul li {
+  font-size: 12px;
+  padding: 2px;
+  cursor: pointer;
+  display: block;
+}
+.indicator-list ul li span {
+  margin-right: 5px;
+}

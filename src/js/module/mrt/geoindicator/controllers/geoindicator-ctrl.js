@@ -21,12 +21,15 @@ angular.module('MRT').controller('GeoIndicatorCtrl', ['$scope', '$filter', 'ngTa
     $scope.data.indicator = {};
     $scope.data.indicators = [];
     $scope.data.selectedIndicator = [];
+    $scope.geographies = [];
     $scope.data.selectedGeogroup = '';
     $scope.date = {};
     $scope.date.from = '';
     $scope.date.to = '';
     $scope.summary = {};
     $scope.summary.percentageCompletion = 0;
+    $scope.getValue = getValue;
+    var countries;
 
     $scope.today = function() {
         $scope.dt = new Date();
@@ -87,13 +90,14 @@ $scope.data.params.date;
 $scope.getValues = getValues;
 $scope.selectIndicator = selectIndicator;
 
+/**
 geoGroupService.list($scope.data.params).success(function(data) {
             $scope.data.geogroups = data.geogroups;
         }).error(function(error) {
             $scope.status = 'Unable to load customer data: ' + error.message;
-        });
+        });**/
 
-        
+
 
 $scope.lineChartData_ = {
     color : [
@@ -131,7 +135,7 @@ $scope.lineChartData_ = {
             splitNumber: 10,       // 分割段数，默认为5
             axisLine: {            // 坐标轴线
                 lineStyle: {       // 属性lineStyle控制线条样式
-                    color: [[0.2, '#228b22'],[0.8, '#48b'],[1, '#ff4500']], 
+                    color: [[0.2, '#228b22'],[0.8, '#48b'],[1, '#ff4500']],
                     width: 8
                 }
             },
@@ -242,9 +246,9 @@ $scope.lineChartData_ = {
     $scope.lineChartData = {
                 // color: ['rgb(8,48,107)', 'rgb(8,81,156)', 'rgb(66,146,198)', 'rgb(158,202,225)'],
                 color: ['#E09100', '#9BC215', '#00BFF3'],
-                legend: {// legend configuration 
+                legend: {// legend configuration
                     padding: 0, // The inner padding of the legend, in px, defaults to 5. Can be set as array - [top, right, bottom, left].
-                    //itemGap: 10, // The pixel gap between each item in the legend. It is horizontal in a legend with horizontal layout, and vertical in a legend with vertical layout. 
+                    //itemGap: 10, // The pixel gap between each item in the legend. It is horizontal in a legend with horizontal layout, and vertical in a legend with vertical layout.
                     data: ['Minimum', 'Average', 'Maximum'],
                     textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
                         color: '#333',
@@ -269,7 +273,7 @@ $scope.lineChartData_ = {
                             title: 'Restore',
                         },
                         magicType : {
-                            show: true, 
+                            show: true,
                             title: {
                                 line: 'Line Chart',
                                 bar: 'Bar Chart',
@@ -302,8 +306,8 @@ $scope.lineChartData_ = {
                 yAxis: [// The vertical axis in Cartesian coordinates
                 {
                         type: 'value', // Axis type. yAxis is value axis by default. As for category axis, please refer to the 'xAxis' chapter.
-                        //boundaryGap: [0.1, 0.1], // Blank border on each side of the coordinate axis. Value in the array represents percentage. 
-                        splitNumber: 4                      // Applicable to value axis. The number of segments. Defaults to 5. 
+                        //boundaryGap: [0.1, 0.1], // Blank border on each side of the coordinate axis. Value in the array represents percentage.
+                        splitNumber: 4                      // Applicable to value axis. The number of segments. Defaults to 5.
                     }
                     ],
                     series: [
@@ -315,7 +319,7 @@ $scope.lineChartData_ = {
                         data: []
                     },
                     {
-                        name: 'Average', // series name 
+                        name: 'Average', // series name
                         type: 'line', // chart type, line, scatter, bar, pie, radar
                         smooth:true,
             itemStyle: {normal: {areaStyle: {type: 'default'}}},
@@ -335,9 +339,9 @@ $scope.lineChartData_ = {
  $scope.completionChartData = {
                 // color: ['rgb(8,48,107)', 'rgb(8,81,156)', 'rgb(66,146,198)', 'rgb(158,202,225)'],
                 color: ['#E09100', '#9BC215', '#00BFF3'],
-                legend: {// legend configuration 
+                legend: {// legend configuration
                     padding: 0, // The inner padding of the legend, in px, defaults to 5. Can be set as array - [top, right, bottom, left].
-                    //itemGap: 10, // The pixel gap between each item in the legend. It is horizontal in a legend with horizontal layout, and vertical in a legend with vertical layout. 
+                    //itemGap: 10, // The pixel gap between each item in the legend. It is horizontal in a legend with horizontal layout, and vertical in a legend with vertical layout.
                     data: ['Completion'],
                     textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
                         color: '#333',
@@ -385,8 +389,8 @@ $scope.lineChartData_ = {
                 yAxis: [// The vertical axis in Cartesian coordinates
                 {
                         type: 'value', // Axis type. yAxis is value axis by default. As for category axis, please refer to the 'xAxis' chapter.
-                        //boundaryGap: [0.1, 0.1], // Blank border on each side of the coordinate axis. Value in the array represents percentage. 
-                        splitNumber: 4                      // Applicable to value axis. The number of segments. Defaults to 5. 
+                        //boundaryGap: [0.1, 0.1], // Blank border on each side of the coordinate axis. Value in the array represents percentage.
+                        splitNumber: 4                      // Applicable to value axis. The number of segments. Defaults to 5.
                     }
                     ],
                     series: [
@@ -485,20 +489,20 @@ $scope.lineChartData_ = {
                             fontFamily: 'Montserrat',
                         },
                         type:'gauge',
-                        center : ['50%', '50%'],   
+                        center : ['50%', '50%'],
                         radius : [0, '75%'],
                         startAngle: 140,
                         endAngle : -140,
-                        min: 0,                     
-                        max: 100,                   
-                        precision: 0,               
-                        splitNumber: 10,             
-                        axisLine: {            
-                            show: true,        
-                            lineStyle: {       
-                                // color: [[0.2, 'lightgreen'],[0.4, 'orange'],[0.8, 'skyblue'],[1, '#ff4500']], 
+                        min: 0,
+                        max: 100,
+                        precision: 0,
+                        splitNumber: 10,
+                        axisLine: {
+                            show: true,
+                            lineStyle: {
+                                // color: [[0.2, 'lightgreen'],[0.4, 'orange'],[0.8, 'skyblue'],[1, '#ff4500']],
                                 color: [[0.2, 'rgb(158,202,225)'],[0.4, 'rgb(66,146,198)'],[0.8, 'rgb(8,81,156)'],[1, 'rgb(8,48,107)']],
-                                // color: ['rgb(8,48,107)', 'rgb(8,81,156)', 'rgb(66,146,198)', 'rgb(158,202,225)'], 
+                                // color: ['rgb(8,48,107)', 'rgb(8,81,156)', 'rgb(66,146,198)', 'rgb(158,202,225)'],
                                 width: 30
                             }
                         },
@@ -589,16 +593,66 @@ $scope.lineChartData_ = {
 
         geoIndicatorService.getGeoIndicatorValues($scope.data.params).success(function (data) {
             $scope.data.values = data[0].values;
+            loadGeographies(data[0].values, data[0].dates, data[0].geographies);
             $scope.data.indicator = data[0].indicator;
-            // console.log($scope.data.values);
-
             $scope.data.dates = data[0].dates;
-            // setChartData();
 
         }).error(function (error) {
             $scope.status = 'Unable to load customer data: ' + error.message;
         });
 
+    }
+
+    function getValue(geoCode, date, key) {
+      var found = $filter('filter')($scope.data.values, {code: geoCode, date: date}, true);
+      if(found.length) {
+        return Number(found[0][key]);
+      }
+      return '-';
+    }
+
+
+    function loadGeographies(values, dates, geographies) {
+      var cache = {};
+      $scope.geographies = geoIndicatorService.hydrateValues(values, dates, geographies);
+      return true;
+      for(var i = 0; i < values.length; i++) {
+        if(typeof cache[values[i].code] === "undefined") {
+          var cp = angular.copy(values[i]);
+          cp.values = [];
+          var comp = 0;
+          var min = 0;
+          var max = 0;
+          var exist = 0;
+          var sum = 0;
+          var average = 0;
+          var growth = 0;
+          for(var ii = 0; ii < dates.length; ii++) {
+            var val = getValue(cp.code, dates[ii].date, 'value');
+            if(val != '-') {
+              // val = parseFloat(val);
+              exist++;
+              if(val >= max || max == 0) {
+                max = val;
+              }
+              if(val < min || min === 0) {
+                min = val;
+              }
+              sum += val;
+
+            }
+            cp.values.push(val);
+          }
+          comp = exist > 0 && dates.length > 0  ? (exist/(dates.length))*100 : 0;
+          average = exist > 0 && dates.length > 0  ? (sum/(exist)) : 0;
+          cp.values.push($filter('number')(comp));
+          cp.values.push(min);
+          cp.values.push(max);
+          cp.values.push(average);
+          $scope.geographies.push(cp);
+          cache[values[i].code] = true;
+        }
+      }
     }
 
     var loopIndex = null;
@@ -621,7 +675,7 @@ $scope.lineChartData_ = {
             loopIndex--;
 
         }
-        
+
     }
 
     $scope.startPlay = function() {
@@ -640,7 +694,7 @@ $scope.lineChartData_ = {
         if(typeof $model !== "undefined") {
             $scope.data.params.id = $model.id;
         }
-        
+
     }
 
     function reload() {
@@ -745,9 +799,10 @@ $scope.lineChartData_ = {
             $scope.status = 'Unable to load customer data: ' + error.message;
         });
 
-        // 
+        //
     }
 
+    /**
     geoIndicatorService.getGeoIndicatorTotals().success(function (data) {
         $scope.data.indicators = data.geoindicators;
         angular.forEach($scope.data.indicators, function(value, key) {
@@ -758,13 +813,13 @@ $scope.lineChartData_ = {
 
     }).error(function (error) {
         $scope.status = 'Unable to load customer data: ' + error.message;
-    });
+    });**/
 
     function setChartData() {
 
         $scope.chartData.title.subtext = $scope.data.indicator.description;
         $scope.chartData.series[0].name = $scope.data.indicator.name;
-        
+
         $scope.chartData.dataRange.min = 0;
         $scope.chartData.dataRange.max = 0;
         $scope.summary = {};
@@ -778,12 +833,12 @@ $scope.lineChartData_ = {
             if($scope.chartData.dataRange.min == 0 || value.value < $scope.chartData.dataRange.min) {
                 $scope.chartData.dataRange.min = value.value;
                 $scope.summary.min = value;
-            } 
+            }
 
             if($scope.chartData.dataRange.max == 0 || value.value > $scope.chartData.dataRange.max) {
                 $scope.chartData.dataRange.max = value.value;
                 $scope.summary.max = value;
-            } 
+            }
         });
 
         $scope.summary.percentageCompletion = $scope.data.geography_completion;
@@ -846,7 +901,7 @@ $scope.lineChartData_ = {
                             country = countries[i];
                             // $scope.data.push([country.name, '']);
                         }
-                        
+
                         // loadData();
 
                     }).error(function(error) {
@@ -863,7 +918,7 @@ $scope.lineChartData_ = {
                             }).error(function(error) {
 
                             });
-                        } 
+                        }
                     }
 
                     function setDefaultIndicator() {
@@ -946,11 +1001,11 @@ $scope.db.dynamicColumns = [
                                 }).error(function(error) {
                                     $scope.status = 'Unable to save data ' + error.message;
 
-                                });             
+                                });
                             }
 
                         }
-                        
+
                     }
 
 

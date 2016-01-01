@@ -52,6 +52,11 @@
 #sidebar-wrapper {
   background: #2a2f36;
 }
+#sidebar-wrapper ul,
+#sidebar-wrapper ol,
+#sidebar-wrapper li {
+  list-style-type: none;
+}
 ul.sidebar .sidebar-main a,
 .sidebar-footer,
 ul.sidebar .sidebar-list a:hover,
@@ -119,7 +124,7 @@ ul.sidebar .sidebar-list a {
 ul.sidebar .sidebar-list a:hover,
 ul.sidebar .sidebar-list a.active {
   color: #ffffff;
-  border-left: 3px solid #e99d1a;
+  border-left: 3px solid #9bc215;
   text-indent: 22px;
 }
 ul.sidebar .sidebar-list a:hover .menu-icon,
@@ -127,6 +132,7 @@ ul.sidebar .sidebar-list a.active .menu-icon {
   text-indent: 25px;
 }
 ul.sidebar .sidebar-list .menu-icon {
+  color: #6d7a8c;
   float: right;
   padding-right: 29px;
   line-height: 40px;
@@ -162,7 +168,7 @@ ul.sidebar .child-sidebar-list a.active .menu-icon {
 }
 #page-wrapper:not(.active) ul.sidebar .sidebar-list a:hover span,
 #page-wrapper:not(.active) ul.sidebar .sidebar-list a.active span {
-  border-left: 3px solid #e99d1a;
+  border-left: 3px solid #9bc215;
   text-indent: 22px;
 }
 #page-wrapper:not(.active) ul.sidebar .menu-icon {

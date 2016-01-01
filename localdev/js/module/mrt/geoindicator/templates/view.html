@@ -1,183 +1,216 @@
 <div class="container-fluid indicator-view">
-    <div class="row">
+  <div class="row">
+
+    <!--
+    <div class="col-md-1 pull-left">
+      <span ng-if="data.playing!=true" ng-click="startPlay()"><i class="fa fa-play"></i> Play </span>
+      <span ng-if="data.playing==true" ng-click="stopPlay()"><i class="fa fa-pause"></i> Stop </span>
+    </div>
+    -->
 
 
-        <div class="col-md-1 pull-left"> 
-            <span ng-if="data.playing!=true" ng-click="startPlay()"><i class="fa fa-play"></i> Play </span>
-            <span ng-if="data.playing==true" ng-click="stopPlay()"><i class="fa fa-pause"></i> Stop </span> 
-        </div>
-
-
-<div class="col-md-2">
-    <div class="input-group">
-       <input placeholder="From" type="text" class="form-control" ng-model="date.from" 
-       datepicker-popup="{{format}}" min-mode="'year'" datepicker-mode="'year'" datepicker-options="{minMode: 'year', datepickerMode: 'year'}"
-       is-open="fromOpened" ng-focus="openFrom($event)"
-       date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"></input>
-       <span class="input-group-btn">
-        <button type="button" class="btn btn-default" ng-click="openFrom($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-    </span> 
-</div> 
-</div> 
-<div class="col-md-2">
-    <div class="input-group">
-       <input placeholder="To" type="text" class="form-control" ng-model="date.to" 
-       datepicker-popup="{{format}}" min-mode="'year'" datepicker-mode="'year'" datepicker-options="{minMode: 'year', datepickerMode: 'year'}"
-       is-open="toOpened" ng-focus="openTo($event)"
-       date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"></input>
-       <span class="input-group-btn">
-        <button type="button" class="btn btn-default" ng-click="openTo($event)"><i class="glyphicon glyphicon-calendar"></i></button> 
-    </span> 
-</div> 
-</div>
+    <div class="col-md-2">
+      <div class="input-group">
+        <input placeholder="From" type="text" class="form-control" ng-model="date.from"
+        datepicker-popup="{{format}}" min-mode="'year'" datepicker-mode="'year'" datepicker-options="{minMode: 'year', datepickerMode: 'year'}"
+        is-open="fromOpened" ng-focus="openFrom($event)"
+        date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"></input>
+        <span class="input-group-btn">
+          <button type="button" class="btn btn-default" ng-click="openFrom($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+        </span>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="input-group">
+        <input placeholder="To" type="text" class="form-control" ng-model="date.to"
+        datepicker-popup="{{format}}" min-mode="'year'" datepicker-mode="'year'" datepicker-options="{minMode: 'year', datepickerMode: 'year'}"
+        is-open="toOpened" ng-focus="openTo($event)"
+        date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"></input>
+        <span class="input-group-btn">
+          <button type="button" class="btn btn-default" ng-click="openTo($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+        </span>
+      </div>
+    </div>
 
     <div class="col-md-4">
-        <ui-select ng-model="data.selectedIndicator" on-select="selectIndicator($item, $model)">
+      <button type="button" class="btn btn-success" ng-click="reload()">Refresh</button>
+
+      <!--
+      <ui-select ng-model="data.selectedIndicator" on-select="selectIndicator($item, $model)">
         <ui-select-match placeholder="Select Indicator">{{$select.selected.name}}</ui-select-match>
         <ui-select-choices repeat="indicator in data.indicators | filter: $select.search track by indicator.id">
-        <div ng-bind-html="indicator.name | highlight: $select.search"></div>
-    </ui-select-choices>
-</ui-select>
-</div>  
+          <div ng-bind-html="indicator.name | highlight: $select.search"></div>
+        </ui-select-choices>
+      </ui-select>
+    -->
+    </div>
 
-    <div class="col-md-2"> 
-        <ui-select ng-model="data.selectedGeogroup">
+    <div class="col-md-2">
+      <!--
+      <ui-select ng-model="data.selectedGeogroup">
         <ui-select-match placeholder="Country Group">{{$select.selected.name}}</ui-select-match>
         <ui-select-choices repeat="geogroup in data.geogroups | filter: $select.search track by geogroup.id">
-        <div ng-bind-html="geogroup.name | highlight: $select.search"></div>
-    </ui-select-choices>
-</ui-select>
-</div>  
-<div class="col-md-1"> 
-    <button type="button" class="btn btn-success" ng-click="reload()">Submit</button>
-    </div>
-
-<!--
-        <div class="col-md-2">
-            <ui-select ng-model="data.selectedDate" on-select="getValues($item, $model)">
-            <ui-select-match placeholder="Select Date">{{$select.selected.date}}</ui-select-match>
-            <ui-select-choices repeat="date in data.dates | filter: $select.search track by date.date">
-            <div ng-bind-html="date.date | highlight: $select.search"></div>
+          <div ng-bind-html="geogroup.name | highlight: $select.search"></div>
         </ui-select-choices>
+      </ui-select>
+      -->
     </div>
--->
+    <div class="col-md-2">
+      <button type="button" class="btn btn-primary pull-right" ng-click="">Add Indicator</button>
+    </div>
+
+    <!--
+    <div class="col-md-2">
+    <ui-select ng-model="data.selectedDate" on-select="getValues($item, $model)">
+    <ui-select-match placeholder="Select Date">{{$select.selected.date}}</ui-select-match>
+    <ui-select-choices repeat="date in data.dates | filter: $select.search track by date.date">
+    <div ng-bind-html="date.date | highlight: $select.search"></div>
+    </ui-select-choices>
+    </div>
+    -->
 
 
 
-</div>
-<div class="row">
+  </div>
+  <div class="row">
     <tabset>
-        <tab heading="Values" ng-click="tabSelected('values')"> 
-            <div class="row margin-top" style="background-color: #F0F3F6; padding: 10px">
-                <mrt-chart class="col-md-12 widget-body large" style="height:300px; width: 100%" chart-data="lineChartData"></mrt-chart>
-            </div>
-        </tab>
-        <tab heading="Completion (%)" ng-click="tabSelected('completion')">
-            <div class="row margin-top" style="background-color: #F0F3F6; padding: 10px">
-                <mrt-chart class="col-md-12 widget-body large" style="height:300px; width: 100%" chart-data="completionChartData"></mrt-chart>
-            </div>
-        </tab>
-        <tab heading="Average">
-            Average 
-        </tab>
+      <tab heading="Values" ng-click="tabSelected('values')">
+        <div class="row margin-top" style="background-color: #F0F3F6; padding: 10px">
+          <mrt-chart class="col-md-12 widget-body large" style="height:300px; width: 100%" chart-data="lineChartData"></mrt-chart>
+        </div>
+      </tab>
+      <tab heading="Completion (%)" ng-click="tabSelected('completion')">
+        <div class="row margin-top" style="background-color: #F0F3F6; padding: 10px">
+          <mrt-chart class="col-md-12 widget-body large" style="height:300px; width: 100%" chart-data="completionChartData"></mrt-chart>
+        </div>
+      </tab>
+      <tab heading="Average">
+        Average
+      </tab>
     </tabset>
+  </div>
+  <!--
+  <div class="row margin-top" style="background-color: #F0F3F6; padding: 10px">
+  <mrt-chart class="col-md-12 widget-body large" style="height:300px;" chart-data="lineChartData"></mrt-chart>
+
+  </div>
+  -->
+  <div class="row margin-top">
+
+    <mrt-map-chart class="col-xs-9 widget-body large" chart-data="chartData"></mrt-map-chart>
+    <mrt-chart class="col-md-3 widget-body large" style="" chart-data="dataCompletionChartData"></mrt-chart>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-3">
+      <span class="small-label">Minimum : <br /><span class="flag {{ summary.min.code | lowercase }}"></span> {{ summary.min.name }}</span>
+      <h3>{{ summary.min.value | number }}</h3>
+    </div>
+    <div class="col-xs-3">
+      <span class="small-label">Maximum : <br /><span class="flag {{ summary.max.code | lowercase }}"></span> {{ summary.max.name }}</span>
+      <h3>{{ summary.max.value | number }}</h3>
+    </div>
+
+    <div class="col-xs-2">
+      <span class="small-label">High Data Completion<br />&nbsp;</span>
+      <h3>2000</h3>
+    </div>
+    <div class="col-xs-2">
+      <span class="small-label">Low Data Completion<br />&nbsp;</span>
+      <h3>2015</h3>
+    </div>
+    <div class="col-xs-2">
+      <span class="small-label">Data Completion<br />&nbsp;</span>
+      <h3>{{ summary.percentageCompletion }}%</h3>
+    </div>
+  </div>
+<div class="table-display">
+  <indicator-table-display indicator="data.indicator" dates="data.dates" data="geographies"></indicator-table-display>
 </div>
 <!--
- <div class="row margin-top" style="background-color: #F0F3F6; padding: 10px">
-    <mrt-chart class="col-md-12 widget-body large" style="height:300px;" chart-data="lineChartData"></mrt-chart>
-
-    </div>
---> 
-<div class="row margin-top">
-
-    <mrt-map-chart class="col-xs-9 widget-body large" chart-data="chartData"></mrt-map-chart>  
-    <mrt-chart class="col-md-3 widget-body large" style="" chart-data="dataCompletionChartData"></mrt-chart>
-</div>
-
-<div class="row">
-    <div class="col-xs-3">
-        <span class="small-label">Minimum : <br /><span class="flag {{ summary.min.code | lowercase }}"></span> {{ summary.min.name }}</span>
-        <h3>{{ summary.min.value | number }}</h3>
-    </div>
-    <div class="col-xs-3"> 
-     <span class="small-label">Maximum : <br /><span class="flag {{ summary.max.code | lowercase }}"></span> {{ summary.max.name }}</span> 
-     <h3>{{ summary.max.value | number }}</h3>
- </div>
-
- <div class="col-xs-2">
-    <span class="small-label">High Data Completion<br />&nbsp;</span> 
-    <h3>2000</h3>
-</div>
-<div class="col-xs-2">
-    <span class="small-label">Low Data Completion<br />&nbsp;</span>
-    <h3>2015</h3>
-</div>
-<div class="col-xs-2">
-    <span class="small-label">Data Completion<br />&nbsp;</span> 
-    <h3>{{ summary.percentageCompletion }}%</h3>
-</div>
-</div> 
-
-
-
-
 <div class="row">
     <div class="col-md-3 pull-right">
-        <input class="form-control" ng-model="filterText" type="text" placeholder="Search">
+      <input class="form-control" ng-model="filterText" type="text" placeholder="Search">
     </div>
     <div class="col-xs-12">
-        <rd-widget>
+      <rd-widget>
         <rd-widget-header icon="fa-map-marker" title="{{ data.indicator.name }}">
-        <!--<a href="#/geogroup-view/">Add Country Group</a>-->
+        </rd-widget-header>
+        <rd-widget-body classes="large no-padding">
+          <div class="table-responsive">
+            <table class="table f16">
+              <thead>
+                <th ng-click="predicate = 'name'; reverse=!reverse">Name</th>
+                <th ng-repeat="d in data.dates" class="">
+                  {{ d.date }}
+                </th>
+                <th>Comp. %</th>
+                <th>Min</th>
+                <th>Max</th>
+              </thead>
+              <tbody>
+                <tr ng-repeat="row in geographies " class="repeated-item">
+                  <td>
+                    {{row.name}}
+                  </td>
+                  <td ng-repeat="d in row.values track by $index" class="">
+                    {{ d }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </rd-widget-body>
+        <rd-widget-footer>
 
-    </rd-widget-header>
-    <rd-widget-body classes="large no-padding">
-    <div class="table-responsive">
-        <table class="table f16">
-            <thead>
+          <div class="clearfix"></div>
+        </rd-widget-footer>
+
+      </rd-widget>
+    </div>
+  </div>
+-->
+<!--
+
+        </rd-widget-header>
+        <rd-widget-body classes="large no-padding">
+          <div class="table-responsive">
+            <table class="table f16">
+              <thead>
                 <th ng-click="predicate = 'code'; reverse=!reverse">Code</th>
                 <th ng-click="predicate = 'name'; reverse=!reverse">Name</th>
                 <th ng-click="predicate = 'value'; reverse=!reverse" align="right"><span class="pull-right">Value</span>
                 </th>
                 <th ng-click="predicate = 'Date'; reverse=!reverse" align="right"><span class="pull-right">Date</span>
                 </th>
-            </thead>
-            <tbody>
+              </thead>
+              <tbody>
                 <tr ng-repeat="row in data.values | filter:filterText | orderBy:predicate:reverse" class="repeated-item">
-                    <td>
-                        <span class="flag {{row.code | lowercase }}"></span>
-                        {{row.code}}
-                    </td>
-                    <td>
-                        {{row.name}}
-                    </td>
-                    <td align="right">
-                        {{row.value | number }}
-                    </td>
-                    <td align="right">
-                        {{row.date}}
-                    </td>
+                  <td>
+                    <span class="flag {{row.code | lowercase }}"></span>
+                    {{row.code}}
+                  </td>
+                  <td>
+                    {{row.name}}
+                  </td>
+                  <td align="right">
+                    {{row.value | number }}
+                  </td>
+                  <td align="right">
+                    {{row.date}}
+                  </td>
                 </tr>
-            </tbody>
-        </table>
-    </div>
-</rd-widget-body>
-<rd-widget-footer>
-                    <!--
-                    <ul class="pagination pagination-sm pull-right">
-                        <li><a href="#">&laquo;</a></li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#">&raquo;</a></li>
-                    </ul>
-                -->
-                <div class="clearfix"></div>
-            </rd-widget-footer>
+              </tbody>
+            </table>
+          </div>
+        </rd-widget-body>
+        <rd-widget-footer>
 
-        </rd-widget>
+          <div class="clearfix"></div>
+        </rd-widget-footer>
+
+      </rd-widget>
     </div>
+  </div>
 </div>
-</div>
+-->

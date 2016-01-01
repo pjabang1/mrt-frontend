@@ -25,6 +25,8 @@
         "font-awesome": "~4.3.0",
         "ng-table": "~0.3.1",
         "topojson": "~1.6.18",
+        "datamaps": "0.4.0",
+        "dragit": "master",
         "venturocket-angular-slider": "",
         "plottable": "0.40.0",
         "nghandsontable": "~0.5.1",

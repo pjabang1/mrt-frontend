@@ -30,6 +30,30 @@ angular.module('MRT').config(['$stateProvider', '$urlRouterProvider',
                 url: '/geomodel',
                 controller: 'GeoModelCtrl',
                 templateUrl: 'module/mrt/geomodel/templates/index.html'
+            }).state('geomodel-create-country-selection', {
+                url: '/geomodel/create/country-selection',
+                controller: 'GeoModelCreateCountrySelection',
+                templateUrl: 'module/mrt/geomodel/templates/create/country-selection.html'
+            })
+            .state('geomodel-create-indicator-selection', {
+                url: '/geomodel/create/indicator-selection',
+                controller: 'GeoModelCreateIndicatorSelection',
+                templateUrl: 'module/mrt/geomodel/templates/create/indicator-selection.html'
+            })
+            .state('geomodel-vs-model', {
+                url: '/geomodel/create/vs-model',
+                controller: 'GeoModelVsModel',
+                templateUrl: 'module/mrt/geomodel/templates/create/vs-model.html'
+            })
+            .state('geomodel-create-model', {
+                url: '/geomodel/create/model',
+                controller: 'GeoModelCreateModel',
+                templateUrl: 'module/mrt/geomodel/templates/create/model.html'
+            })
+            .state('geomodel-gallery', {
+                url: '/geomodel/gallery',
+                controller: 'GeoModelCreateModel',
+                templateUrl: 'module/mrt/geomodel/templates/create/model-gallery.html'
             })
             .state('geography', {
                 url: '/geography',
@@ -81,6 +105,11 @@ angular.module('MRT').config(['$stateProvider', '$urlRouterProvider',
                 url: '/geomodel/cluster',
                 controller: 'GeoModelCtrl',
                 templateUrl: 'module/mrt/geomodel/templates/geomodel-cluster-index.html'
+            })
+            .state('geomodel-add-advance', {
+                url: '/geomodel/add-advance',
+                controller: 'GeoModelAddAdvanceCtrl',
+                templateUrl: 'module/mrt/geomodel/templates/add-advance.html'
             })
             .state('view-fund', {
                 url: '/view-fund/:phoneId',

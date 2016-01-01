@@ -62,6 +62,10 @@
 .widget .widget-footer .pagination {
   margin: 0;
 }
+.widget td.selected {
+  background-color: #dff0d8;
+  color: #000;
+}
 .widget .widget-header {
   color: #767676;
   background-color: #f6f6f6;
@@ -73,7 +77,7 @@
   margin-right: 5px;
 }
 .widget .widget-body {
-  padding: 20px;
+  padding: 5px;
 }
 .widget .widget-body table th {
   cursor: pointer;
@@ -82,10 +86,10 @@
   background: #fafafa;
 }
 .widget .widget-body table thead * {
-  font-size: 14px !important;
+  font-size: 12px;
 }
 .widget .widget-body table tbody * {
-  font-size: 13px !important;
+  font-size: 11px;
 }
 .widget .widget-body .error {
   color: #ff0000;

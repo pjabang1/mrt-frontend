@@ -40,7 +40,8 @@ var paths = {
 	bower_components: 'src/bower_components/**/*.*',
 };
 
-var outputDir = argv.env || 'dist';
+var env = argv.env || 'dev';
+var outputDir = env;
 paths.outputDir = outputDir + '/';
 
 gulp.task('usemin', function() {
@@ -57,13 +58,12 @@ gulp.task('usemin', function() {
 
 gulp.task('replace', function() {
 	// Get the environment from the command line
-	var env = argv.env || 'dev';
 
 	// Read the settings from the right file
 	var filename = env + '.json';
 	var evn = JSON.parse(fs.readFileSync(paths.config + filename, 'utf8'));
 
-// Replace each placeholder with the correct value for the variable.  
+// Replace each placeholder with the correct value for the variable.
 	gulp.src(paths.parameter)
 			.pipe(replace({
 				patterns: [
