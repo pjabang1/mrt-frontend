@@ -123,8 +123,22 @@
       </div>
     </div>
     <div class="col-xs-9">
-      <div class="table-display">
+      <div class="table-display" ng-if="selectedIndicator.id">
+        <div>
+          <form class="form-inline">
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="From" ng-model="selectedIndicator.from">
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="To" ng-model="selectedIndicator.to">
+  </div>
+  <button type="submit" class="btn btn-default btn-primary" ng-click="getValues(selectedIndicator.geographies, selectedIndicator)">Reload</button>
+</form>
+        </div>
         <indicator-table-display indicator="selectedIndicator" dates="selectedIndicator.dates" data="selectedIndicator.geographies"></indicator-table-display>
+      </div>
+      <div ng-if="!selectedIndicator.id">
+        <alert type="info"> Click indicators to display data here </alert>
       </div>
 
     </div>
