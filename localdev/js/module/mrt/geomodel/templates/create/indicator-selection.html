@@ -46,7 +46,7 @@
 
               <span class="name dropdown" dropdown on-toggle="toggled(open)">
                 <i class="fa fa-plus-circle pointer dropdown-toggle" dropdown-toggle></i>
-                <ul class="dropdown-menu" style="z-index: 2500">
+                <ul class="dropdown-menu" style="z-index: 2500; left: -150px;">
                   <li ng-repeat="dimension in model.modelType.dimensions">
                     <a ng-click="copyIndicatorGroup(row, dimension)">{{ dimension.name }}</a>
                   </li>
