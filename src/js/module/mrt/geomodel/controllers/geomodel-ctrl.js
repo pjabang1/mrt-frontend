@@ -111,7 +111,7 @@ angular.module('MRT').controller('GeoModelWeightCtrl', ['$scope', '$filter', '$s
 			if ($scope.setSelectedParameter(id) !== null) {
 				$scope.predicate = '-' + $scope.getParameterAxis(id) + 'Score';
 				//$scope.predicate = '-xScore';
-				// $scope.data.selectedParameter = 
+				// $scope.data.selectedParameter =
 				angular.forEach($scope.response.geoindicators.list, function(indicator, key) {
 					if (indicator.parameter_id === id) {
 						indicator.selected = true;
@@ -567,7 +567,7 @@ angular.module('MRT').controller('GeoModelWeightCtrl', ['$scope', '$filter', '$s
 			$scope.data.changed = true;
 		};
 
-		// function to submit the form after all validation has occurred			
+		// function to submit the form after all validation has occurred
 		$scope.submitForm = function(isValid) {
 			if (isValid) {
 
@@ -599,4 +599,3 @@ angular.module('MRT').controller('GeoModelWeightCtrl', ['$scope', '$filter', '$s
 		};
 
 	}]);
-

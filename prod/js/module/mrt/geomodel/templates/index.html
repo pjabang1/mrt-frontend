@@ -17,15 +17,15 @@
                         <table class="table">
                             <thead>
                             <th  ng-click="predicate = 'name'; reverse=!reverse">Name</th>
-                            <th  ng-click="predicate = 'description'; reverse=!reverse">Description</th>
+                            <th  ng-click="predicate = 'description'; reverse=!reverse">Model</th>
                             </thead>
                             <tbody>
                                 <tr ng-repeat="row in data.geomodels | filter:filterText | orderBy:predicate:reverse">
                                     <td data-title="'Name'">
-                                        <a ui-sref="geomodel-weight({id: row.id})">{{row.name}}</a>
+                                        <a ui-sref="geomodel-create-model({id: row.id})">{{row.name}}</a>
                                     </td>
                                     <td data-title="'Description'">
-                                        {{row.description}}
+                                        {{ row.algorithm_code }}
                                     </td>
                                 </tr>
                             </tbody>

@@ -48,6 +48,22 @@ angular.module('MRT')
             });
         };
 
+        dataFactory.get = function(params) {
+            return $http.get(urlBase + '/geomodel/' + params.id);
+        };
+
+        function getPostModel(model) {
+          var m = {};
+          m.name = model.name;
+          if(typeof model.id !== 'undefined' && model.id) {
+            m.id = model.id;
+          }
+          m.algorithm_code = model.modelType.name;
+          m.description = model.description;
+          m.content = JSON.stringify(model);
+          return m;
+        }
+
         dataFactory.localSave = function(model) {
           localStorageService.set(cacheKey, model);
         }
@@ -69,7 +85,8 @@ angular.module('MRT')
         };
 
         dataFactory.replace = function(data) {
-            return $http.put(urlBase + '/geomodel/replace', data);
+            var m = getPostModel(data);
+            return $http.put(urlBase + '/geomodel/replace', m);
         };
 
         dataFactory.getIndicators = function(params) {
@@ -90,10 +107,14 @@ angular.module('MRT')
           return modelTypes;
         }
 
-        if(!localStorageService.get(cacheKey)) {
+        dataFactory.start = function() {
           dataFactory.localSave(model);
         }
 
+
+        if(!localStorageService.get(cacheKey)) {
+          dataFactory.localSave(model);
+        }
 
         return dataFactory;
     }]);

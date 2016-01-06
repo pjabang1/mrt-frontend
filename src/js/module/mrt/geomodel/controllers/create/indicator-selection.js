@@ -261,9 +261,17 @@
       function next() {
 
         // model = $scope.model.indicators;
-        console.log(JSON.stringify($scope.model));
+        // console.log(JSON.stringify($scope.model));
         geoModelService.localSave($scope.model);
-        // $state.go("geomodel-create-country-selection");
+        post($scope.model);
+      }
+
+      function post(model) {
+        geoModelService.replace(model).success(function(data) {
+            $state.go("geomodel");
+        }).error(function(error) {
+            $state.go("geomodel");
+        });
       }
 
       function countSelected(row) {

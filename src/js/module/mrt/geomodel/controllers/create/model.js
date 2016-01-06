@@ -15,9 +15,27 @@
         {'id' : 'bg-matrix', 'name': 'BG Matrix'}
       ];
 
-      $scope.model = geoModelService.getLocalModel();
+
+      if($stateParams.id) {
+        loadModel($stateParams.id);
+      } else {
+        geoModelService.start();
+        $scope.model = geoModelService.getLocalModel();
+      }
+
       $scope.next = next;
       $scope.selectModelType = selectModelType;
+
+      function loadModel(id) {
+        geoModelService.get({id: id}).success(function(data) {
+            var model = JSON.parse(data.content);
+            model.id = data.id;
+            geoModelService.localSave(model);
+            $scope.model = geoModelService.getLocalModel();
+        }).error(function(error) {
+            $scope.status = 'Unable to load customer data: ' + error.message;
+        });
+      }
 
       function next() {
         if(typeof $scope.model.modelType == "undefined") {
