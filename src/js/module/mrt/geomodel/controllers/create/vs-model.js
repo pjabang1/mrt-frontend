@@ -4,22 +4,34 @@
     angular
         .module('MRT')
         .controller('GeoModelVsModel', GeoModelVsModel);
-    GeoModelVsModel.$inject = ['$scope', '$filter', '$stateParams', '$modal', '$log', '$state', 'geoModelService', 'geoIndicatorGroupService', 'geoIndicatorService'];
+    GeoModelVsModel.$inject = ['$scope', '$filter', '$stateParams', '$modal', '$log', '$state', 'geoModelService', 'geoIndicatorGroupService', 'geoIndicatorService', 'vsModelHydratorService'];
 
-    function GeoModelVsModel($scope, $filter, $stateParams, $modal, $log, $state, geoModelService, geoIndicatorGroupService, geoIndicatorService) {
+    function GeoModelVsModel($scope, $filter, $stateParams, $modal, $log, $state, geoModelService, geoIndicatorGroupService, geoIndicatorService, vsModelHydratorService) {
       var vm = this;
       $scope.options = {};
-      $scope.options.models = [
-        {'id': 'mckinsey-matrix', 'name': 'GE McKinsey 9 Box Matrix'},
-        {'id' : 'bg-matrix', 'name': 'BG Matrix'}
-      ];
+      $scope.model = {};
+      $scope.ui = {};
+      $scope.ui.chartData;
 
-      $scope.next = next;
+      loadModel($stateParams.id);
 
-      function next() {
-        $state.go("geomodel-create-country-selection");
+      function loadModel(id) {
+        geoModelService.get({id: id}).success(function(data) {
+            var model = JSON.parse(data.content);
+            model.id = data.id;
+            geoModelService.localSave(model);
+
+            $scope.model = geoModelService.getLocalModel();
+            console.log($scope.model);
+            if(model.modelType.id === '3-dimentional-bubble') {
+              var result = vsModelHydratorService.hydrate($scope.model);
+              $scope.ui.chartData = result;
+            }
+
+        }).error(function(error) {
+            $scope.status = 'Unable to load customer data: ' + error.message;
+        });
       }
-
 
 
     }

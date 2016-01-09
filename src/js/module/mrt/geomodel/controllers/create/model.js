@@ -15,9 +15,13 @@
         {'id' : 'bg-matrix', 'name': 'BG Matrix'}
       ];
 
-
       if($stateParams.id) {
-        loadModel($stateParams.id);
+        if($stateParams.id === 'local') {
+          $scope.model = geoModelService.getLocalModel();
+        } else {
+          loadModel($stateParams.id);
+        }
+
       } else {
         geoModelService.start();
         $scope.model = geoModelService.getLocalModel();

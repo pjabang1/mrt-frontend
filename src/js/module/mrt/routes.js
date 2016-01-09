@@ -41,7 +41,7 @@ angular.module('MRT').config(['$stateProvider', '$urlRouterProvider',
                 templateUrl: 'module/mrt/geomodel/templates/create/indicator-selection.html'
             })
             .state('geomodel-vs-model', {
-                url: '/geomodel/create/vs-model',
+                url: '/geomodel/create/vs-model/:id',
                 controller: 'GeoModelVsModel',
                 templateUrl: 'module/mrt/geomodel/templates/create/vs-model.html'
             })

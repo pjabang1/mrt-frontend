@@ -58,9 +58,12 @@
         geoModelService.localSave(model);
       }
 
-      function go(page) {
+      function go(page, params) {
+        if(typeof params === 'undefined') {
+          params = {};
+        }
         saveGeographies();
-        $state.go(page);
+        $state.go(page, params);
       }
 
 

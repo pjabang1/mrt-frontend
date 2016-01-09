@@ -22,7 +22,8 @@
                             <tbody>
                                 <tr ng-repeat="row in data.geomodels | filter:filterText | orderBy:predicate:reverse">
                                     <td data-title="'Name'">
-                                        <a ui-sref="geomodel-create-model({id: row.id})">{{row.name}}</a>
+                                        <!--<a ui-sref="geomodel-create-model({id: row.id})">{{row.name}}</a>-->
+                                        <a ui-sref="geomodel-vs-model({id: row.id})">{{row.name}}</a>
                                     </td>
                                     <td data-title="'Description'">
                                         {{ row.algorithm_code }}

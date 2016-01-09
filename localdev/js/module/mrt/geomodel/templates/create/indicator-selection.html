@@ -79,7 +79,7 @@
               <input popover="Click to edit" popover-trigger="mouseenter" ng-model="dimension.name" class="contenteditable header-input" style="width: 100%" />
             </h4>
           </div>
-            <div class="pull-left col-xs-2 no-padding"><input type="text" ng-model="dimension.weight" class="weight" style="margin-top: 10px" /> % </div>
+            <div class="pull-left col-xs-2 no-padding"><input type="text" ng-model="dimension.weight" ng-if="dimension.weighted" class="weight" style="margin-top: 10px" /> % </div>
             <div class="col-xs-12 menu no-padding border-bottom">
               <span ng-click="addIndicatorGroupToDimension(dimension)" class="menu-item pull-right"><i class="fa fa-plus-circle pointer"></i> Add Group </span>
             </div>
@@ -112,7 +112,7 @@
                     </span>
 
                   </div>
-                  <div class="pull-left col-xs-2 no-padding"><input type="text" ng-model="indicator.weight" class="weight" />  % </div>
+                  <div class="pull-left col-xs-2 no-padding"><input type="text" ng-model="indicator.weight" ng-if="dimension.weighted" class="weight" />  % </div>
                 </li>
               </ul>
             </li>
@@ -132,13 +132,21 @@
   <div class="form-group">
     <input type="text" class="form-control" placeholder="To" ng-model="selectedIndicator.to">
   </div>
-  <button type="submit" class="btn btn-default btn-primary" ng-click="getValues(selectedIndicator.geographies, selectedIndicator)">Reload</button>
+  <button type="submit" class="btn btn-default btn-primary" ng-click="getValues(model.geographies, selectedIndicator)">Reload</button>
+  <button type="submit" class="btn btn-default btn-primary pull-right" ng-click="reloadAll(model)">Reload All</button>
 </form>
         </div>
         <indicator-table-display indicator="selectedIndicator" dates="selectedIndicator.dates" data="selectedIndicator.geographies"></indicator-table-display>
       </div>
       <div ng-if="!selectedIndicator.id">
+        <div class="col-xs-12">
+        <button type="submit" class="btn btn-default btn-primary pull-right" ng-click="reloadAll(model)">Reload All</button>
+
+      </div>
+      <div class="col-xs-12">
+        <br />
         <alert type="info"> Click indicators to display data here </alert>
+      </div>
       </div>
 
     </div>

@@ -44,6 +44,7 @@
       $scope.selectedIndicator = null;
       $scope.selectIndicator = selectIndicator;
       $scope.getValues = getValues;
+      $scope.reloadAll = reloadAll;
       var model = geoModelService.getLocalModel();
 
       loadModelIndicatorValues($scope.model);
@@ -72,7 +73,7 @@
       return ids;
     }
 
-    function loadModelIndicatorValues(model) {
+    function loadModelIndicatorValues(model, load) {
       var indicators;
       var groups;
       var indicator;
@@ -82,9 +83,16 @@
         for(var ii = 0; ii < groups.indicators.length; ii++) {
           indicator = groups.indicators[ii];
           indicator = appendIndicatorDates(model, indicator);
+          if(typeof load !== "undefined" && load == true) {
+            indicator.loaded = false;
+          }
           loadIndicatorValues(model.geographies, indicator);
         }
       }
+    }
+
+    function reloadAll(model) {
+      loadModelIndicatorValues(model, true);
     }
 
     function loadIndicatorValues(geographies, indicator) {
@@ -268,9 +276,9 @@
 
       function post(model) {
         geoModelService.replace(model).success(function(data) {
-            $state.go("geomodel");
+            $state.go("geomodel-vs-model", {id: data});
         }).error(function(error) {
-            $state.go("geomodel");
+            $state.go("geomodel-vs-model", {id: data});
         });
       }
 
