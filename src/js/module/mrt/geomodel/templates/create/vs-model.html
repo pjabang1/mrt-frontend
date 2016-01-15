@@ -4,7 +4,23 @@
     <h1>{{ model.name }}</h1>
   </div>
   <div class="col-xs-3">
-    <a ui-sref="geomodel-create-model({id: model.id})" class="btn btn-primary pull-right"><i class="fa fa-edit"></i> Update Data</a>
+    <!--
+    <span class="dropdown" dropdown on-toggle="toggled(open)">
+
+      <a href class="dropdown-toggle" dropdown-toggle>
+        Click me for a dropdown, yo!
+      </a>
+      <ul class="dropdown-menu">
+        <li role="menuitem"><a href="#">Action</a></li>
+        <li role="menuitem"><a href="#">Another action</a></li>
+        <li role="menuitem"><a href="#">Something else here</a></li>
+        <li class="divider"></li>
+        <li role="menuitem"><a href="#">Separated link</a></li>
+      </ul>
+    </span>
+  -->
+    <a ui-sref="geomodel-create-model({id: model.id, type: 'copy'})" class="btn btn-primary pull-right"><i class="fa fa-edit"></i> Copy </a>
+    <a ui-sref="geomodel-create-model({id: model.id})" class="btn btn-primary pull-right"><i class="fa fa-edit"></i> Update Data </a>
   </div>
     <vs-model-chart class="col-xs-12"  data="ui.chartData">
     </vs-model-chart>
@@ -21,8 +37,10 @@
     <h1>{{ model.name }}</h1>
   </div>
   <div class="col-xs-3">
+    <a ui-sref="geomodel-create-model({id: model.id, type: 'copy'})" class="btn btn-primary pull-right"><i class="fa fa-edit"></i> Copy </a>
     <a ui-sref="geomodel-create-model({id: model.id})" class="btn btn-primary pull-right"><i class="fa fa-edit"></i> Update Data</a>
   </div>
+  <matrix-chart class="col-xs-12"  data="ui.chartData"></matrix-chart>
 
   </div>
 </div>

@@ -46,7 +46,7 @@ angular.module('MRT').config(['$stateProvider', '$urlRouterProvider',
                 templateUrl: 'module/mrt/geomodel/templates/create/vs-model.html'
             })
             .state('geomodel-create-model', {
-                url: '/geomodel/create/model/:id',
+                url: '/geomodel/create/model/:id/:type',
                 controller: 'GeoModelCreateModel',
                 templateUrl: 'module/mrt/geomodel/templates/create/model.html'
             })

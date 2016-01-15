@@ -155,8 +155,12 @@ angular.module('MRT')
 		item.label = label;
 		item.type = value === '-' ? 'na' : 'number';
 		item.selectable = value === '-' ? false : true;
+
 		if(typeof selectable !== "undefined") {
 			item.selectable = selectable;
+		}
+		if(typeof item.selected === 'undefined' && label === 'average') {
+			item.selected = true;
 		}
 		arr.push(item);
 	}

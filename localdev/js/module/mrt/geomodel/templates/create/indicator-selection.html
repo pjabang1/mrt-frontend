@@ -10,31 +10,12 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-3" style="padding-left: 0px;">
-      <!--
-      <div class="col-xs-12">
-
-      <form class="form-inline">
-      <div class="form-group">
-      <label>
-      <input type="radio" ng-model="options.selectType" value="group">
-      Indicator Groups
-      </label>
-      </div>
-      <div class="form-group">
-      <label>
-      <input type="radio" ng-model="options.selectType" value="indicator">
-      Indicators
-      </label>
-      </div>
-      </form>
-      </div>
-      -->
       <div class="group-selection" ng-if="options.selectType == 'group'">
         <div class="col-xs-12 pull-right" style="padding-left: 0px;">
           <input class="form-control" ng-focus="inputFocus = true" ng-model="groupFilter.name" type="text" placeholder="Search indicator groups">
         </div>
 
-        <div class="indicator-list" ng-show="inputFocus" style="position: absolute; top: 30px; width: 350px; background-color: rgba(255, 255, 255, 0.90); z-index: 1000; height: auto; ">
+        <div class="indicator-list"  ng-show="inputFocus" style="position: absolute; top: 30px; width: 350px; background-color: rgba(255, 255, 255, 0.90); z-index: 1000; height: auto; ">
           <ul>
             <li ng-click="inputFocus = false">
               &nbsp;
@@ -73,7 +54,10 @@
         </div>
         <div class="selected-indicator">
         <div class="col-xs-12 list no-padding" style="height: 550px; overflow: scroll">
-          <div ng-repeat="dimension in model.modelType.dimensions" class="border-bottom">
+          <div ng-repeat="dimension in model.modelType.dimensions" class="border-bottom" ng-if="dimension.weighted">
+            <div class="pull-left col-xs-12 no-padding" ng-if="$index === 0" ng-click="balanceGroupWeights(model.indicators, model.modelType.dimensions)">
+              <span class="pull-right btn btn-primary"> Balance </span>
+            </div>
             <div class="pull-left col-xs-10 no-padding">
             <h4>
               <input popover="Click to edit" popover-trigger="mouseenter" ng-model="dimension.name" class="contenteditable header-input" style="width: 100%" />
@@ -118,10 +102,57 @@
             </li>
           </ul>
         </div>
+
+
+        <div ng-repeat="dimension in model.modelType.dimensions" class="border-bottom" ng-if="dimension.weighted != true">
+          <div class="pull-left col-xs-10 no-padding">
+          <h4>
+            <input popover-trigger="mouseenter" ng-model="dimension.name" class="contenteditable header-input" style="width: 100%"  disabled=""/>
+          </h4>
+        </div>
+          <div class="pull-left col-xs-2 no-padding">
+
+          </div>
+          <div class="col-xs-12 menu no-padding border-bottom">
+          </div>
+        <ul>
+          <li ng-repeat="row in model.indicators | filter:{ dimension: dimension.id }" class="">
+            <ul>
+              <li ng-repeat="indicator in row.indicators" class="row hover indicator-row" ng-mouseleave="indicator.hover = false" ng-mouseover="indicator.hover = true" ng-init="indicator.hover=false">
+                <div class="pull-left col-xs-10 no-padding highlight">
+                  <span class="" ng-show="indicator.loading"><i class="fa fa-circle-o-notch fa-spin color"></i></span>
+                  <span class="name dropdown" dropdown on-toggle="toggled(open)">
+                    <span class="" ng-show="indicator.loaded" class="dropdown-toggle" dropdown-toggle>
+                      <i class="fa fa-dot-circle-o color"></i>
+                    </span>
+                    <ul class="dropdown-menu">
+                      <li ng-click="remove(row.indicators, indicator)">
+                        <a> Remove Indicator </a>
+                      </li>
+                    </ul>
+                  </span>
+                  <span class="color" ng-if="indicator.summary.completion !== 'undefined'">
+                    ({{ indicator.summary.completion | number : 2 }}%)
+                  </span>
+                  <span ng-click="selectIndicator(indicator)">
+                    {{ indicator.name }}
+                  </span>
+                </div>
+                <div class="pull-left col-xs-2 no-padding">
+
+                </div>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+
         </div>
       </div>
       </div>
     </div>
+
     <div class="col-xs-9">
       <div class="table-display" ng-if="selectedIndicator.id">
         <div>

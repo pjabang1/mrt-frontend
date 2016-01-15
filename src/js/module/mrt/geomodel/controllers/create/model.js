@@ -18,6 +18,8 @@
       if($stateParams.id) {
         if($stateParams.id === 'local') {
           $scope.model = geoModelService.getLocalModel();
+        } else if($stateParams.type === 'copy') {
+          copyModel($stateParams.id);
         } else {
           loadModel($stateParams.id);
         }
@@ -34,6 +36,22 @@
         geoModelService.get({id: id}).success(function(data) {
             var model = JSON.parse(data.content);
             model.id = data.id;
+            geoModelService.localSave(model);
+
+            $scope.model = geoModelService.getLocalModel();
+        }).error(function(error) {
+            $scope.status = 'Unable to load customer data: ' + error.message;
+        });
+      }
+
+      function copyModel(id) {
+        geoModelService.get({id: id}).success(function(data) {
+            var model = JSON.parse(data.content);
+            if(typeof model.id !== undefined) {
+              model.id = null;
+            }
+            model.name = 'Copy of ' + model.name;
+            model.reload = true;
             geoModelService.localSave(model);
             $scope.model = geoModelService.getLocalModel();
         }).error(function(error) {

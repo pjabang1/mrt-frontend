@@ -13,6 +13,8 @@
       $scope.options.selectType = "group";
       $scope.data.indicators = [];
       $scope.data.groups = [];
+
+      $scope.balanceGroupWeights = balanceGroupWeights;
       $scope.toggled = function(open) {
     $log.log('Dropdown is now: ', open);
   };
@@ -22,7 +24,6 @@
       // $scope.model.data = {};
 
       var defaultIndicator = {name: "Indicator Group", indicators: []};
-
       // console.log($scope.model);
 
       // $scope.model.data.indicators = defaultIndicator;
@@ -47,8 +48,10 @@
       $scope.reloadAll = reloadAll;
       var model = geoModelService.getLocalModel();
 
+      loadUnweightedIndicatorGroups($scope.model);
       loadModelIndicatorValues($scope.model);
       loadIndicators();
+
 
 
       function loadIndicators() {
@@ -77,6 +80,10 @@
       var indicators;
       var groups;
       var indicator;
+      if(typeof model.reload !== "undefined" && model.reload === true) {
+        load = true;
+        model.reload = false;
+      }
       for(var i = 0; i < model.indicators.length; i++) {
         groups = model.indicators[i];
 
@@ -89,6 +96,42 @@
           loadIndicatorValues(model.geographies, indicator);
         }
       }
+    }
+
+    function balanceGroupWeights(groups, dimensions) {
+
+      for(var i = 0; i < groups.length; i++) {
+          var group =  groups[i];
+          var dimension = $filter('filter')(dimensions, {id: group.dimension}, true);
+          // console.log(group);
+          if(dimension.length) {
+            balanceIndicatorWeights(group.indicators, dimension[0].weight);
+          }
+
+      }
+
+    }
+
+    function balanceIndicatorWeights(indicators, weight) {
+      weight = parseFloat(weight);
+      var weightTotal = 0;
+      for(var i = 0; i < indicators.length; i++) {
+          var indicator =  indicators[i];
+          if(typeof indicator.weight === 'undefined' || !indicator.weight) {
+            indicator.weight = 0;
+          }
+          console.log(indicator.weight);
+          console.log(weight);
+          indicator.weight = parseFloat(indicator.weight);
+          weightTotal += indicator.weight;
+      }
+
+      for(var i = 0; i < indicators.length; i++) {
+          var indicator =  indicators[i];
+          indicator.weight = (indicator.weight/weightTotal)*weight;
+          console.log(indicator.weight);
+      }
+
     }
 
     function reloadAll(model) {
@@ -133,6 +176,23 @@
 
     }
 
+    function loadUnweightedIndicatorGroups(model) {
+      var dimensions = model.modelType.dimensions;
+        for(var i = 0; i < dimensions.length; i++) {
+          if(typeof dimensions[i].weighted === "undefined" || dimensions[i].weighted != true) {
+            var dimension = dimensions[i];
+            var indicatorGroup = $filter('filter')(model.indicators, {dimension: dimension.id}, true);
+            if(!indicatorGroup.length) {
+              addIndicatorGroupToDimension(dimension, dimension.name);
+            } else {
+              indicatorGroup[0].name = dimension.name;
+            }
+          }
+
+        }
+    }
+
+
     function updateIndicatorValues(data, indicator) {
       indicator.dates = data.dates;
       indicator.geographies = geoIndicatorService.hydrateValues(data.values, data.dates, data.geographies);
@@ -163,13 +223,20 @@
     }
 
 
-    function addIndicatorGroup() {
+    function addIndicatorGroup(name) {
+      var group = getNewIndicator();
+      if(typeof name !== "undefined") {
+        group.name = name;
+      }
       $scope.model.indicators.push(getNewIndicator());
     }
 
-    function addIndicatorGroupToDimension(dimension) {
+    function addIndicatorGroupToDimension(dimension, name) {
       var indicator = getNewIndicator();
       indicator.dimension = dimension.id;
+      if(typeof name !== "undefined") {
+        indicator.name = name;
+      }
       $scope.model.indicators.push(indicator);
     }
 

@@ -42,6 +42,7 @@ function indicatorTableDisplay($parse, $filter) {
               }
             }
           }
+          
 
           function selectValue() {
 
