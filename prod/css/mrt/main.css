@@ -152,3 +152,14 @@ div.input-mask {
 .form-control {
   font-size: 100%;
 }
+a.thumbnail.active,
+a.thumbnail:focus,
+a.thumbnail:hover {
+  border-color: #00bff3;
+  background-color: #00bff3;
+}
+a.thumbnail.active .text-muted,
+a.thumbnail:focus .text-muted,
+a.thumbnail:hover .text-muted {
+  color: #fff;
+}

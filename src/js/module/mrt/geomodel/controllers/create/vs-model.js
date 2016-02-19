@@ -11,6 +11,7 @@
       $scope.options = {};
       $scope.model = {};
       $scope.ui = {};
+      $scope.ui.playing = false;
       $scope.ui.chartData;
 
       loadModel($stateParams.id);
@@ -22,7 +23,7 @@
             geoModelService.localSave(model);
 
             $scope.model = geoModelService.getLocalModel();
-            console.log($scope.model);
+            // console.log($scope.model);
             if(model.modelType.id === '3-dimentional-bubble') {
               var result = vsModelHydratorService.hydrate($scope.model);
               $scope.ui.chartData = result;

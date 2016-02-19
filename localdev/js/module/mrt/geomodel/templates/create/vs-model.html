@@ -1,9 +1,5 @@
-<div class="container" ng-if="model.modelType.id == '3-dimentional-bubble'">
+<div class="container-" ng-if="model.modelType.id == '3-dimentional-bubble'">
   <div class="row" ng-if="ui.chartData">
-    <div class="col-xs-9">
-    <h1>{{ model.name }}</h1>
-  </div>
-  <div class="col-xs-3">
     <!--
     <span class="dropdown" dropdown on-toggle="toggled(open)">
 
@@ -19,11 +15,29 @@
       </ul>
     </span>
   -->
-    <a ui-sref="geomodel-create-model({id: model.id, type: 'copy'})" class="btn btn-primary pull-right"><i class="fa fa-edit"></i> Copy </a>
-    <a ui-sref="geomodel-create-model({id: model.id})" class="btn btn-primary pull-right"><i class="fa fa-edit"></i> Update Data </a>
-  </div>
-    <vs-model-chart class="col-xs-12"  data="ui.chartData">
-    </vs-model-chart>
+
+    <div class="col-xs-2 country-list">
+      <h5>{{ model.name }}</h5>
+      <ul>
+        <li>Range : From {{ model.from | date:'yyyy'}} to {{ model.to | date:'yyyy'}}<li>
+        <li>
+            <a ng-click="ui.playing = !ui.playing"><span ng-if="!ui.playing"><i class="fa fa-play"></i> Play </span><span ng-if="ui.playing"><i class="fa fa-stop"></i> Stop </span></a>
+        </li>
+        <li>
+          <a ui-sref="geomodel-create-model({id: model.id, type: 'copy'})"><i class="fa fa-copy"></i> Copy </a>
+        </li>
+        <li>
+          <a ui-sref="geomodel-create-model({id: model.id})"><i class="fa fa-edit"></i> Update Data </a>
+        </li>
+        <li ng-repeat="country in model.geographies">
+          <span class="flag {{country.code | lowercase }}" ng-click="toggleSelection(country.code_3)"></span>
+          <span class="code" ng-click="toggleSelection(country.code_3)">{{ country.code_3 }}</span>
+          <span class="name" ng-click="toggleSelection(country.code_3)">{{ country.name }}</span>
+
+        </li>
+      </ul>
+    </div>
+    <vs-model-chart class="col-xs-10"  data="ui.chartData" playing="ui.playing"></vs-model-chart>
     <div class="col-xs-12">
       <span id="min-time">{{ ui.chartData.axis.min }}</span>
       <input type="range" name="points" min="0" max="{{ ui.chartData.axis.max - ui.chartData.axis.min }}" step="1" value="0" id="slider-time" style="width:900px">
@@ -31,17 +45,24 @@
     </div>
   </div>
 </div>
-<div class="container" ng-if="model.modelType.id == 'ge-mckinsey'">
+<div class="container-" ng-if="model.modelType.id == 'ge-mckinsey'">
   <div class="row">
     <div class="col-xs-9">
     <h1>{{ model.name }}</h1>
   </div>
   <div class="col-xs-3">
-    <a ui-sref="geomodel-create-model({id: model.id, type: 'copy'})" class="btn btn-primary pull-right"><i class="fa fa-edit"></i> Copy </a>
+    <a ui-sref="geomodel-create-model({id: model.id, type: 'copy'})" class="btn btn-primary pull-right"><i class="fa fa-copy"></i> Copy </a>
     <a ui-sref="geomodel-create-model({id: model.id})" class="btn btn-primary pull-right"><i class="fa fa-edit"></i> Update Data</a>
   </div>
-  <matrix-chart class="col-xs-12"  data="ui.chartData"></matrix-chart>
+  </div>
+  <!--<matrix-chart class="col-xs-9 no-padding"  data="ui.chartData"></matrix-chart>-->
+  <div class="row">
+  <div class="col-xs-2">
 
+  </div>
+  <div class="col-xs-10">
+    <geo-model-ge-matrix></geo-model-ge-matrix>
+  </div>
   </div>
 </div>
 

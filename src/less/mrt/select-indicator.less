@@ -11,39 +11,27 @@
     padding: 4px;
   }
 }
+
 .indicator-row {
   .highlight .color {
     font-weight: bold;
   }
 }
-.indicator-row:nth-child(1n) {
-  .highlight {
-    .color {
-      color: #3498db;
-    }
-  }
-}
-.indicator-row:nth-child(2n) {
-  .highlight {
-    .color {
-      color: #27ae60;
-    }
-  }
-}
-.indicator-row:nth-child(3n) {
-  .highlight {
-    .color {
+.indicator-row {
+    .percentile-1-10 .color, .percentile-2-10 .color, .percentile-3-10 .color, .percentile-4-10 .color, .percentile-5-10 .color {
       color: #e74c3c;
     }
-  }
-}
-.indicator-row:nth-child(4n) {
-  .highlight {
-    .color {
-      color: #f39c12;
+    .percentile-6-10 .color, .percentile-7-10 .color {
+      color: #f39c12; // amber
     }
-  }
+    .percentile-8-10 .color, .percentile-9-10 .color {
+      color: #3498db; // blue
+    }
+    .percentile-10-10 .color{
+      color: #27ae60; // green
+    }
 }
+
 
 
 

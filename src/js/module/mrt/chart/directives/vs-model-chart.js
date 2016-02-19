@@ -4,11 +4,11 @@
 */
 angular.module('MRT').directive('vsModelChart', vsModelChart);
 
-function vsModelChart($parse, $timeout) {
+function vsModelChart($parse, $timeout, $interval) {
 	var directive = {
 		// templateUrl: 'pension/tpls/term/term-search-pageview.html',
 		replace: true,
-		scope: {data: '=data'},
+		scope: {data: '=data', playing: '=playing'},
 		link: function(scope, element, attrs) {
 
 			// Various accessors that specify the four dimensions of data to visualize.
@@ -34,10 +34,10 @@ function vsModelChart($parse, $timeout) {
 			var bisect = d3.bisector(function(d) { return d[0]; });
 
 			var first_time = true;
-
+			var outerWith = element[0].clientWidth-100;
 			function prep(axis) {
 			margin = {top: 19.5, right: 19.5, bottom: 19.5, left: 39.5}
-			width = 960 - margin.right;
+			width = outerWith - margin.right;
 			height = 500 - margin.top - margin.bottom;
 
 			// Various scales. These domains make assumptions of data, naturally.
@@ -245,9 +245,11 @@ function vsModelChart($parse, $timeout) {
 				function update(v, duration) {
 					dragit.time.current = v || dragit.time.current;
 					displayYear(dragit.time.current)
-
+					console.log(dragit.time.current);
 					d3.select("#slider-time").property("value", dragit.time.current);
 				}
+
+
 
 				function init() {
 
@@ -295,13 +297,53 @@ function vsModelChart($parse, $timeout) {
 
 				var demo_interval = null;
 
+				var playing = false;
+
+				var stopTime;
+				function play() {
+
+					var el = document.getElementById("slider-time");
+					var min = parseInt(d3.select("#slider-time").attr("min"));
+					var max = parseInt(scope.data.axis.max-scope.data.axis.min);
+
+					// console.log();
+					var step = parseInt(d3.select("#slider-time").attr("step"));
+					stopTime = $interval(function() {
+						stepFn(min, max, step, el, update);
+					}, 100);
+
+				}
+
+				function stepFn(min, max, step, el, update) {
+					if(scope.playing !== true) {
+						return false;
+					}
+					var value = parseInt(el.value);
+					// console.log("value  " + value);
+					value = (value+step <= max) ? value+step : min;
+					if(value === 0) {
+						value = 1;
+					}
+					console.log("value + " + value);
+					el.value = value;
+					update(parseInt(value), 500);
+					clear_demo();
+					console.log("playing " + value);
+					console.log("max " + max);
+					console.log("step " + step);
+
+				}
+
+				play();
 
 
 			}
 
+
+
 			scope.$watch('data', function(newValue, oldValue) {
 				// console.log(newValue);
-				if(newValue.data) {
+				if(newValue && typeof newValue.data !== "undefined") {
 					// console.log(newValue.axis);
 
 					draw(newValue.data, newValue.axis);

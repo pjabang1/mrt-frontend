@@ -1,13 +1,13 @@
-<div class="container">
+<div class="container-">
   <div class="row">
-    <div class="wizard">
+    <div class="wizard col-xs-12">
       <a class="current"><span class="badge badge-inverse">1</span> Create Model</a>
       <a><span class="badge">2</span> Select Countries</a>
       <a><span class="badge">3</span> Select Indicators</a>
     </div>
   </div>
 </div>
-<div class="container">
+<div class="container-">
   <div class="row">
     <div class="col-xs-4">
       <div class="form-group" ng-class="{ 'has-error' : form.name.$invalid && !form.name.$pristine }">
@@ -44,9 +44,9 @@
     </div>
     <div class="col-xs-8">
       <div class='list-group gallery'>
-              <div class='col-xs-6' ng-repeat="modelType in modelTypes" ng-click="selectModelType(modelType)">
+              <div class='col-xs-3' popover-placement="bottom" popover="{{ modelType.description }}" popover-trigger="mouseenter"  ng-repeat="modelType in modelTypes" ng-click="selectModelType(modelType)">
                   <a class="thumbnail fancybox" rel="ligthbox" href="" ng-class="{'active': modelType.id === model.modelType.id}">
-                      <img class="img-responsive" alt="" src="{{ modelType.image }}" width="320" height="200"  style="height: 200px" />
+                      <img class="img-responsive" alt="" src="{{ modelType.image }}" width="160" height="100"  style="height: 100px" />
                       <div class='text-right'>
                           <small class='text-muted'>{{ modelType.name }}</small>
                       </div>

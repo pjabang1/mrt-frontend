@@ -4,9 +4,9 @@
     angular
         .module('MRT')
         .controller('GeoModelCreateCountrySelection', GeoModelCreateCountrySelection);
-    GeoModelCreateCountrySelection.$inject = ['$scope', '$filter', '$stateParams', '$modal', '$log', '$state', 'geoModelService', 'geoGroupService', 'geographyService'];
+    GeoModelCreateCountrySelection.$inject = ['$scope', '$filter', '$stateParams', '$modal', '$log', '$state', 'ngNotify', 'geoModelService', 'geoGroupService', 'geographyService'];
 
-    function GeoModelCreateCountrySelection($scope, $filter, $stateParams, $modal, $log, $state, geoModelService, geoGroupService, geographyService) {
+    function GeoModelCreateCountrySelection($scope, $filter, $stateParams, $modal, $log, $state, ngNotify, geoModelService, geoGroupService, geographyService) {
       var vm = this;
       $scope.data = {};
       $scope.options = {};
@@ -23,7 +23,8 @@
       $scope.clear = clear;
       $scope.go = go;
       var model = geoModelService.getLocalModel();
-      console.log(model);
+      $scope.model = model;
+      // console.log(model);
 
       geographyService.getGeographies({}).success(function(data) {
           $scope.data.geographies = tickSelectedGeographies(data.geographies);
@@ -59,6 +60,15 @@
       }
 
       function go(page, params) {
+        var found = $filter('filter')($scope.data.geographies, {selected: true}, true);
+        if(!found.length) {
+          ngNotify.set("Select 1 or more coutries", {
+            position: 'top',
+            type: 'error',
+            duration: 2000
+          });
+          return false;
+        }
         if(typeof params === 'undefined') {
           params = {};
         }
@@ -145,14 +155,20 @@
       }
 
 
-      function toggleSelection(code) {
-        togggleChartSelection(code);
+
+      function toggleSelection(code, selected) {
+        togggleChartSelection(code, selected);
         var length = $scope.data.geographies.length;
 
         for(var i = 0; i < length; i++) {
           country =  $scope.data.geographies[i];
           if(country.code_3 === code) {
-            country.selected = (country.selected === "undefined") ? true : !country.selected;
+            if(typeof selected !== "undefined") {
+              country.selected = selected;
+            } else {
+              country.selected = (country.selected === "undefined") ? true : !country.selected;
+            }
+
           }
         }
         $scope.chartOptions.updated = Date.now();
@@ -167,8 +183,10 @@
         $scope.chartOptions.data[code] = {fillKey: 'defaultFill'};
       }
 
-      function togggleChartSelection(code) {
-        if(typeof $scope.chartOptions.data[code] === "undefined") {
+      function togggleChartSelection(code, selected) {
+        if(typeof selected !== "undefined") {
+          $scope.chartOptions.data[code] = selected === true ? {fillKey: 'selectedFill'} : {fillKey: 'defaultFill'};
+        } else if(typeof $scope.chartOptions.data[code] === "undefined") {
           $scope.chartOptions.data[code] = {fillKey: 'selectedFill'};
         } else {
           $scope.chartOptions.data[code].fillKey = $scope.chartOptions.data[code].fillKey === "selectedFill" ? "defaultFill" : "selectedFill";
@@ -184,6 +202,7 @@
 
       function toggleGroupSelect(group) {
         // group.selected = !group.selected;
+        console.log("toggle group");
         if(group.loaded !== true) {
           loadChildren(group, true);
         } else {
@@ -197,7 +216,7 @@
         // if(group.selected === true) {
           for(var i = 0; i < length; i++) {
             group.children[i].selected = group.selected === true ? false : true;
-            toggleSelection(group.children[i].code_3);
+            toggleSelection(group.children[i].code_3, group.selected);
           }
         // }
       }

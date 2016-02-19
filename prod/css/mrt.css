@@ -981,6 +981,17 @@ div.input-mask {
 .form-control {
   font-size: 100%;
 }
+a.thumbnail.active,
+a.thumbnail:focus,
+a.thumbnail:hover {
+  border-color: #00bff3;
+  background-color: #00bff3;
+}
+a.thumbnail.active .text-muted,
+a.thumbnail:focus .text-muted,
+a.thumbnail:hover .text-muted {
+  color: #fff;
+}
 
 /* #592727 RED */
 /* #2f5927 GREEN */
@@ -2559,17 +2570,23 @@ slider div.bubble.limit,
 .indicator-row .highlight .color {
   font-weight: bold;
 }
-.indicator-row:nth-child(1n) .highlight .color {
-  color: #3498db;
-}
-.indicator-row:nth-child(2n) .highlight .color {
-  color: #27ae60;
-}
-.indicator-row:nth-child(3n) .highlight .color {
+.indicator-row .percentile-1-10 .color,
+.indicator-row .percentile-2-10 .color,
+.indicator-row .percentile-3-10 .color,
+.indicator-row .percentile-4-10 .color,
+.indicator-row .percentile-5-10 .color {
   color: #e74c3c;
 }
-.indicator-row:nth-child(4n) .highlight .color {
+.indicator-row .percentile-6-10 .color,
+.indicator-row .percentile-7-10 .color {
   color: #f39c12;
+}
+.indicator-row .percentile-8-10 .color,
+.indicator-row .percentile-9-10 .color {
+  color: #3498db;
+}
+.indicator-row .percentile-10-10 .color {
+  color: #27ae60;
 }
 input.weight {
   width: 70%;

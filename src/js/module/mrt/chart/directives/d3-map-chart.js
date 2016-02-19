@@ -18,12 +18,12 @@ function d3MapChart($parse, $timeout) {
 			var width = element[0].offsetWidth;
 			var height = 500;
 			var options = scope.options;
-			console.log(options);
+			//console.log(options);
 
 			var map = new Datamap({
         scope: 'world',
         element: element[0],
-        projection: 'mercator',
+        // projection: 'mercator',
 				/** setProjection: function(element) {
     var projection = d3.geo.equirectangular()
       .center([23, -3])
@@ -35,7 +35,7 @@ function d3MapChart($parse, $timeout) {
 
     return {path: path, projection: projection};
   },**/
-        height: 600,
+        height: 500,
         fills: {
           defaultFill: '#dadbdd',
           selectedFill: '#7ed6e0',

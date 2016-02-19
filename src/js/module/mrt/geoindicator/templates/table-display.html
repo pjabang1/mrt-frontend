@@ -30,7 +30,10 @@
                   {{ row.name }}
                 </td>
                 <td ng-repeat="d in row.values track by $index" ng-class="{'selected' : d.selected}" ng-click="toggleSelectCell(d.labelType, d.label, row)">
-                  <span ng-if="d.type === 'number'">{{ d.value | number }}</span>
+                  <span ng-if="d.type === 'number'">
+                    <!--<input ng-model="d.value | number" class="contenteditable" />-->
+                    {{ d.value | number }}
+                  </span>
                   <span ng-if="d.type !== 'number'">{{ d.value }}</span>
                 </td>
               </tr>

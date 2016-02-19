@@ -13,6 +13,9 @@
       $scope.options.selectType = "group";
       $scope.data.indicators = [];
       $scope.data.groups = [];
+      $scope.ui = {};
+      $scope.ui.loadingMesage = null;
+      $scope.ui.percentile = percentile;
 
       $scope.balanceGroupWeights = balanceGroupWeights;
       $scope.toggled = function(open) {
@@ -21,6 +24,7 @@
 
 
       $scope.model = geoModelService.getLocalModel();
+      $scope.getDate = getDate;
       // $scope.model.data = {};
 
       var defaultIndicator = {name: "Indicator Group", indicators: []};
@@ -48,11 +52,27 @@
       $scope.reloadAll = reloadAll;
       var model = geoModelService.getLocalModel();
 
+      console.log(model);
+
       loadUnweightedIndicatorGroups($scope.model);
       loadModelIndicatorValues($scope.model);
       loadIndicators();
 
 
+
+      function percentile(percentage, block, upper) {
+        if(typeof upper === "undefined") {
+          upper = 100 ;
+        }
+
+        if(typeof block === "undefined") {
+          block = 4 ;
+        }
+
+        upper = percentage > upper ? percentage : upper;
+        var result = Math.ceil(percentage/(upper/block))
+        return result <= 0 ? 1 : result;
+      }
 
       function loadIndicators() {
       geoIndicatorService.getGeoIndicators({}).success(function(data) {
@@ -100,6 +120,7 @@
 
     function balanceGroupWeights(groups, dimensions) {
 
+      console.log(groups);
       for(var i = 0; i < groups.length; i++) {
           var group =  groups[i];
           var dimension = $filter('filter')(dimensions, {id: group.dimension}, true);
@@ -113,6 +134,7 @@
     }
 
     function balanceIndicatorWeights(indicators, weight) {
+
       weight = parseFloat(weight);
       var weightTotal = 0;
       for(var i = 0; i < indicators.length; i++) {
@@ -338,14 +360,16 @@
         // model = $scope.model.indicators;
         // console.log(JSON.stringify($scope.model));
         geoModelService.localSave($scope.model);
+        // console.log($scope.model);
         post($scope.model);
       }
 
       function post(model) {
         geoModelService.replace(model).success(function(data) {
-            $state.go("geomodel-vs-model", {id: data});
+            // console.log(data);
+            $state.go("geomodel-vs-model", {id: parseInt(data.id)});
         }).error(function(error) {
-            $state.go("geomodel-vs-model", {id: data});
+            // $state.go("geomodel-vs-model", {id: data});
         });
       }
 

@@ -49,6 +49,7 @@
 .country-list {
   margin-top: 5px;
   display: block;
+  float: left;
   min-height: 300px;
   max-height: 440px;
   overflow-y: auto;

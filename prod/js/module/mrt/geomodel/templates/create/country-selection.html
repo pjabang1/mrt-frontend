@@ -1,16 +1,16 @@
-<div class="container">
+<div class="container-">
   <div class="row">
-    <div class="wizard">
-      <a><span class="badge">1</span> Create Model</a>
+    <div class="wizard col-xs-12">
+      <a><span class="badge">1</span> {{ model.name }} ({{ model.modelType.name }})</a>
       <a class="current"><span class="badge badge-inverse">2</span> Select Countries</a>
       <a><span class="badge">3</span> Select Indicators</a>
     </div>
   </div>
 </div>
-<div class="container">
+<div class="container-">
 <div class="row">
   <div class="col-xs-3">
-    <div class="col-xs-12">
+    <div class="col-xs-12 no-padding">
 
       <form class="form-inline">
         <div class="form-group">
@@ -29,11 +29,15 @@
     </div>
     <br />
     <div class="group-selection" ng-if="options.selectType == 'group'">
-      <div class="col-xs-12 pull-right">
-        <input class="form-control" ng-model="groupFilter.name" type="text" placeholder="Search country groups">
+      <div class="col-xs-12 pull-right no-padding">
+        <input class="form-control" ng-focus="model.inputFocus = true" ng-model="groupFilter.name" type="text" placeholder="Search country groups">
       </div>
-      <div class="country-list">
+      <div class="country-list" ng-if="options.selectType == 'group'" ng-show="model.inputFocus" style="border: 1px solid #ccc; position: absolute; top: 50px; width: 350px; background-color: rgba(255, 255, 255, 0.90); z-index: 1000; height: auto; ">
         <ul>
+          <li ng-click="model.inputFocus = false">
+            &nbsp;
+            <span class="pull-right"> Close </span>
+          </li>
           <li ng-repeat="row in data.geogroups | filter:groupFilter | orderBy:predicate:reverse">
             <span>
               <input type="checkbox" ng-model="row.selected" value="true" ng-change="toggleGroupSelect(row)" />
@@ -58,22 +62,39 @@
 
 
     <div class="country-selection" ng-if="options.selectType == 'country'">
-    <div class="col-xs-12 pull-right">
-      <input class="form-control" ng-model="filterText" type="text" placeholder="Search countries" />
+    <div class="col-xs-12 pull-right no-padding">
+      <input class="form-control" ng-focus="model.inputFocus = true" ng-model="filterText" type="text" placeholder="Search countries" />
     </div>
-    <div class="country-list">
+    <div class="country-list" ng-show="model.inputFocus" style="border: 1px solid #ccc; position: absolute; top: 50px; width: 350px; background-color: rgba(255, 255, 255, 0.90); z-index: 1000; height: auto; ">
       <ul>
-        <li ng-repeat="row in data.geographies | filter:filterText | orderBy:predicate:reverse" ng-click="toggleSelection(row.code_3)">
+        <li ng-click="model.inputFocus = false">
+          &nbsp;
+          <span class="pull-right"> Close </span>
+        </li>
+        <li ng-repeat="row in data.geographies | filter:filterText | orderBy:predicate:reverse">
           <span>
             <input type="checkbox" ng-model="row.selected" />
           </span>
-          <span class="flag {{row.code | lowercase }}"></span>
-          <span class="code">{{ row.code_3 }}</span>
-          <span class="name">{{ row.name }}</span>
+          <span class="flag {{row.code | lowercase }}" ng-click="toggleSelection(row.code_3)"></span>
+          <span class="code" ng-click="toggleSelection(row.code_3)">{{ row.code_3 }}</span>
+          <span class="name" ng-click="toggleSelection(row.code_3)">{{ row.name }}</span>
         </li>
       </ul>
     </div>
   </div>
+  <div class="selected-countries">
+
+  <div class="country-list">
+    <ul>
+      <li><strong>{{ filtered.length }} Countries</strong><li>
+      <li ng-repeat="row in filtered = (data.geographies | filter:{selected: true} )"  popover="Click to remove" popover-trigger="mouseenter" ng-click="toggleSelection(row.code_3)">
+        <span class="flag {{row.code | lowercase }}"></span>
+        <span class="code">{{ row.code_3 }}</span>
+        <span class="name">{{ row.name }}</span>
+      </li>
+    </ul>
+  </div>
+</div>
   </div>
   <div class="col-xs-9">
 
