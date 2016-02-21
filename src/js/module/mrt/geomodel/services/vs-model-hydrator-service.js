@@ -71,6 +71,9 @@ angular.module('MRT')
             if(row.labelType === 'date') {
               if(row.value !== '-') {
                 values.push([parseInt(row.label), row.value]);
+              } else {
+                // console.log(row);
+                values.push([parseInt(row.label), 1]);
               }
 
             }

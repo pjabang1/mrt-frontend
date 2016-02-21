@@ -42,7 +42,7 @@ function vsModelChart($parse, $timeout, $interval) {
 
 			// Various scales. These domains make assumptions of data, naturally.
 			xScale = d3.scale.log().domain([axis['x-axis'].minValue, axis['x-axis'].maxValue]).range([0, width]);
-			yScale = d3.scale.linear().domain([10, axis['y-axis'].maxValue]).range([height, 0]);
+			yScale = d3.scale.linear().domain([0, axis['y-axis'].maxValue]).range([height, 0]);
 			radiusScale = d3.scale.sqrt().domain([0, axis['bubble-size'].maxValue]).range([0, 40]),
 			colorScale = d3.scale.category10();
 			var colorScaleTheme = function() {
