@@ -33,7 +33,7 @@ angular.module('MRT')
             image: 'img/map.png',
             description: "Map",
             dimensions: [
-              {id: 'indicator', name: 'Indicators', selection: 'range', weighted: true}
+              {id: 'indicator', name: 'Indicator(s)', selection: 'range'}
             ]
           },
           {

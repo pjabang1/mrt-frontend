@@ -124,9 +124,11 @@
       <h3>{{ summary.percentageCompletion }}%</h3>
     </div>
   </div>
-
-
-  <div class="row">
+<div class="table-display">
+  <indicator-table-display indicator="data.indicator" dates="data.dates" data="geographies"></indicator-table-display>
+</div>
+<!--
+<div class="row">
     <div class="col-md-3 pull-right">
       <input class="form-control" ng-model="filterText" type="text" placeholder="Search">
     </div>
@@ -167,7 +169,7 @@
       </rd-widget>
     </div>
   </div>
-
+-->
 <!--
 
         </rd-widget-header>

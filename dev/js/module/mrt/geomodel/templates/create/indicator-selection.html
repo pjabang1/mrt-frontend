@@ -1,93 +1,190 @@
-<div class="container">
+<div class="container-">
   <div class="row">
-    <div class="wizard">
-      <a><span class="badge">1</span> Create Model</a>
-      <a><span class="badge">2</span> Select Countries</a>
+    <div class="wizard col-xs-12">
+      <a><span class="badge">1</span> {{ model.name }} ({{ model.modelType.name }})</a>
+      <a><span class="badge">2</span> Selected Countries ({{ model.geographies.length}})</a>
       <a class="current"><span class="badge badge-inverse">3</span> Select Indicators</a>
     </div>
   </div>
 </div>
-<div class="container">
-<div class="row">
-  <div class="col-xs-5">
-    <!--
-    <div class="col-xs-12">
+<div class="container-">
+  <div class="row">
+    <div class="col-xs-3" style="">
+      <div class="group-selection" ng-if="options.selectType == 'group'">
+        <div class="col-xs-12 pull-right" style="padding-left: 0px;">
+          <input class="form-control" ng-focus="inputFocus = true" ng-model="groupFilter.name" type="text" placeholder="Search indicator groups">
+        </div>
 
-      <form class="form-inline">
-        <div class="form-group">
-          <label>
-            <input type="radio" ng-model="options.selectType" value="group">
-            Indicator Groups
-          </label>
+        <div class="indicator-list"  ng-show="inputFocus" style="position: absolute; top: 30px; width: 350px; background-color: rgba(255, 255, 255, 0.90); z-index: 1000; height: auto; ">
+          <ul>
+            <li ng-click="inputFocus = false">
+              &nbsp;
+              <span class="pull-right"> Close </span>
+            </li>
+            <li ng-repeat="row in data.groups | filter:groupFilter | orderBy:predicate:reverse">
+              <span class="name" ng-click="toggleGroupExpand(row)" popover="Click to view indicators" popover-trigger="mouseenter" popover-placement="right">{{ row.name }}</span>
+              <span class="pull-right">
+
+              <span class="name dropdown" dropdown on-toggle="toggled(open)">
+                <span><i class="fa fa-plus-circle pointer dropdown-toggle" dropdown-toggle></i></span>
+                <ul class="dropdown-menu" style="z-index: 2500; left: -150px;">
+
+                  <li ng-repeat="dimension in model.modelType.dimensions">
+                    <a ng-click="copyIndicatorGroup(row, dimension)" popover="Click to add {{ row.name }} to {{ dimension.name }}" popover-trigger="mouseenter" popover-placement="top">{{ dimension.name }}</a>
+                  </li>
+                </ul>
+              </span>
+              </span>
+              <ul ng-if="row.expand == true">
+                <li ng-repeat="indicator in row.children" style="margin-left: 15px">
+                  <span class="name dropdown" dropdown on-toggle="toggled(open)">
+                    <a href class="dropdown-toggle" dropdown-toggle>
+                      {{ indicator.name }}
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li ng-repeat="group in model.indicators">
+                        <a ng-click="addIndicatorToGroup(indicator, group)">{{ group.name }}</a>
+                      </li>
+                    </ul>
+                  </span>
+
+                </li>
+              </ul>
+            </li>
+          </ul>
         </div>
-        <div class="form-group">
-          <label>
-            <input type="radio" ng-model="options.selectType" value="indicator">
-            Indicators
-          </label>
+        <div class="selected-indicator">
+        <div class="col-xs-12 list no-padding" style="height: 550px; overflow: auto">
+          <div ng-repeat="dimension in model.modelType.dimensions" class="border-bottom" ng-if="dimension.weighted">
+            <div class="pull-left col-xs-12 no-padding" ng-if="$index === 0" ng-click="balanceGroupWeights(model.indicators, model.modelType.dimensions)">
+              <span class="pull-right btn btn-info btn-sm"> <i class="fa fa-balance-scale"></i> Balance </span>
+            </div>
+            <div class="pull-left col-xs-10 no-padding">
+            <h4>
+              <input popover="Click to edit" popover-trigger="mouseenter" ng-model="dimension.name" class="contenteditable header-input" style="width: 100%" />
+            </h4>
+          </div>
+            <div class="pull-left col-xs-2 no-padding"><input type="text" ng-model="dimension.weight" ng-if="dimension.weighted" class="weight" style="margin-top: 10px" /> % </div>
+            <div class="col-xs-12 menu no-padding border-bottom">
+              <span ng-click="addIndicatorGroupToDimension(dimension)" class="menu-item pull-right"><i class="fa fa-plus-circle pointer"></i> Add Group </span>
+            </div>
+          <ul>
+            <li ng-repeat="row in model.indicators | filter:{ dimension: dimension.id }" class="">
+              <div class="pull-left no-padding header col-xs-10" ng-mouseleave="row.hover = false" ng-mouseover="row.hover = true" ng-init="row.hover=false">
+                <span class="" ng-show="row.hover"> <i class="fa fa-remove" popover="Click to remove" popover-trigger="mouseenter" ng-click="remove(model.indicators, row)"></i> </span>
+
+                <span class=""><input popover="Click to edit" popover-trigger="mouseenter" ng-model="row.name" class="contenteditable header-input" style="width: 90%" /><span>
+            </div>
+              <ul>
+                <li ng-repeat="indicator in row.indicators" class="row hover indicator-row" ng-mouseleave="indicator.hover = false" ng-mouseover="indicator.hover = true" ng-init="indicator.hover=false">
+                  <div class="pull-left col-xs-10 no-padding highlight percentile-{{ ui.percentile(indicator.summary.completion, '10', '100') }}-10">
+                    <span class="" ng-show="indicator.loading"><i class="fa fa-circle-o-notch fa-spin color"></i></span>
+                    <span class="name dropdown" dropdown on-toggle="toggled(open)">
+                      <span class="" ng-show="indicator.loaded" class="dropdown-toggle" dropdown-toggle>
+                        <i class="fa fa-dot-circle-o color"></i>
+                      </span>
+                      <ul class="dropdown-menu">
+                        <li ng-click="remove(row.indicators, indicator)">
+                          <a> Remove Indicator </a>
+                        </li>
+                      </ul>
+                    </span>
+                    <span class="color" ng-click="selectIndicator(indicator)" ng-if="indicator.summary.completion !== 'undefined'">
+                      ({{ indicator.summary.completion | number : 2 }}% from {{ indicator.from }} to {{ indicator.to }})
+                    </span>
+                    <span ng-click="selectIndicator(indicator)">
+                      {{ indicator.name }}
+                    </span>
+
+                  </div>
+                  <div class="pull-left col-xs-2 no-padding"><input type="text" ng-model="indicator.weight" ng-if="dimension.weighted" class="weight" />  % </div>
+                </li>
+              </ul>
+            </li>
+          </ul>
         </div>
-      </form>
-    </div>
-    -->
-    <div class="group-selection" ng-if="options.selectType == 'group'">
-      <div class="col-xs-12 pull-right">
-        <input class="form-control" ng-model="groupFilter.name" type="text" placeholder="Search indicator groups">
-      </div>
-      <div class="country-list">
+
+
+        <div ng-repeat="dimension in model.modelType.dimensions" class="border-bottom" ng-if="dimension.weighted != true">
+          <div class="pull-left col-xs-10 no-padding">
+          <h4>
+            <input popover-trigger="mouseenter" ng-model="dimension.name" class="contenteditable header-input" style="width: 100%"  disabled=""/>
+          </h4>
+        </div>
+          <div class="pull-left col-xs-2 no-padding">
+
+          </div>
+          <div class="col-xs-12 menu no-padding border-bottom">
+          </div>
         <ul>
-          <li ng-repeat="row in data.groups | filter:groupFilter | orderBy:predicate:reverse">
-            <span class="name" ng-click="toggleGroupExpand(row)">{{ row.name }}</span>
-            <span class="pull-right">{{ countSelected(row) }}</span>
-            <ul ng-if="row.expand == true">
-              <li ng-repeat="indicator in row.children" style="margin-left: 15px">
-                <span class="name" ng-click="toggleSelection(indicator)">{{ row.name }} {{ indicator.name }}</span>
+          <li ng-repeat="row in model.indicators | filter:{ dimension: dimension.id }" class="">
+            <ul>
+              <li ng-repeat="indicator in row.indicators" class="row hover indicator-row" ng-mouseleave="indicator.hover = false" ng-mouseover="indicator.hover = true" ng-init="indicator.hover=false">
+                <div class="pull-left col-xs-10 no-padding highlight percentile-{{ ui.percentile(indicator.summary.completion, '10', '100') }}-10">
+                  <span class="" ng-show="indicator.loading"><i class="fa fa-circle-o-notch fa-spin color"></i></span>
+                  <span class="name dropdown" dropdown on-toggle="toggled(open)">
+                    <span class="" ng-show="indicator.loaded" class="dropdown-toggle" dropdown-toggle>
+                      <i class="fa fa-dot-circle-o color"></i>
+                    </span>
+                    <ul class="dropdown-menu">
+                      <li ng-click="remove(row.indicators, indicator)">
+                        <a> Remove Indicator </a>
+                      </li>
+                    </ul>
+                  </span>
+                  <span class="color" ng-click="selectIndicator(indicator)" ng-if="indicator.summary.completion !== 'undefined'">
+                    ({{ indicator.summary.completion | number : 2 }}% from {{ indicator.from }} to {{ indicator.to }})
+                  </span>
+                  <span ng-click="selectIndicator(indicator)">
+                    {{ indicator.name }}
+                  </span>
+                </div>
+                <div class="pull-left col-xs-2 no-padding">
+
+                </div>
               </li>
             </ul>
           </li>
         </ul>
       </div>
+
+
+        </div>
+      </div>
+      </div>
     </div>
 
-    <!--
-    <div class="country-selection" ng-if="options.selectType == 'indicator'">
-    <div class="col-xs-12 pull-right">
-      <input class="form-control" ng-model="filterText" type="text" placeholder="Search countries" />
-    </div>
-    <div class="country-list">
-      <ul>
-        <li ng-repeat="row in data.indicators | filter:filterText | orderBy:predicate:reverse track by $index" ng-click="toggleSelection(row)">
-          <span>
-            <input type="checkbox" ng-model="row.selected" />
-          </span>
-          <span class="name">{{ row.name }}</span>
-        </li>
-      </ul>
-    </div>
+    <div class="col-xs-9">
+      <div class="table-display" ng-if="selectedIndicator.id">
+        <div>
+          <form class="form-inline">
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="From" ng-model="selectedIndicator.from">
   </div>
--->
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="To" ng-model="selectedIndicator.to">
   </div>
-  <div class="col-xs-7">
+  <button type="submit" class="btn btn-default btn-primary" ng-click="getValues(model.geographies, selectedIndicator)">Reload</button>
+  <button type="submit" class="btn btn-default btn-primary pull-right" ng-click="reloadAll(model)">Reload All (from {{ getDate(model.from) }} to {{ getDate(model.to) }})</button>
+</form>
+        </div>
+        <indicator-table-display indicator="selectedIndicator" dates="selectedIndicator.dates" data="selectedIndicator.geographies"></indicator-table-display>
+      </div>
+      <div ng-if="!selectedIndicator.id">
+        <div class="col-xs-12">
+        <button type="submit" class="btn btn-default btn-primary pull-right" ng-click="reloadAll(model)">Reload All (from {{ getDate(model.from) }} to {{ getDate(model.to) }})</button>
+
+      </div>
+      <div class="col-xs-12">
+        <br />
+        <alert type="info"> Click indicators to display data here </alert>
+      </div>
+      </div>
+
+    </div>
     <div class="col-xs-12">
-      <button class="btn btn-default pull-right" ng-click="clear()">Clear</button>
+      <span class="btn btn-success pull-left" ng-click="back()">Back (Select Countries)</span>
+      <span class="btn btn-success pull-right" ng-click="next()">Save </span>
     </div>
-    <div class="col-xs-12">
-      <ul>
-        <li ng-repeat="row in model.data.indicators">
-          <input ng-model="row.name" class="contenteditable" />
-          <ul>
-            <li ng-repeat="indicator in row.indicators">
-              {{ indicator.name }}
-            </li>
-          </ul>
-        </li>
-      </ul>
-
-    </div>
-
   </div>
-  <div class="col-xs-12">
-    <span class="btn btn-success pull-left" ng-click="back()">Back (Select Countries)</span>
-    <span class="btn btn-success pull-right" ng-click="next()">Next (Configure Parameters)</span>
-  </div>
-</div>
 </div>

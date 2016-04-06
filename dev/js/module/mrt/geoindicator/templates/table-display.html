@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="col-md-3 pull-right">
+    <input class="form-control" ng-model="filterText.name" type="text" placeholder="Search">
+  </div>
+  <div class="col-xs-12">
+    <rd-widget>
+      <rd-widget-header icon="fa-map-marker" title="{{ indicator.name }}">
+      </rd-widget-header>
+      <rd-widget-body classes="large no-padding">
+        <div class="table-responsive">
+          <table class="table f16">
+            <thead>
+              <th></th>
+              <th ng-click="predicate = 'name'; reverse=!reverse">Name</th>
+              <th ng-repeat="d in dates" class="" ng-click="toggleSelectColumn('date', d.date)">
+                {{ d.date }}
+              </th>
+              <th>Comp. %</th>
+              <th ng-click="toggleSelectColumn('derived', 'minimum')">Min</th>
+              <th ng-click="toggleSelectColumn('derived', 'maximum')">Max</th>
+              <th ng-click="toggleSelectColumn('derived', 'average')">Average</th>
+            </thead>
+            <tbody>
+              <tr ng-repeat="row in data | filter:filterText" class="repeated-item">
+                <td>
+                  <span class="flag  {{ row.code | lowercase }}"></span>
+                </td>
+                <td>
+
+                  {{ row.name }}
+                </td>
+                <td ng-repeat="d in row.values track by $index" ng-class="{'selected' : d.selected}" ng-click="toggleSelectCell(d.labelType, d.label, row)">
+                  <span ng-if="d.type === 'number'">
+                    <!--<input ng-model="d.value | number" class="contenteditable" />-->
+                    {{ d.value | number }}
+                  </span>
+                  <span ng-if="d.type !== 'number'">{{ d.value }}</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </rd-widget-body>
+      <rd-widget-footer>
+
+        <div class="clearfix"></div>
+      </rd-widget-footer>
+
+    </rd-widget>
+  </div>

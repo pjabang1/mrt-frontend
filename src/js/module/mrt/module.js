@@ -1,4 +1,4 @@
-angular.module('MRT', ['app-parameters', 'ui.bootstrap', 'ui.router', 'ngCookies', 'ngTable', 'ui.select', 'ngSanitize', 'angular-loading-bar', 'LocalStorageModule', 'angular-cache', 'ngHandsontable', 'ngNotify']);
+angular.module('MRT', ['app-parameters', 'ui.bootstrap', 'ui.router', 'ngCookies', 'ngTable', 'ui.select', 'ngSanitize', 'angular-loading-bar', 'LocalStorageModule', 'angular-cache', 'ngHandsontable', 'ngNotify', 'rzModule']);
 // 'ui.slider',
 angular.module('MRT').config(function (localStorageServiceProvider) {
   localStorageServiceProvider

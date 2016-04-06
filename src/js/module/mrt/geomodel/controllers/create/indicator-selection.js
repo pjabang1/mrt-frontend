@@ -96,7 +96,7 @@
       return ids;
     }
 
-    function loadModelIndicatorValues(model, load) {
+    function loadModelIndicatorValues(model, load, useModelDates) {
       var indicators;
       var groups;
       var indicator;
@@ -109,7 +109,7 @@
 
         for(var ii = 0; ii < groups.indicators.length; ii++) {
           indicator = groups.indicators[ii];
-          indicator = appendIndicatorDates(model, indicator);
+          indicator = appendIndicatorDates(model, indicator, useModelDates);
           if(typeof load !== "undefined" && load == true) {
             indicator.loaded = false;
           }
@@ -157,7 +157,7 @@
     }
 
     function reloadAll(model) {
-      loadModelIndicatorValues(model, true);
+      loadModelIndicatorValues(model, true, true);
     }
 
     function loadIndicatorValues(geographies, indicator) {
@@ -170,13 +170,14 @@
       }
     }
 
-    function appendIndicatorDates(model, indicator) {
-      if(typeof indicator.from === "undefined") {
+    function appendIndicatorDates(model, indicator, useModelDates) {
+      if(typeof indicator.from === "undefined" || typeof useModelDates !== "undefined") {
         indicator.from = getDate(model.from);
       }
-      if(typeof indicator.to === "undefined") {
+      if(typeof indicator.to === "undefined" || typeof useModelDates !== "undefined") {
         indicator.to = getDate(model.to);
       }
+      // console.log(indicator);
       return indicator;
     }
 

@@ -1303,6 +1303,19 @@ table.matrix .repeated-item.ng-leave {
 /* Sidebar title text colour */
 /*#627cb7*/
 
+.model-header .h1-text {
+  font-size: 18px;
+  margin-right: 10px;
+}
+.model-header a {
+  text-decoration: none;
+}
+.model-header .fa {
+  margin-top: 3px;
+  font-size: 15px;
+  margin-right: 5px;
+}
+
 /* #592727 RED */
 /* #2f5927 GREEN */
 /* #30426a BLUE (default)*/

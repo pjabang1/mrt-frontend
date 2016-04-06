@@ -41,7 +41,8 @@
         "echarts": "master",
         "angular-loading-bar": "~0.6.0",
         "angular-local-storage": "~0.1.5",
-        "angular-cache": "~4.1.0"
+        "angular-cache": "~4.1.0",
+        "chroma-js": "1.1.1"
     },
     "repository": {
         "type": "git",

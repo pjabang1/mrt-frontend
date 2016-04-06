@@ -1,0 +1,333 @@
+Sovereign State	Country	Map unit	Map sub-unit
+Afghanistan	Afghanistan	Afghanistan	Afghanistan
+United Kingdom	Akrotiri Sovereign Base Area	Akrotiri Sovereign Base Area	Akrotiri Sovereign Base Area
+Finland	Aland	Aland	Aland
+United States of America	United States of America	United States of America	Alaska
+Albania	Albania	Albania	Albania
+United Kingdom	Guernsey	Alderney	Alderney
+Algeria	Algeria	Algeria	Algeria
+United States of America	American Samoa	American Samoa	American Samoa
+India	India	India	Andaman Islands
+Andorra	Andorra	Andorra	Andorra
+Angola	Angola	Angola	Angola
+United Kingdom	Anguilla	Anguilla	Anguilla
+Equatorial Guinea	Equatorial Guinea	Equatorial Guinea	Annobon
+Antarctica	Antarctica	Antarctica	Antarctica
+Antigua and Barbuda	Antigua	Antigua	Antigua
+Argentina	Argentina	Argentina	Argentina
+Armenia	Armenia	Armenia	Armenia
+Netherlands	Aruba	Aruba	Aruba
+United Kingdom	Saint Helena	Ascension	Ascension
+Australia	Ashmore and Cartier Islands	Ashmore and Cartier Islands	Ashmore and Cartier Islands
+Australia	Australia	Australia	Australia
+Austria	Austria	Austria	Austria
+Azerbaijan	Azerbaijan	Azerbaijan	Azerbaijan
+Portugal	Azores	Azores	Azores
+Korea, South	Korea, South	Korea, South	Baengnyeongdo
+Bahamas	Bahamas	Bahamas	Bahamas
+Bahrain	Bahrain	Bahrain	Bahrain
+United States of America	US Minor Outlying Islands	Baker Island	Baker Island
+Spain	Spain	Spain	Balearic Is.
+Bangladesh	Bangladesh	Bangladesh	Bangladesh
+Barbados	Barbados	Barbados	Barbados
+Antigua and Barbuda	Barbuda	Barbuda	Barbuda
+France	French Southern and Antarctic Lands	French Southern and Antarctic Lands	Bassas da India
+Belarus	Belarus	Belarus	Belarus
+Belize	Belize	Belize	Belize
+Benin	Benin	Benin	Benin
+United Kingdom	Bermuda	Bermuda	Bermuda
+Bhutan	Bhutan	Bhutan	Bhutan
+Equatorial Guinea	Equatorial Guinea	Equatorial Guinea	Bioko
+Bolivia	Bolivia	Bolivia	Bolivia
+Japan	Japan	Japan	Bonin Islands
+Denmark	Denmark	Denmark	Bornholm
+Botswana	Botswana	Botswana	Botswana
+Papua New Guinea	Papua New Guinea	Bougainville	Bougainville
+Norway	Bouvet Island	Bouvet Island	Bouvet Island
+Brazil	Brazil	Brazil	Brazil
+United Kingdom	British Indian Ocean Territory	British Indian Ocean Territory	British Indian Ocean Territory
+United Kingdom	British Virgin Islands	British Virgin Islands	British Virgin Islands
+Brunei	Brunei	Brunei	Brunei
+Bulgaria	Bulgaria	Bulgaria	Bulgaria
+Burkina Faso	Burkina Faso	Burkina Faso	Burkina Faso
+Burma	Burma	Burma	Burma
+Burundi	Burundi	Burundi	Burundi
+Cambodia	Cambodia	Cambodia	Cambodia
+Cameroon	Cameroon	Cameroon	Cameroon
+Canada	Canada	Canada	Canada
+Spain	Spain	Spain	Canary Is.
+Cape Verde	Cape Verde	Cape Verde	Cape Verde
+United Kingdom	Cayman Islands	Cayman Islands	Cayman Islands
+Central African Republic	Central African Republic	Central African Republic	Central African Republic
+Spain	Spain	África Septentrional Española	Ceuta
+Chad	Chad	Chad	Chad
+New Zealand	New Zealand	New Zealand	Chatham Is.
+Chile	Chile	Chile	Chile
+China	China	China	China
+Australia	Indian Ocean Territories	Christmas Island	Christmas Island
+France	Clipperton I.	Clipperton I.	Clipperton I.
+Australia	Indian Ocean Territories	Cocos (Keeling) Islands	Cocos (Keeling) Islands
+Colombia	Colombia	Colombia	Colombia
+Comoros	Comoros	Comoros	Comoros
+Congo (Brazzaville)	Congo (Brazzaville)	Congo (Brazzaville)	Congo (Brazzaville)
+Congo (Kinshasa)	Congo (Kinshasa)	Congo (Kinshasa)	Congo (Kinshasa)
+New Zealand	Cook Islands	Cook Islands	Cook Islands
+Australia	Coral Sea Islands	Coral Sea Islands	Coral Sea Islands
+France	France	France	Corsica
+Costa Rica	Costa Rica	Costa Rica	Costa Rica
+Cote D’Ivoire	Cote D’Ivoire	Cote D’Ivoire	Cote D’Ivoire
+Croatia	Croatia	Croatia	Croatia
+Cuba	Cuba	Cuba	Cuba
+Cyprus	Cyprus	Cyprus	Cyprus
+Czech Republic	Czech Republic	Czech Republic	Czech Republic
+Denmark	Denmark	Denmark	Denmark
+United Kingdom	Dhekelia Soverign Base Area	Dhekelia Soverign Base Area	Dhekelia Soverign Base Area
+Djibouti	Djibouti	Djibouti	Djibouti
+Dominica	Dominica	Dominica	Dominica
+Dominican Republic	Dominican Republic	Dominican Republic	Dominican Republic
+Ecuador	Ecuador	Ecuador	Ecuador
+Egypt	Egypt	Egypt	Egypt
+El Salvador	El Salvador	El Salvador	El Salvador
+United Kingdom	United Kingdom	England	England
+Eritrea	Eritrea	Eritrea	Eritrea
+Estonia	Estonia	Estonia	Estonia
+Ethiopia	Ethiopia	Ethiopia	Ethiopia
+France	French Southern and Antarctic Lands	French Southern and Antarctic Lands	Europa I.
+United Kingdom	Falkland Islands	Falkland Islands	Falkland Islands
+Denmark	Denmark	Faroe Islands	Faroe Islands
+Federated States of Micronesia	Federated States of Micronesia	Federated States of Micronesia	Federated States of Micronesia
+Fiji	Fiji	Fiji	Fiji
+Finland	Finland	Finland	Finland
+France	France	France	France
+France	France	French Guiana	French Guiana
+France	French Polynesia	French Polynesia	French Polynesia
+France	French Southern and Antarctic Lands	French Southern and Antarctic Lands	French Southern Antactic Lands
+Gabon	Gabon	Gabon	Gabon
+Ecuador	Ecuador	Ecuador	Galapagos Islands
+Gambia, The	Gambia, The	Gambia, The	Gambia, The
+Indeterminate	Palestine	Gaza Strip	Gaza Strip
+Georgia	Georgia	Georgia	Georgia
+Germany	Germany	Germany	Germany
+Ghana	Ghana	Ghana	Ghana
+United Kingdom	Gibraltar	Gibraltar	Gibraltar
+France	French Southern and Antarctic Lands	French Southern and Antarctic Lands	Glorieuses Is.
+Greece	Greece	Greece	Greece
+Denmark	Greenland	Greenland	Greenland
+Grenada	Grenada	Grenada	Grenada
+France	France	Guadeloupe	Guadeloupe
+United States of America	Guam	Guam	Guam
+Guatemala	Guatemala	Guatemala	Guatemala
+United Kingdom	Guernsey	Guernsey	Guernsey
+Guinea	Guinea	Guinea	Guinea
+Guinea-Bissau	Guinea-Bissau	Guinea-Bissau	Guinea-Bissau
+Guyana	Guyana	Guyana	Guyana
+China	China	China	Hainan
+Haiti	Haiti	Haiti	Haiti
+United States of America	United States of America	United States of America	Hawaii
+Australia	Heard Island and McDonald Islands	Heard Island and McDonald Islands	Heard Island and McDonald Islands
+Japan	Japan	Japan	Hokkaido
+Honduras	Honduras	Honduras	Honduras
+China	Hong Kong S.A.R.	Hong Kong S.A.R.	Hong Kong S.A.R.
+Japan	Japan	Japan	Honshu
+United States of America	US Minor Outlying Islands	Howland Island	Howland Island
+Hungary	Hungary	Hungary	Hungary
+Iceland	Iceland	Iceland	Iceland
+India	India	India	India
+Indonesia	Indonesia	Indonesia	Indonesia
+Iran	Iran	Iran	Iran
+Iraq	Iraq	Iraq	Iraq
+Ireland	Ireland	Ireland	Ireland
+United Kingdom	Isle of Man	Isle of Man	Isle of Man
+Italy	Italy	Italy	Isole Pelagie
+Israel	Israel	Israel	Israel
+Italy	Italy	Italy	Italy
+Japan	Japan	Japan	Izu-shoto
+Jamaica	Jamaica	Jamaica	Jamaica
+Norway	Jan Mayen	Jan Mayen	Jan Mayen
+Japan	Japan	Japan	Japan
+United States of America	US Minor Outlying Islands	Jarvis Island	Jarvis Island
+Korea, South	Korea, South	Korea, South	Jeju-do
+United Kingdom	Jersey	Jersey	Jersey
+United States of America	US Minor Outlying Islands	Johnston Atoll	Johnston Atoll
+Jordan	Jordan	Jordan	Jordan
+France	French Southern and Antarctic Lands	French Southern and Antarctic Lands	Juan de Nova Island
+Russia	Russia	Russia	Kaliningrad
+Kazakhstan	Kazakhstan	Kazakhstan	Kazakhstan
+Kenya	Kenya	Kenya	Kenya
+New Zealand	New Zealand	New Zealand	Kermadec Is.
+Kiribati	Kiribati	Kiribati	Kiribati
+Korea, North	Korea, North	Korea, North	Korea, North
+Korea, South	Korea, South	Korea, South	Korea, South
+Kosovo	Kosovo	Kosovo	Kosovo
+Kuwait	Kuwait	Kuwait	Kuwait
+Kyrgyzstan	Kyrgyzstan	Kyrgyzstan	Kyrgyzstan
+Japan	Japan	Japan	Kyushu
+India	India	India	Lakshadweep
+Laos	Laos	Laos	Laos
+Latvia	Latvia	Latvia	Latvia
+Lebanon	Lebanon	Lebanon	Lebanon
+Lesotho	Lesotho	Lesotho	Lesotho
+Liberia	Liberia	Liberia	Liberia
+Libya	Libya	Libya	Libya
+Liechtenstein	Liechtenstein	Liechtenstein	Liechtenstein
+Lithuania	Lithuania	Lithuania	Lithuania
+Luxembourg	Luxembourg	Luxembourg	Luxembourg
+China	Macao S.A.R	Macao S.A.R	Macao S.A.R
+Macedonia	Macedonia	Macedonia	Macedonia
+Australia	Australia	Australia	Macquarie Island
+Madagascar	Madagascar	Madagascar	Madagascar
+Portugal	Madeira	Madeira	Madeira
+Malawi	Malawi	Malawi	Malawi
+Malaysia	Malaysia	Malaysia	Malaysia
+Maldives	Maldives	Maldives	Maldives
+Mali	Mali	Mali	Mali
+Malta	Malta	Malta	Malta
+Marshall Islands	Marshall Islands	Marshall Islands	Marshall Islands
+France	France	Martinique	Martinique
+Mauritania	Mauritania	Mauritania	Mauritania
+Mauritius	Mauritius	Mauritius	Mauritius
+France	France	Mayotte	Mayotte
+Spain	Spain	África Septentrional Española	Melilla
+Mexico	Mexico	Mexico	Mexico
+United States of America	US Minor Outlying Islands	Midway Islands	Midway Islands
+Moldova	Moldova	Moldova	Moldova
+Monaco	Monaco	Monaco	Monaco
+Mongolia	Mongolia	Mongolia	Mongolia
+Montenegro	Montenegro	Montenegro	Montenegro
+United Kingdom	Montserrat	Montserrat	Montserrat
+Morocco	Morocco	Morocco	Morocco_Morocco
+Mozambique	Mozambique	Mozambique	Mozambique
+Namibia	Namibia	Namibia	Namibia
+Japan	Japan	Japan	Nansei-shoto
+Nauru	Nauru	Nauru	Nauru
+United States of America	US Minor Outlying Islands	Navassa Island	Navassa Island
+Nepal	Nepal	Nepal	Nepal
+Netherlands	Netherlands	Netherlands	Netherlands
+Netherlands	Netherlands Antilles	Netherlands Antilles	Netherlands Antilles
+France	New Caledonia	New Caledonia	New Caledonia
+New Zealand	New Zealand	New Zealand	New Zealand Sub-Antarctic islands
+Nicaragua	Nicaragua	Nicaragua	Nicaragua
+India	India	India	Nicobar Islands
+Niger	Niger	Niger	Niger
+Nigeria	Nigeria	Nigeria	Nigeria
+New Zealand	New Zealand	Niue	Niue
+Australia	Norfolk Island	Norfolk Island	Norfolk Island
+New Zealand	New Zealand	New Zealand	North Island
+United Kingdom	United Kingdom	Northern Ireland	Northern Ireland
+United States of America	Northern Mariana Islands	Northern Mariana Islands	Northern Mariana Islands
+Norway	Norway	Norway	Norway
+Oman	Oman	Oman	Oman
+Pakistan	Pakistan	Pakistan	Pakistan
+Palau	Palau	Palau	Palau
+United States of America	US Minor Outlying Islands	Palmyra Atoll	Palmyra Atoll
+Panama	Panama	Panama	Panama
+Timor-Leste	Timor-Leste	Timor-Leste	Pante Makasar
+Italy	Italy	Italy	Pantelleria
+Papua New Guinea	Papua New Guinea	Papua New Guinea	Papua New Guinea
+Paraguay	Paraguay	Paraguay	Paraguay
+Peru	Peru	Peru	Peru
+Antarctica	Antarctica	Peter Island	Peter Island
+Philippines	Philippines	Philippines	Philippines
+United Kingdom	Pitcairn Islands	Pitcairn Islands	Pitcairn Islands
+Poland	Poland	Poland	Poland
+Portugal	Portugal	Portugal	Portugal
+South Africa	South Africa	South Africa	Prince Edward Islands
+Sao Tome and Principe	Sao Tome and Principe	Principe	Principe
+United States of America	Puerto Rico	Puerto Rico	Puerto Rico
+Qatar	Qatar	Qatar	Qatar
+France	France	Reunion	Reunion
+Equatorial Guinea	Equatorial Guinea	Equatorial Guinea	Rio Muni
+Romania	Romania	Romania	Romania
+Russia	Russia	Russia	Rusia
+Russia	Russia	Russia	Russia
+Rwanda	Rwanda	Rwanda	Rwanda
+United Kingdom	Saint Helena	Saint Helena	Saint Helena
+Saint Kitts and Nevis	Saint Kitts and Nevis	Saint Kitts and Nevis	Saint Kitts and Nevis
+Saint Lucia	Saint Lucia	Saint Lucia	Saint Lucia
+France	Saint Martin	Saint Martin	Saint Martin
+France	Saint Pierre and Miquelon	Saint Pierre and Miquelon	Saint Pierre and Miquelon
+Saint Vincent and the Grenadines	Saint Vincent and the Grenadines	Saint Vincent and the Grenadines	Saint Vincent and the Grenadines
+Samoa	Samoa	Samoa	Samoa
+San Marino	San Marino	San Marino	San Marino
+Sao Tome and Principe	Sao Tome and Principe	Sao Tome	Sao Tome
+Italy	Italy	Italy	Sardinia
+United Kingdom	Guernsey	Sark	Sark
+Saudi Arabia	Saudi Arabia	Saudi Arabia	Saudi Arabia
+United Kingdom	United Kingdom	Scotland	Scotland
+Senegal	Senegal	Senegal	Senegal
+Seychelles	Seychelles	Seychelles	Seychelles
+Japan	Japan	Japan	Shikoku
+Italy	Italy	Italy	Sicily
+Sierra Leone	Sierra Leone	Sierra Leone	Sierra Leone
+Singapore	Singapore	Singapore	Singapore
+Slovakia	Slovakia	Slovakia	Slovakia
+Slovenia	Slovenia	Slovenia	Slovenia
+Solomon Islands	Solomon Islands	Solomon Islands	Solomon Islands
+Somalia	Somalia	Somalia	Somalia
+Somaliland	Somaliland	Somaliland	Somaliland
+South Africa	South Africa	South Africa	South Africa
+United Kingdom	South Georgia and the Islands	South Georgia	South Georgia
+New Zealand	New Zealand	New Zealand	South Island
+Antarctica	Antarctica	South Orkney Islands	South Orkney Islands
+United Kingdom	South Georgia and the Islands	South Sandwich Islands	South Sandwich Islands
+Sudan	Sudan	South Sudan	South Sudan
+Spain	Spain	Spain	Spain
+Sri Lanka	Sri Lanka	Sri Lanka	Sri Lanka
+France	St. Barthelemy	St. Barthelemy	St. Barthelemy
+Sudan	Sudan	Sudan	Sudan
+Yemen	Yemen	Yemen	Suqutra (Socotra)
+Suriname	Suriname	Suriname	Suriname
+Norway	Svalbard	Svalbard	Svalbard
+Swaziland	Swaziland	Swaziland	Swaziland
+Sweden	Sweden	Sweden	Sweden
+Switzerland	Switzerland	Switzerland	Switzerland
+Syria	Syria	Syria	Syria
+Taiwan	Taiwan	Taiwan	Taiwan
+Tajikistan	Tajikistan	Tajikistan	Tajikistan
+Tanzania	Tanzania	Tanzania	Tanzania
+Australia	Australia	Australia	Tasmania
+Thailand	Thailand	Thailand	Thailand
+Timor-Leste	Timor-Leste	Timor-Leste	Timor-Leste
+Trinidad and Tobago	Trinidad and Tobago	Tobago	Tobago
+Togo	Togo	Togo	Togo
+New Zealand	Tokelau	Tokelau	Tokelau
+Tonga	Tonga	Tonga	Tonga
+Trinidad and Tobago	Trinidad and Tobago	Trinidad	Trinidad
+United Kingdom	Saint Helena	Tristan da Cunha	Tristan da Cunha
+France	French Southern and Antarctic Lands	French Southern and Antarctic Lands	Tromelin I.
+Tunisia	Tunisia	Tunisia	Tunisia
+Turkey	Turkey	Turkey	Turkey
+Turkish Republic of Northern Cyprus	Turkish Republic of Northern Cyprus	Turkish Republic of Northern Cyprus	Turkish Republic of Northern Cyprus
+Turkmenistan	Turkmenistan	Turkmenistan	Turkmenistan
+United Kingdom	Turks and Caicos Islands	Turks and Caicos Islands	Turks and Caicos Islands
+Tuvalu	Tuvalu	Tuvalu	Tuvalu
+United States of America	US Naval Base Guantanamo Bay	US Naval Base Guantanamo Bay	US Naval Base Guantanamo Bay
+Uganda	Uganda	Uganda	Uganda
+Ukraine	Ukraine	Ukraine	Ukraine
+Korea, South	Korea, South	Korea, South	Ulleungdo
+United Arab Emirates	United Arab Emirates	United Arab Emirates	United Arab Emirates
+United States of America	United States Virgin Islands	United States Virgin Islands	United States Virgin Islands
+United States of America	United States of America	United States of America	United States of America
+Uruguay	Uruguay	Uruguay	Uruguay
+Uzbekistan	Uzbekistan	Uzbekistan	Uzbekistan
+Vanuatu	Vanuatu	Vanuatu	Vanuatu
+Vatican (Holy Sea)	Vatican (Holy Sea)	Vatican (Holy Sea)	Vatican (Holy Sea)
+Venezuela	Venezuela	Venezuela	Venezuela
+Vietnam	Vietnam	Vietnam	Vietnam
+Japan	Japan	Japan	Volcano Islands
+United States of America	US Minor Outlying Islands	Wake Atoll	Wake Atoll
+United Kingdom	United Kingdom	Wales	Wales
+France	Wallis and Futuna	Wallis and Futuna	Wallis and Futuna
+Indeterminate	Palestine	West Bank	West Bank
+Indeterminate	Western Sahara	Western Sahara	Western Sahara_Western Sahara
+Yemen	Yemen	Yemen	Yemen
+Zambia	Zambia	Zambia	Zambia
+Tanzania	Tanzania	Zanzibar	Zanzibar
+Zimbabwe	Zimbabwe	Zimbabwe	Zimbabwe
+Serbia	Serbia	Vojvodina	Vojvodina
+Serbia	Serbia	Serbia	Serbia
+Bosnia and Herzegovina	Bosnia and Herzegovina	Republic Srpska	Republic Srpska
+Belgium	Belgium	Brussels-Capital	Brussels-Capital
+Bosnia and Herzegovina	Bosnia and Herzegovina	Federation of Bosnia and Herzegovina	Federation of Bosnia and Herzegovina
+Belgium	Belgium	Flemish	Flemish
+Belgium	Belgium	Walloon	Walloon

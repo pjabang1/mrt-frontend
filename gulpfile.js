@@ -35,6 +35,7 @@ var paths = {
 	index: 'src/index.html',
 	config: 'src/js/config/',
 	parameter: 'src/js/config/parameters.js',
+	maps: 'src/maps/**/*-topo.json',
 	// index: 'src/*.html',
 	bower_fonts: 'src/bower_components/**/*.{otf,ttf,woff,eof,svg,woff2}',
 	bower_components: 'src/bower_components/**/*.*',
@@ -80,7 +81,7 @@ gulp.task('replace', function() {
  */
 
 gulp.task('bootstrap', ['replace']);
-gulp.task('copy-assets', ['copy-images', 'copy-templates', 'concatenate-templates', 'copy-fonts', 'copy-data', 'copy-bower_fonts']);
+gulp.task('copy-assets', ['copy-images', 'copy-templates', 'concatenate-templates', 'copy-fonts', 'copy-data', 'copy-bower_fonts', 'copy-maps']);
 gulp.task('build-custom', ['custom-js', 'custom-less', 'build-bootstrap-less']);
 
 gulp.task('copy-images', function() {
@@ -91,6 +92,12 @@ gulp.task('copy-images', function() {
 gulp.task('copy-templates', function() {
 	return gulp.src(paths.templates)
 			.pipe(gulp.dest(paths.outputDir + 'js/'));
+	;
+});
+
+gulp.task('copy-maps', function() {
+	return gulp.src(paths.maps)
+			.pipe(gulp.dest(paths.outputDir + 'maps/'));
 	;
 });
 

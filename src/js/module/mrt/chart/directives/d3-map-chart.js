@@ -21,15 +21,20 @@ function d3MapChart($parse, $timeout) {
 			//console.log(options);
 
 			var map = new Datamap({
-        scope: 'world',
-        element: element[0],
-        // projection: 'mercator',
-				/** setProjection: function(element) {
+				responsive: true,
+				element: element[0],
+				scope: 'world',
+				/**geographyConfig: {
+            dataUrl: 'maps/africa-topo.json'
+        },
+        scope: 'africa',
+        projection: 'mercator',
+				setProjection: function(element) {
     var projection = d3.geo.equirectangular()
       .center([23, -3])
       .rotate([4.4, 0])
       .scale(400)
-      .translate([element.offsetWidth / 2, element.offsetHeight / 2]);
+      .translate([element.offsetWidth / 2, element.offsetHeight / 1.8]);
     var path = d3.geo.path()
       .projection(projection);
 
@@ -124,11 +129,23 @@ function d3MapChart($parse, $timeout) {
 
 
 
+		 scope.$watch('options.data', function() {
+
+						 $timeout(function() {
+						// console.log("changed");
+						//	 console.log(options.data);
+							map.updateChoropleth(options.data, {reset: true});
+
+
+					}, 250); // delay 250 ms
+
+		 });
+
 		 scope.$watch('options.updated', function() {
 
 						 $timeout(function() {
-							 console.log("changed");
-							 console.log(options.data);
+						// console.log("changed");
+						//	 console.log(options.data);
 							map.updateChoropleth(options.data);
 
 

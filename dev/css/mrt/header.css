@@ -1,0 +1,139 @@
+/* #592727 RED */
+/* #2f5927 GREEN */
+/* #30426a BLUE (default)*/
+/** 
+/ Palette
+// -------
+
+@turquoise:        #1abc9c;
+@green-sea:        #16a085;
+
+@emerald:          #2ecc71;
+@nephritis:        #27ae60;
+
+@peter-river:      #3498db;
+@belize-hole:      #2980b9;
+
+@amethyst:         #9b59b6;
+@wisteria:         #8e44ad;
+
+@wet-asphalt:      #34495e;
+@midnight-blue:    #2c3e50;
+
+@sun-flower:       #f1c40f;
+@orange:           #f39c12;
+
+@carrot:           #e67e22;
+@pumpkin:          #d35400;
+
+@alizarin:         #e74c3c;
+@pomegranate:      #c0392b;
+
+@clouds:           #ecf0f1;
+@silver:           #bdc3c7;
+
+@concrete:         #95a5a6;
+@asbestos:         #7f8c8d;
+
+
+**/
+/**
+@baseColor1: #8e44ad; 
+@baseColor2: #2c3e50;
+
+**/
+/* Sidebar background color */
+/* Sidebar header and footer color */
+/* Sidebar title text colour */
+/*#627cb7*/
+/**
+ * Header
+ */
+.row.header {
+  padding-left: 20px;
+  padding-right: 20px;
+  background: #fff;
+}
+.row.header > div:last-child {
+  padding-right: 0;
+}
+.row.header > div {
+  margin-bottom: 0px;
+}
+.row.header .meta .page {
+  font-size: 17px;
+  padding-top: 11px;
+}
+.row.header .meta .breadcrumb-links {
+  font-size: 10px;
+}
+.row.header .meta div {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.row.header .login a {
+  padding: 18px;
+  display: block;
+}
+.row.header .user {
+  min-width: 130px;
+}
+.row.header .user > .item {
+  width: 65px;
+  height: 60px;
+  float: right;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+}
+.row.header .user > .item a {
+  color: #919191;
+  display: block;
+}
+.row.header .user > .item i {
+  font-size: 20px;
+  line-height: 55px;
+}
+.row.header .user > .item img {
+  width: 40px;
+  height: 40px;
+  margin-top: 10px;
+  border-radius: 2px;
+}
+.row.header .user > .item ul.dropdown-menu {
+  border-radius: 2px;
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+}
+.row.header .user > .item ul.dropdown-menu .dropdown-header {
+  text-align: center;
+}
+.row.header .user > .item ul.dropdown-menu li.link {
+  text-align: left;
+}
+.row.header .user > .item ul.dropdown-menu li.link a {
+  padding-left: 7px;
+  padding-right: 7px;
+}
+.row.header .user > .item ul.dropdown-menu:before {
+  position: absolute;
+  top: -7px;
+  right: 23px;
+  display: inline-block;
+  border-right: 7px solid transparent;
+  border-bottom: 7px solid #ccc;
+  border-left: 7px solid transparent;
+  border-bottom-color: rgba(0, 0, 0, 0.2);
+  content: '';
+}
+.row.header .user > .item ul.dropdown-menu:after {
+  position: absolute;
+  top: -6px;
+  right: 24px;
+  display: inline-block;
+  border-right: 6px solid transparent;
+  border-bottom: 6px solid #ffffff;
+  border-left: 6px solid transparent;
+  content: '';
+}

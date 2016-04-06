@@ -9,26 +9,28 @@
         <div class="col-md-12">
             <rd-widget>
                 <rd-widget-header icon="fa fa-adjust" title="Models">
-                    <a ng-click="open('lg')">Add Model</a>
+                    <!--<a ng-click="open('lg')">Add Model</a>-->
+                    <a ui-sref="geomodel-create-model">Add Model</a>
                 </rd-widget-header>
                 <rd-widget-body classes="large no-padding">
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
                             <th  ng-click="predicate = 'name'; reverse=!reverse">Name</th>
-                            <th  ng-click="predicate = 'description'; reverse=!reverse">Description</th>
+                            <th  ng-click="predicate = 'description'; reverse=!reverse">Model</th>
                             </thead>
                             <tbody>
                                 <tr ng-repeat="row in data.geomodels | filter:filterText | orderBy:predicate:reverse">
                                     <td data-title="'Name'">
-                                        <a ui-sref="geomodel-weight({id: row.id})">{{row.name}}</a>
+                                        <!--<a ui-sref="geomodel-create-model({id: row.id})">{{row.name}}</a>-->
+                                        <a ui-sref="geomodel-vs-model({id: row.id})">{{row.name}}</a>
                                     </td>
                                     <td data-title="'Description'">
-                                        {{row.description}}
+                                        {{ row.algorithm_code }}
                                     </td>
                                 </tr>
                             </tbody>
-                        </table> 
+                        </table>
                     </div>
                 </rd-widget-body>
                 <rd-widget-footer>
@@ -47,6 +49,6 @@
                 </rd-widget-footer>
 
             </rd-widget>
-        </div> 
+        </div>
     </div>
 </div>

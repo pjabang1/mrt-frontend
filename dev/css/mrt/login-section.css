@@ -1,0 +1,106 @@
+/* #592727 RED */
+/* #2f5927 GREEN */
+/* #30426a BLUE (default)*/
+/** 
+/ Palette
+// -------
+
+@turquoise:        #1abc9c;
+@green-sea:        #16a085;
+
+@emerald:          #2ecc71;
+@nephritis:        #27ae60;
+
+@peter-river:      #3498db;
+@belize-hole:      #2980b9;
+
+@amethyst:         #9b59b6;
+@wisteria:         #8e44ad;
+
+@wet-asphalt:      #34495e;
+@midnight-blue:    #2c3e50;
+
+@sun-flower:       #f1c40f;
+@orange:           #f39c12;
+
+@carrot:           #e67e22;
+@pumpkin:          #d35400;
+
+@alizarin:         #e74c3c;
+@pomegranate:      #c0392b;
+
+@clouds:           #ecf0f1;
+@silver:           #bdc3c7;
+
+@concrete:         #95a5a6;
+@asbestos:         #7f8c8d;
+
+
+**/
+/**
+@baseColor1: #8e44ad; 
+@baseColor2: #2c3e50;
+
+**/
+/* Sidebar background color */
+/* Sidebar header and footer color */
+/* Sidebar title text colour */
+/*#627cb7*/
+.account-box {
+  border-radius: 0px;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px;
+  -khtml-border-radius: 0px;
+  -o-border-radius: 0px;
+  z-index: 3;
+  margin-top: 40px;
+  margin-bottom: 60px;
+  font-size: 13px !important;
+  background-color: #f3f5f7;
+  padding: 20px;
+}
+.account-box .btn-large {
+  border-radius: 0px;
+}
+.logo {
+  text-align: center;
+  border-bottom: 1px solid #dfdfdf;
+  padding-bottom: 20px;
+  margin-bottom: 30px;
+}
+.forgotLnk {
+  margin-top: 10px;
+  display: block;
+}
+.purple-bg {
+  background-color: #6E329D;
+  color: #fff;
+}
+.or-box {
+  position: relative;
+  border-top: 1px solid #dfdfdf;
+  padding-top: 20px;
+  margin-top: 20px;
+}
+.or {
+  color: #666666;
+  background-color: #ffffff;
+  position: absolute;
+  text-align: center;
+  top: -8px;
+  width: 40px;
+  left: 90px;
+}
+.account-box .btn:hover {
+  color: #fff;
+}
+.btn-facebook {
+  background-color: #3F639E;
+  color: #fff;
+  font-weight: bold;
+}
+.btn-google {
+  background-color: #454545;
+  color: #fff;
+  font-weight: bold;
+}

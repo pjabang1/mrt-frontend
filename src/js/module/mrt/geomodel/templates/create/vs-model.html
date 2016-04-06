@@ -3,132 +3,198 @@
     <!--
     <span class="dropdown" dropdown on-toggle="toggled(open)">
 
-      <a href class="dropdown-toggle" dropdown-toggle>
-        Click me for a dropdown, yo!
-      </a>
-      <ul class="dropdown-menu">
-        <li role="menuitem"><a href="#">Action</a></li>
-        <li role="menuitem"><a href="#">Another action</a></li>
-        <li role="menuitem"><a href="#">Something else here</a></li>
-        <li class="divider"></li>
-        <li role="menuitem"><a href="#">Separated link</a></li>
-      </ul>
+    <a href class="dropdown-toggle" dropdown-toggle>
+    Click me for a dropdown, yo!
+    </a>
+    <ul class="dropdown-menu">
+    <li role="menuitem"><a href="#">Action</a></li>
+    <li role="menuitem"><a href="#">Another action</a></li>
+    <li role="menuitem"><a href="#">Something else here</a></li>
+    <li class="divider"></li>
+    <li role="menuitem"><a href="#">Separated link</a></li>
+    </ul>
     </span>
-  -->
+    -->
 
     <div class="col-xs-2 country-list">
       <h5>{{ model.name }}</h5>
       <ul>
         <li>Range : From {{ model.from | date:'yyyy'}} to {{ model.to | date:'yyyy'}}<li>
-        <li>
+          <li>
             <a ng-click="ui.playing = !ui.playing"><span ng-if="!ui.playing"><i class="fa fa-play"></i> Play </span><span ng-if="ui.playing"><i class="fa fa-stop"></i> Stop </span></a>
-        </li>
-        <li>
-          <a ui-sref="geomodel-create-model({id: model.id, type: 'copy'})"><i class="fa fa-copy"></i> Copy </a>
-        </li>
-        <li>
-          <a ui-sref="geomodel-create-model({id: model.id})"><i class="fa fa-edit"></i> Update Data </a>
-        </li>
-        <li ng-repeat="country in model.geographies">
-          <span class="flag {{country.code | lowercase }}" ng-click="toggleSelection(country.code_3)"></span>
-          <span class="code" ng-click="toggleSelection(country.code_3)">{{ country.code_3 }}</span>
-          <span class="name" ng-click="toggleSelection(country.code_3)">{{ country.name }}</span>
+          </li>
+          <li>
+            <a ui-sref="geomodel-create-model({id: model.id, type: 'copy'})"><i class="fa fa-copy"></i> Copy </a>
+          </li>
+          <li>
+            <a ui-sref="geomodel-create-model({id: model.id})"><i class="fa fa-edit"></i> Update Data </a>
+          </li>
+          <li ng-repeat="country in model.geographies">
+            <span class="flag {{country.code | lowercase }}" ng-click="toggleSelection(country.code_3)"></span>
+            <span class="code" ng-click="toggleSelection(country.code_3)">{{ country.code_3 }}</span>
+            <span class="name" ng-click="toggleSelection(country.code_3)">{{ country.name }}</span>
 
+          </li>
+        </ul>
+      </div>
+      <vs-model-chart class="col-xs-10"  data="ui.chartData" playing="ui.playing"></vs-model-chart>
+      <div class="col-xs-12">
+        <span id="min-time">{{ ui.chartData.axis.min }}</span>
+        <input type="range" name="points" min="0" max="{{ ui.chartData.axis.max - ui.chartData.axis.min }}" step="1" value="0" id="slider-time" style="width:900px">
+        <span id="max-time">{{ ui.chartData.axis.max}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="container-" ng-if="model.modelType.id == 'ge-mckinsey'">
+    <div class="row">
+      <div class="col-xs-9">
+        <h1>{{ model.name }}</h1>
+      </div>
+      <div class="col-xs-3">
+        <a ui-sref="geomodel-create-model({id: model.id, type: 'copy'})" class="btn btn-primary pull-right"><i class="fa fa-copy"></i> Copy </a>
+        <a ui-sref="geomodel-create-model({id: model.id})" class="btn btn-primary pull-right"><i class="fa fa-edit"></i> Update Data</a>
+      </div>
+    </div>
+    <!--<matrix-chart class="col-xs-9 no-padding"  data="ui.chartData"></matrix-chart>-->
+    <div class="row">
+      <div class="col-xs-2">
+
+      </div>
+      <div class="col-xs-10">
+        <geo-model-ge-matrix></geo-model-ge-matrix>
+      </div>
+    </div>
+  </div>
+  <div class="container-" ng-if="model.modelType.id == 'map'">
+    <div class="row model-header">
+      <div class="col-xs-9">
+        <span class="h1-text">{{ model.name }}</span>
+        <span class="dropdown" dropdown>
+      <a href class="dropdown-toggle" dropdown-toggle>
+        <i class="fa fa-gear" tooltip-placement="top" tooltip="Map Settings"></i>
+      </a>
+      <ul class="dropdown-menu">
+        <li role="menuitem"  ng-repeat="themeColor in ui.themeColors">
+          <a ng-click="ui.setThemeColor(themeColor)"> {{ themeColor.name }} </a>
         </li>
       </ul>
+    </span>
+
+        <span class="dropdown" dropdown>
+      <a href class="dropdown-toggle" dropdown-toggle>
+        <i class="fa fa-ellipsis-v" tooltip-placement="top" tooltip="More Actions"></i>
+      </a>
+      <ul class="dropdown-menu">
+        <li role="menuitem"><a ui-sref="geomodel-create-model({id: model.id, type: 'copy'})"><i class="fa fa-copy"></i> Copy </a></li>
+        <li role="menuitem"><a ui-sref="geomodel-create-model({id: model.id})"><i class="fa fa-edit"></i> Update Data</a></li>
+      </ul>
+    </span>
+      </div>
+      <div class="col-xs-3" style="">
+
+
+      </div>
+      <div class="col-xs-12">
+
+        <rzslider rz-slider-model="slider.minValue"
+              rz-slider-options="slider.options"></rzslider>
+      </div>
+      <div class="col-xs-12">
+        <center class="h1-text">
+          {{ ui.selectedIndicator.name }}
+          <span class="dropdown" dropdown>
+        <a href class="dropdown-toggle" dropdown-toggle>
+          <i class="fa fa-caret-down" tooltip-placement="top" tooltip="Change Indicator"></i>
+        </a>
+        <ul class="dropdown-menu">
+          <li role="menuitem" ng-repeat="indicator in ui.indicators">
+            <a ng-click="updateIndicator(indicator)">{{ indicator.name }}</a>
+          </li>
+        </ul>
+      </span>
+        </center>
+      </div>
+
+      <div class="col-xs-9" d3-map-chart options="ui.chartOptions" click-event="toggleSelection"></div>
+      <div class="col-xs-3" style="padding: 30px; margin-top: -80px;">
+        <div class="col-xs-12" ng-repeat="(key, color) in ui.clusterColors" style="">
+          <span class="h1-text" style="color: {{ color }}; " ng-click="isCollapsed = !isCollapsed" ng-init="isCollapsed=true" tooltip-placement="top" tooltip="Centroid : {{ ui.centroids[key][0] }}">Cluster {{ key + 1 }} </span>
+          <div class="col-xs-12"  collapse="isCollapsed">
+            <span style="display: inline-block; margin-right: 5px; margin-bottom: 2px; font-size: 12px;" class="label label-pill label-default" ng-repeat="country in ui.clusterResults[key]" tooltip="{{ country.values[0].value }}"> {{ country.name }} </span>
+          </div
+        </div>
+      </div>
     </div>
-    <vs-model-chart class="col-xs-10"  data="ui.chartData" playing="ui.playing"></vs-model-chart>
-    <div class="col-xs-12">
-      <span id="min-time">{{ ui.chartData.axis.min }}</span>
-      <input type="range" name="points" min="0" max="{{ ui.chartData.axis.max - ui.chartData.axis.min }}" step="1" value="0" id="slider-time" style="width:900px">
-      <span id="max-time">{{ ui.chartData.axis.max}}</span>
-    </div>
+
+    <!--<matrix-chart class="col-xs-9 no-padding"  data="ui.chartData"></matrix-chart>-->
   </div>
 </div>
-<div class="container-" ng-if="model.modelType.id == 'ge-mckinsey'">
-  <div class="row">
-    <div class="col-xs-9">
-    <h1>{{ model.name }}</h1>
-  </div>
-  <div class="col-xs-3">
-    <a ui-sref="geomodel-create-model({id: model.id, type: 'copy'})" class="btn btn-primary pull-right"><i class="fa fa-copy"></i> Copy </a>
-    <a ui-sref="geomodel-create-model({id: model.id})" class="btn btn-primary pull-right"><i class="fa fa-edit"></i> Update Data</a>
-  </div>
-  </div>
-  <!--<matrix-chart class="col-xs-9 no-padding"  data="ui.chartData"></matrix-chart>-->
-  <div class="row">
-  <div class="col-xs-2">
+  <style type="text/css">
 
-  </div>
-  <div class="col-xs-10">
-    <geo-model-ge-matrix></geo-model-ge-matrix>
-  </div>
-  </div>
-</div>
+  text {
+    cursor: default;
+  }
+  .rz-pointer {
+    outline: 0px;
+  }
 
-<style>
+  h1 {
+    font-weight: 400;
+  }
 
-text {
-  cursor: default;
-}
+  #chart {
+    height: 506px;
+  }
 
-h1 {
-  font-weight: 400;
-}
+  text {
+    font-size: 10px;
+  }
 
-#chart {
-  height: 506px;
-}
+  .dot {
+    stroke: rgba(149, 165, 166,0.4);
+  }
 
-text {
-  font-size: 10px;
-}
+  .axis path, .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+  }
 
-.dot {
-  stroke: rgba(149, 165, 166,0.4);
-}
+  .label {
+    fill: #777;
+  }
 
-.axis path, .axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
-}
+  .year.label {
+    font: 500 196px "Helvetica Neue";
+    fill: #ddd;
+  }
 
-.label {
-  fill: #777;
-}
+  .country.label  {
+    font: 500 96px "Helvetica Neue";
+    fill: #ddd;
+  }
 
-.year.label {
-  font: 500 196px "Helvetica Neue";
-  fill: #ddd;
-}
+  .year.label.active {
+    fill: #aaa;
+  }
 
-.country.label  {
-  font: 500 96px "Helvetica Neue";
-  fill: #ddd;
-}
+  circle.pointTrajectory {
+    pointer-events: none;
+    stroke: lightgray;
+    fill: black;
+    opacity: 0;
+  }
 
-.year.label.active {
-  fill: #aaa;
-}
+  path.lineTrajectory {
+    stroke-width: 0;
+    stroke-opacity: .5;
+    stroke: black;
+    fill: none;
+    pointer-events: none;
+  }
 
-circle.pointTrajectory {
-   pointer-events: none;
-   stroke: lightgray;
-   fill: black;
-   opacity: 0;
-}
+  .selected {
+    stroke-width: 4;
+  }
 
-path.lineTrajectory {
-  stroke-width: 0;
-  stroke-opacity: .5;
-  stroke: black;
-  fill: none;
-  pointer-events: none;
-}
-
-.selected {
-  stroke-width: 4;
-}
-
-</style>
+  </style>

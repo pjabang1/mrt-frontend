@@ -1,0 +1,131 @@
+<div class="container">
+  <div class="row">
+    <div class="wizard">
+      <a><span class="badge">1</span> Create Model</a>
+      <a><span class="badge">2</span> Select Countries</a>
+      <a class="current"><span class="badge badge-inverse">3</span> Select Indicators</a>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-4" style="padding-left: 0px;">
+      <!--
+      <div class="col-xs-12">
+
+      <form class="form-inline">
+      <div class="form-group">
+      <label>
+      <input type="radio" ng-model="options.selectType" value="group">
+      Indicator Groups
+      </label>
+      </div>
+      <div class="form-group">
+      <label>
+      <input type="radio" ng-model="options.selectType" value="indicator">
+      Indicators
+      </label>
+      </div>
+      </form>
+      </div>
+      -->
+      <div class="group-selection" ng-if="options.selectType == 'group'">
+        <div class="col-xs-12 pull-right" style="padding-left: 0px;">
+          <input class="form-control" ng-focus="inputFocus = true" ng-model="groupFilter.name" type="text" placeholder="Search indicator groups">
+        </div>
+
+        <div class="indicator-list" ng-show="inputFocus" style="position: absolute; top: 30px; width: 200px; background-color: rgba(255, 255, 255, 0.90); z-index: 1000; height: auto; ">
+          <ul>
+            <li ng-click="inputFocus = false">
+              &nbsp;
+              <span class="pull-right"> Close </span>
+            </li>
+            <li ng-repeat="row in data.groups | filter:groupFilter | orderBy:predicate:reverse">
+              <span class="name" ng-click="toggleGroupExpand(row)">{{ row.name }}</span>
+              <span class="pull-right" ng-click="copyIndicatorGroup(row)"><i class="fa fa-plus-circle pointer"></i> </span>
+              <ul ng-if="row.expand == true">
+                <li ng-repeat="indicator in row.children" style="margin-left: 15px">
+                  <span class="name dropdown" dropdown on-toggle="toggled(open)">
+                    <a href class="dropdown-toggle" dropdown-toggle>
+                      {{ indicator.name }}
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li ng-repeat="group in model.indicators">
+                        <a ng-click="addIndicatorToGroup(indicator, group)">{{ group.name }}</a>
+                      </li>
+                    </ul>
+                  </span>
+
+                </li>
+
+              </ul>
+
+            </li>
+          </ul>
+        </div>
+        <div class="selected-indicator">
+        <div class="col-xs-12 menu">
+          <span ng-click="addIndicatorGroup()" class="menu-item pull-left"><i class="fa fa-plus-circle pointer"></i> Add Group </span>
+          
+          <span class="menu-item pull-right">
+            <span class="name dropdown" dropdown on-toggle="toggled(open)">
+              <a href class="dropdown-toggle" dropdown-toggle>
+                 {{ model.selectedDimension.name }} &nbsp; <i class="fa fa-sort-down pointer"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <li ng-repeat="dimension in model.modelType.dimensions">
+                  <a ng-click="selectDimension(dimension)">{{ dimension.name }}</a>
+                </li>
+              </ul>
+            </span>
+          </span>
+
+        </div>
+        <div class="col-xs-12 list">
+          <ul>
+            <li ng-repeat="row in model.indicators | filter:{ dimension: model.selectedDimension.id }" class="header">
+            <div class="pull-left col-xs-10">
+              <input popover="Click to edit" popover-trigger="mouseenter" ng-model="row.name" class="contenteditable" style="width: 100%" />
+            </div>
+              <div class="col-xs-2"><span class="pull-right"> <i class="fa fa-remove" popover="Click to remove" popover-trigger="mouseenter" ng-click="remove(model.indicators, row)"></i> </span></div>
+              <ul>
+                <li ng-repeat="indicator in row.indicators" class="col-xs-12">
+                  <div class="pull-left col-xs-10">{{ indicator.name }} </div>
+                  <div class="col-xs-2"><span class=""> <i popover="Click to remove" popover-trigger="mouseenter" class="fa fa-remove pull-right" ng-click="remove(row.indicators, indicator)"></i> </span></div>
+                </li>
+              </ul>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+      </div>
+
+      <!--
+      <div class="country-selection" ng-if="options.selectType == 'indicator'">
+      <div class="col-xs-12 pull-right">
+      <input class="form-control" ng-model="filterText" type="text" placeholder="Search countries" />
+      </div>
+      <div class="country-list">
+      <ul>
+      <li ng-repeat="row in data.indicators | filter:filterText | orderBy:predicate:reverse track by $index" ng-click="toggleSelection(row)">
+      <span>
+      <input type="checkbox" ng-model="row.selected" />
+      </span>
+      <span class="name">{{ row.name }}</span>
+      </li>
+      </ul>
+      </div>
+      </div>
+      -->
+    </div>
+    <div class="col-xs-8">
+
+
+    </div>
+    <div class="col-xs-12">
+      <span class="btn btn-success pull-left" ng-click="back()">Back (Select Countries)</span>
+      <span class="btn btn-success pull-right" ng-click="next()">Next (Configure Parameters)</span>
+    </div>
+  </div>
+</div>
