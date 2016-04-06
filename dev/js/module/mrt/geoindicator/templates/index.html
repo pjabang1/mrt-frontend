@@ -8,13 +8,13 @@
     <div class="row">
         <div class="col-md-12">
             <rd-widget>
-                <rd-widget-header icon="fa-map-marker" title="Indicators">
+                <rd-widget-header icon="fa-map-marker" title="Indicators ({{ totalItems }})">
                     <!--<a href="#/geogroup-view/">Add Country Group</a>-->
                     <a ui-sref="geoindicator-add">Add Indicator</a>
                 </rd-widget-header>
                 <rd-widget-body classes="large no-padding">
                     <div class="table-responsive">
-                        <table class="table"> 
+                        <table class="table">
                             <thead>
                             <th  ng-click="predicate = 'code'; reverse=!reverse">Code</th>
                             <th  ng-click="predicate = 'name'; reverse=!reverse">Name</th>
@@ -23,7 +23,8 @@
                             <th></th>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="row in data.geoindicators | filter:filterText | orderBy:predicate:reverse track by row.id">
+                              <!--ng-repeat="row in data.geoindicators | filter:filterText | orderBy:predicate:reverse track by row.id"-->
+                                <tr ng-repeat="row in filtered | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit">
                                     <td>
                                         <a ui-sref="geoindicator-view({id: row.id})">{{row.code}}</a>
                                     </td>
@@ -37,11 +38,11 @@
                                         {{row.geography_count}}
                                     </td>
                                     <td align="right">
-                                        <a ui-sref="geoindicator-edit({id: row.id})" ng-if="row.source === 'local'">Edit</a> 
+                                        <a ui-sref="geoindicator-edit({id: row.id})" ng-if="row.source === 'local'">Edit</a>
                                     </td>
                                 </tr>
                             </tbody>
-                        </table> 
+                        </table>
                     </div>
                 </rd-widget-body>
                 <rd-widget-footer>
@@ -60,6 +61,10 @@
                 </rd-widget-footer>
 
             </rd-widget>
-        </div> 
+        </div>
+        <div class="col-md-12">
+          <pagination data-boundary-links="true" data-num-pages="noOfPages" data-current-page="currentPage" max-size="maxSize" class="pagination-small" data-previous-text="&laquo;" data-next-text="&raquo;"></pagination>
+           <pagination boundary-links="true" total-items="totalItems" ng-model="currentPage" max-size="maxSize" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+        </div>
     </div>
 </div>
