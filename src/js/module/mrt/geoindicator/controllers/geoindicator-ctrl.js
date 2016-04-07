@@ -1054,7 +1054,7 @@ $scope.reverse = true;
           duration: 2000
         });
         return false;
-      }
+      } 
 
       if(typeof $scope.data.id !== 'undefined' && $scope.data.id) {
         geoIndicatorService.update($scope.data).success(function(data) {
