@@ -943,20 +943,6 @@ $scope.reverse = true;
 
   loadData($stateParams);
 
-  geographyService.getGeographies({}).success(function(data) {
-    countries = data.geographies;
-    var country;
-    for (var i = 0; i < countries.length; i++) {
-      country = countries[i];
-      // $scope.data.push([country.name, '']);
-    }
-
-    // loadData();
-
-  }).error(function(error) {
-    $scope.status = 'Unable to load customer data: ' + error.message;
-
-  });
 
   function loadData(params) {
     setDefaultIndicator();
@@ -991,31 +977,6 @@ $scope.reverse = true;
 
   $scope.db = {};
   $scope.db.items = [];
-  function _loadData() {
-    $scope.db.items = [];
-    for (var i = 0; i < 20; i++) {
-      // countries[i].options = countries;
-      $scope.db.items.push(
-        {
-          id: i + 1,
-          name: {
-            first: firstNames[Math.floor(Math.random() * firstNames.length)],
-            last: lastNames[Math.floor(Math.random() * lastNames.length)]
-          },
-          address: Math.floor(Math.random() * 100000) + ' ' + address[Math.floor(Math.random() * address.length)],
-          '2010': Math.floor(Math.random() * 100000) / 100,
-          '2011': Math.floor(Math.random() * 100000) / 100,
-          '2012': Math.floor(Math.random() * 100000) / 100,
-          '2013': Math.floor(Math.random() * 100000) / 100,
-          '2014': Math.floor(Math.random() * 100000) / 100,
-          isActive: Math.floor(Math.random() * products.length) / 2 == 0 ? 'Yes' : 'No',
-          country: countries[i]
-        }
-      );
-    }
-    // $scope.$apply();
-
-  }
 
 
   $scope.db.dynamicColumns = [
@@ -1054,28 +1015,42 @@ $scope.reverse = true;
           duration: 2000
         });
         return false;
-      } 
+      }
 
       if(typeof $scope.data.id !== 'undefined' && $scope.data.id) {
         geoIndicatorService.update($scope.data).success(function(data) {
           $scope.data = data;
 
-          ngNotify.set($scope.data.name + " saved ", {
+          ngNotify.set(data.name + " saved ", {
             position: 'top',
             type: 'success',
             duration: 2000
           });
 
         }).error(function(error) {
-          $scope.status = 'Unable to save data ' + error.message;
+          ngNotify.set("Unable to save indicator", {
+            position: 'top',
+            type: 'error',
+            duration: 2000
+          });
 
         });
       } else {
         geoIndicatorService.save($scope.data).success(function(data) {
           $scope.data = data;
 
+          ngNotify.set(data.name + " saved ", {
+            position: 'top',
+            type: 'success',
+            duration: 2000
+          });
+
         }).error(function(error) {
-          $scope.status = 'Unable to save data ' + error.message;
+          ngNotify.set("Unable to save indicator", {
+            position: 'top',
+            type: 'error',
+            duration: 2000
+          });
 
         });
       }
