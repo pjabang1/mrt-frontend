@@ -14,6 +14,7 @@
       {'id': 'mckinsey-matrix', 'name': 'GE McKinsey 9 Box Matrix'},
       {'id' : 'bg-matrix', 'name': 'BG Matrix'}
     ];
+    
     var constraints = {
       name: {
         presence: true,

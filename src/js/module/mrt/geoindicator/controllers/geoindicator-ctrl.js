@@ -903,7 +903,7 @@ $scope.reverse = true;
 
 
 
-}]).controller('GeoIndicatorAddCtrl', ['$scope', '$cacheFactory', '$filter', '$stateParams', '$interval', '$stateParams', 'geographyService', 'geoIndicatorService', function ($scope, $cacheFactory, $filter, $stateParams, $interval, $stateParams, geographyService, geoIndicatorService) {
+}]).controller('GeoIndicatorAddCtrl', ['$scope', '$cacheFactory', '$filter', '$stateParams', '$interval', '$stateParams', 'ngNotify', 'geographyService', 'geoIndicatorService', function ($scope, $cacheFactory, $filter, $stateParams, $interval, $stateParams, ngNotify, geographyService, geoIndicatorService) {
   var products = [
     {
       "description": "Big Mac",
@@ -929,7 +929,15 @@ $scope.reverse = true;
   var firstNames = ["Ted", "John", "Macy", "Rob", "Gwen", "Fiona", "Mario", "Ben", "Kate", "Kevin", "Thomas", "Frank"];
   var lastNames = ["Tired", "Johnson", "Moore", "Rocket", "Goodman", "Farewell", "Manson", "Bentley", "Kowalski", "Schmidt", "Tucker", "Fancy"];
   var address = ["Turkey", "Japan", "Michigan", "Russia", "Greece", "France", "USA", "Germany", "Sweden", "Denmark", "Poland", "Belgium"];
-
+  var constraints = {
+    name: {
+      presence: true,
+      length: {
+        minimum: 3,
+        message: " is too short"
+      }
+    }
+  };
   $scope.minSpareRows = 1;
   $scope.colHeaders = true;
 
@@ -962,14 +970,24 @@ $scope.reverse = true;
     }
   }
 
+  function getUniqueCode() {
+    return "CS" + createUnique(8) + createUnique(8) + createUnique(8);
+  }
+
+  function createUnique(lngth) {
+    var mx = 20;
+    return Math.random().toString(mx).substring(0, (lngth-1)).toUpperCase();
+  }
+
   function setDefaultIndicator() {
     $scope.data = {
       name: '',
-      code: '',
+      code: getUniqueCode(),
       description: '',
       series: [['country', '']]
     };
   }
+
 
   $scope.db = {};
   $scope.db.items = [];
@@ -1027,9 +1045,26 @@ $scope.reverse = true;
 
   $scope.submitForm = function(isValid) {
     if(isValid) {
+
+      var errors = validate($scope.data, constraints, {format: "flat"});
+      if(errors && errors.length) {
+        ngNotify.set(errors[0], {
+          position: 'top',
+          type: 'error',
+          duration: 2000
+        });
+        return false;
+      }
+
       if(typeof $scope.data.id !== 'undefined' && $scope.data.id) {
         geoIndicatorService.update($scope.data).success(function(data) {
           $scope.data = data;
+
+          ngNotify.set($scope.data.name + " saved ", {
+            position: 'top',
+            type: 'success',
+            duration: 2000
+          });
 
         }).error(function(error) {
           $scope.status = 'Unable to save data ' + error.message;
@@ -1045,6 +1080,12 @@ $scope.reverse = true;
         });
       }
 
+    } else {
+      ngNotify.set("Cannot submit form", {
+        position: 'top',
+        type: 'error',
+        duration: 2000
+      });
     }
 
   }

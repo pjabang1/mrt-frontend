@@ -16,10 +16,10 @@
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
-                            <th  ng-click="predicate = 'code'; reverse=!reverse">Code</th>
-                            <th  ng-click="predicate = 'name'; reverse=!reverse">Name</th>
-                            <th  ng-click="predicate = 'indicator_count'; reverse=!reverse">Indicators</th>
-                            <th  ng-click="predicate = 'geography_count'; reverse=!reverse">Countries</th>
+                            <th  ng-click="order('code')">Code</th>
+                            <th  ng-click="order('name')">Name</th>
+                            <th  ng-click="order('indicator_count')">Indicators</th>
+                            <th  ng-click="order('geography_count')">Countries</th>
                             <th></th>
                             </thead>
                             <tbody>
@@ -63,7 +63,6 @@
             </rd-widget>
         </div>
         <div class="col-md-12">
-          <pagination data-boundary-links="true" data-num-pages="noOfPages" data-current-page="currentPage" max-size="maxSize" class="pagination-small" data-previous-text="&laquo;" data-next-text="&raquo;"></pagination>
            <pagination boundary-links="true" total-items="totalItems" ng-model="currentPage" max-size="maxSize" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
         </div>
     </div>
